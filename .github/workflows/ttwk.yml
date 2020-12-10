@@ -28,7 +28,7 @@ jobs:
       - name: npm install
         if: env.ZFBWK_HEADER
         run: |
-          cd ~/DLL
+          cd ~/JS202012
           npm install
       - name: '运行 【ttwk】'
         if: env.ZFBWK_HEADER
