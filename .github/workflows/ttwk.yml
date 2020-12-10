@@ -20,7 +20,7 @@ jobs:
     steps:
       - name: Checkout
         run: |
-          git clone https://github.com/SamWu129/JS202012.git ~/JS202012
+          git clone https://github.com/SamWu129/Js202012.git ~/Js202012
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
@@ -28,12 +28,12 @@ jobs:
       - name: npm install
         if: env.ZFBWK_HEADER
         run: |
-          cd ~/JS202012
+          cd ~/Js202012
           npm install
       - name: '运行 【ttwk】'
         if: env.ZFBWK_HEADER
         run: |
-          cd ~/JS202012
+          cd ~/Js202012
           node ttwk.js
         env:
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
