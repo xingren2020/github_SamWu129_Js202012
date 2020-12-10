@@ -149,6 +149,8 @@ if ($request && $request.method != 'OPTIONS' && $request.url.match(/createSign/)
 
 //天天挖矿
 function getsign() {
+bodyVal = bodyArr[0];
+headerVal = headerArr[0];
   return new Promise((resolve, reject) =>{
    let signurl =  {
       url: `https://operation-api.jimistore.com/api/mining/v1/sign/createSign`,
@@ -186,6 +188,8 @@ function getsign() {
 
 //天天挖矿收益
 function getsy() {
+bodyVal = bodyArr[0];
+headerVal = headerArr[0];
   return new Promise((resolve, reject) =>{
    let syurl =  {
       url: `https://operation-api.jimistore.com/api/mining/v1/sign/showSignInfo`,
