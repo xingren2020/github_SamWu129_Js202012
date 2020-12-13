@@ -60,10 +60,10 @@ function AutoRead(){
     headers: {
       'Accept-Encoding' : `gzip, deflate`,
       'Connection' : `close`,
-      'Accept' : `application/json`,
+      'Accept' : `image/*,*/*;q=0.8`,
       'Host' : `ali2.a.yximgs.com`,
-      'User-Agent' : `kwai-ios`,
-      'Accept-Language' : `zh-Hans-CN;q=1, en-CN;q=0.9, zh-Hant-CN;q=0.8`},
+      'User-Agent' : `com_kwai_nebula/3.2.10 (iPad; iOS 14.2; Scale/2.00)`,
+      'Accept-Language' : `zh-cn`},
 };
   $.get(myRequest, (error, response, data) => {
      if(error){
