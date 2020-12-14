@@ -2,19 +2,24 @@ const $ = new Env("cdsp")
 
 let cdhd = [], cdhdArr = [];
 
-let playurl=`https://api-ddvideo.1sapp.com/task/timer_submit`
+let playhd={"Accept": "*/*","Accept-Encoding": "gzip, deflate, br","Accept-Language": "zh-Hans-CN;q=1, en-CN;q=0.9, zh-Hant-CN;q=0.8","As-Version": "v1","Connection": "keep-alive","Content-Length": "256","Content-Type": "application/json","Device-Code": "D22A293C-FEBD-4AF9-B404-54CEB7C2536A","Dtu": "appStore","Host": "api-ddvideo.1sapp.com","Lat": "31.537338","Lon": "120.370201","Mobile-Brand": "iPhone","Mobile-Model": "iPhone X","Network": "4G","Oaid": "8D1BA106-CDCB-461A-A69C-6DF3545F89F4","Os": "iOS","Os-Version": "14.1","Source": "appStore","TK": "ACLJkOMc0udOeYmHFQLTLrsLNkSgz9QHXoJkZHNw","Token": "0878SdP77PMqCtp_7lSId6UE4cL_nKfPxu0KGINVojRNwZMpnVKuXaVxObUUwrwW1TrbntuE_Ijm4NBzbN5bA0IPtDWIhRVBxtzB9xX3nx4W6ueLESOnOLnRly9lvPjlOxZbGQrEqXsTPxzS2j1H4bk2Y8OEsDY","Tuid": "yZDjHNLnTnmJhxUC0y67Cw","User-Agent": "cai dan shi pin/1211 (iPhone; iOS 14.1; Scale/3.00)","Version": "1211","Version-Name": "",}
+
+let newplayhd = ``
+
+//let cdhdArr = [{"Accept": "*/*","Accept-Encoding": "gzip, deflate, br","Accept-Language": "zh-Hans-CN;q=1, en-CN;q=0.9, zh-Hant-CN;q=0.8","As-Version": "v1","Connection": "keep-alive","Content-Length": "256","Content-Type": "application/json","Device-Code": "D22A293C-FEBD-4AF9-B404-54CEB7C2536A","Dtu": "appStore","Host": "api-ddvideo.1sapp.com","Lat": "31.537338","Lon": "120.370201","Mobile-Brand": "iPhone","Mobile-Model": "iPhone X","Network": "4G","Oaid": "8D1BA106-CDCB-461A-A69C-6DF3545F89F4","Os": "iOS","Os-Version": "14.1","Source": "appStore","TK": "ACLJkOMc0udOeYmHFQLTLrsLNkSgz9QHXoJkZHNw","Token": "0878SdP77PMqCtp_7lSId6UE4cL_nKfPxu0KGINVojRNwZMpnVKuXaVxObUUwrwW1TrbntuE_Ijm4NBzbN5bA0IPtDWIhRVBxtzB9xX3nx4W6ueLESOnOLnRly9lvPjlOxZbGQrEqXsTPxzS2j1H4bk2Y8OEsDY","Tuid": "yZDjHNLnTnmJhxUC0y67Cw","User-Agent": "cai dan shi pin/1211 (iPhone; iOS 14.1; Scale/3.00)","Version": "1211","Version-Name": "",}]
+
 let playbd={"qdata":"RDc1Mjc0NEMwRDM3QjhDQ0E2M0ZFREYwQUQzODNERUEuY0dGeVlXMGZaRFpqWlRZMFpEQXROVFEwTkMwME5qUmpMVGxoTmprdE5XRmtORFF4WkRRNE1tWmtIblpsY25OcGIyNGZOaDV3YkdGMFptOXliUjloYm1SeWIybGtIbVZqSHpFPS6yX4TqfdGq7UlncPttSAmO98SwIzzXcI6YZ2gNLhDYtbNjQ01K1PC4GnUXQZNHV+iNz5rhOg6Bh0T9u6F8cpmq3phJPb4PNI4xLFF2eLnXb0uJfQ+32ytDE9DQd0nyyQl4pUgA73HCuzY14nU8YiXowL4xQk9+gBuafvFw7AtwUlDo44uR4KebxoxXZsh6r+1Vhuw="}
 
-  if (process.env.CD_HD && process.env.CD_HD.indexOf('#') > -1) {
-  cdhd = process.env.CD_HD.split('#');
-  console.log(`您选择的是用"#"隔开\n`)
-  }
-  else if (process.env.CD_HD && process.env.CD_HD.indexOf('\n') > -1) {
+if ($.isNode()) {
+ if (process.env.CD_HD && process.env.CD_HD.indexOf('\n') > -1) {
   cdhd = process.env.CD_HD.split('\n');
   console.log(`您选择的是用换行隔开\n`)
   } else {
   cdhd = process.env.CD_HD.split()
   }
+}
+
+if ($.isNode()) {
   Object.keys(cdhd).forEach((item) => {
         if (cdhd[item]) {
           cdhdArr.push(cdhd[item])
@@ -22,15 +27,20 @@ let playbd={"qdata":"RDc1Mjc0NEMwRDM3QjhDQ0E2M0ZFREYwQUQzODNERUEuY0dGeVlXMGZaRFp
     })
       console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
       console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
+}
+else{
+  cdhdArr.push(playhd);
+}
 
 !(async () => {
   if (!cdhdArr[0]) {
     console.log($.name, '【提示】请把headers填入Github 的 Secrets 中，请以#或者换行隔开')
+
     return;
   }
   for (let i = 0; i < cdhdArr.length; i++) {
     if (cdhdArr[i]) {
-      playhd = cdhdArr[i];
+      newplayhd = cdhdArr[i];
       $.index = i + 1;
     console.log(`-------------------------\n\n开始cdsp第${$.index}个账号`)
     }
@@ -44,15 +54,15 @@ let playbd={"qdata":"RDc1Mjc0NEMwRDM3QjhDQ0E2M0ZFREYwQUQzODNERUEuY0dGeVlXMGZaRFp
 function AutoRead(){
  return new Promise((resolve) => { 
    const myRequest = {
-    url: playurl,
-    headers: playhd,
-    body: JSON.stringify(playbd),
+    url: `https://api-ddvideo.1sapp.com/task/timer_submit`,
+    headers: newplayhd,
+    body: JSON.stringify(playbd)
     }
   $.post(myRequest, (error, response, data) => {
      if(error){
      console.log("响应数据失败："+response.code + "\n\n" + data);
      }
-    console.log(response.code + "\n\n" + data);
+    //console.log(response.statusCode + "\n\n" + data);
     //$.done();
       })
     resolve()
