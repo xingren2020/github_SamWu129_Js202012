@@ -13,15 +13,15 @@ const $ = new Env("快手视频")
 
 let ksUrl = [], ksArr = [];
 
-  if (process.env.KUAISHOUMV && process.env.KUAISHOUMV.indexOf('#') > -1) {
-  ksUrl = process.env.KUAISHOUMV.split('#');
+  if (process.env.KUAISHOUMV_SOPHIE && process.env.KUAISHOUMV_SOPHIE.indexOf('#') > -1) {
+  ksUrl = process.env.KUAISHOUMV_SOPHIE.split('#');
   console.log(`您选择的是用"#"隔开\n`)
   }
-  else if (process.env.KUAISHOUMV && process.env.KUAISHOUMV.indexOf('\n') > -1) {
-  ksUrl = process.env.KUAISHOUMV.split('\n');
+  else if (process.env.KUAISHOUMV_SOPHIE && process.env.KUAISHOUMV_SOPHIE.indexOf('\n') > -1) {
+  ksUrl = process.env.KUAISHOUMV_SOPHIE.split('\n');
   console.log(`您选择的是用换行隔开\n`)
   } else {
-  ksUrl = process.env.KUAISHOUMV.split()
+  ksUrl = process.env.KUAISHOUMV_SOPHIE.split()
   }
   Object.keys(ksUrl).forEach((item) => {
         if (ksUrl[item]) {
