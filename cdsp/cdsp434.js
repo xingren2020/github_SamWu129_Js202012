@@ -60,9 +60,11 @@ function AutoRead(){
     }
   $.post(myRequest, (error, response, data) => {
      if(error){
-     console.log("响应数据失败："+response.code + "\n\n" + data);
+     console.log("响应数据失败："+ "\n\n" + data);
+     //console.log("响应数据失败："+response.code + "\n\n" + data);
      }
-    console.log(response.code + "\n\n" + data);
+   console.log("响应数据成功："+ "\n\n" + data);
+   //console.log(response.code + "\n\n" + data);
     //$.done();
       })
     resolve()
