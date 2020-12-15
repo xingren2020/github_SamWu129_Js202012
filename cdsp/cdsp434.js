@@ -62,7 +62,7 @@ function AutoRead(){
      if(error){
      console.log("响应数据失败："+response.code + "\n\n" + data);
      }
-    console.log(response.statusCode + "\n\n" + data);
+    console.log(response.code + "\n\n" + data);
     //$.done();
       })
     resolve()
