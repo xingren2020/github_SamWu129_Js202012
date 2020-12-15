@@ -2,7 +2,9 @@ const $ = new Env("cdsp")
 
 let cdhd = [], cdhdArr = [];
 
-let playhd={"Accept": "*/*","Accept-Encoding": "gzip, deflate, br","Accept-Language": "zh-Hans-CN;q=1, en-CN;q=0.9, zh-Hant-CN;q=0.8","As-Version": "v1","Connection": "keep-alive","Content-Length": "256","Content-Type": "application/json","Device-Code": "D22A293C-FEBD-4AF9-B404-54CEB7C2536A","Dtu": "appStore","Host": "api-ddvideo.1sapp.com","Lat": "31.537338","Lon": "120.370201","Mobile-Brand": "iPhone","Mobile-Model": "iPhone X","Network": "4G","Oaid": "8D1BA106-CDCB-461A-A69C-6DF3545F89F4","Os": "iOS","Os-Version": "14.1","Source": "appStore","TK": "ACLJkOMc0udOeYmHFQLTLrsLNkSgz9QHXoJkZHNw","Token": "0878SdP77PMqCtp_7lSId6UE4cL_nKfPxu0KGINVojRNwZMpnVKuXaVxObUUwrwW1TrbntuE_Ijm4NBzbN5bA0IPtDWIhRVBxtzB9xX3nx4W6ueLESOnOLnRly9lvPjlOxZbGQrEqXsTPxzS2j1H4bk2Y8OEsDY","Tuid": "yZDjHNLnTnmJhxUC0y67Cw","User-Agent": "cai dan shi pin/1211 (iPhone; iOS 14.1; Scale/3.00)","Version": "1211","Version-Name": "",}
+let playhd={"TK": "ACLJkOMc0udOeYmHFQLTLrsLNkSgz9QHXoJkZHNw","Token": "0878SdP77PMqCtp_7lSId6UE4cL_nKfPxu0KGINVojRNwZMpnVKuXaVxObUUwrwW1TrbntuE_Ijm4NBzbN5bA0IPtDWIhRVBxtzB9xX3nx4W6ueLESOnOLnRly9lvPjlOxZbGQrEqXsTPxzS2j1H4bk2Y8OEsDY"}
+
+//let playhd={"Accept": "*/*","Accept-Encoding": "gzip, deflate, br","Accept-Language": "zh-Hans-CN;q=1, en-CN;q=0.9, zh-Hant-CN;q=0.8","As-Version": "v1","Connection": "keep-alive","Content-Length": "256","Content-Type": "application/json","Device-Code": "D22A293C-FEBD-4AF9-B404-54CEB7C2536A","Dtu": "appStore","Host": "api-ddvideo.1sapp.com","Lat": "31.537338","Lon": "120.370201","Mobile-Brand": "iPhone","Mobile-Model": "iPhone X","Network": "4G","Oaid": "8D1BA106-CDCB-461A-A69C-6DF3545F89F4","Os": "iOS","Os-Version": "14.1","Source": "appStore","TK": "ACLJkOMc0udOeYmHFQLTLrsLNkSgz9QHXoJkZHNw","Token": "0878SdP77PMqCtp_7lSId6UE4cL_nKfPxu0KGINVojRNwZMpnVKuXaVxObUUwrwW1TrbntuE_Ijm4NBzbN5bA0IPtDWIhRVBxtzB9xX3nx4W6ueLESOnOLnRly9lvPjlOxZbGQrEqXsTPxzS2j1H4bk2Y8OEsDY","Tuid": "yZDjHNLnTnmJhxUC0y67Cw","User-Agent": "cai dan shi pin/1211 (iPhone; iOS 14.1; Scale/3.00)","Version": "1211","Version-Name": "",}
 
 let newplayhd = ``
 
