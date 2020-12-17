@@ -23,7 +23,7 @@ let ReadArrtoken = [], cdsptoken = "";
   cdsptk = process.env.CD_TK.split('\n');
   console.log(`您选择的是用换行隔开\n`)
   } else {
-  cdsptk = process.env.CD_TK
+  cdsptk = process.env.CD_TK.split()
   }
   Object.keys(cdsptk).forEach((item) => {
         if (cdsptk[item]) {
@@ -39,7 +39,7 @@ let ReadArrtoken = [], cdsptoken = "";
   cdsptoken = process.env.CD_TOKEN.split('\n');
   console.log(`您选择的是用换行隔开\n`)
   } else {
-  cdsptoken = process.env.CD_TOKEN
+  cdsptoken = process.env.CD_TOKEN.split()
   }
   Object.keys(cdsptoken).forEach((item) => {
         if (cdsptoken[item]) {
