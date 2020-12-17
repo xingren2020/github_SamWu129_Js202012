@@ -54,7 +54,7 @@ function AutoRead() {
        let url = {
             url: `https://api-ddvideo.1sapp.com/task/timer_submit`,
             headers: articlehd,
-            body: articlebody
+            body: JSON.stringify(articlebody)
         };
         $.post(url, async(error, response, data) => {
            let readres = JSON.parse(data);
