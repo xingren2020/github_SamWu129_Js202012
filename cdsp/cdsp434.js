@@ -12,32 +12,52 @@ Github Actions使用方法见[@lxk0301](https://raw.githubusercontent.com/lxk030
 const $ = new Env("cdsp")
 //const notify = $.isNode() ? require('./sendNotify') : '';
 let articlebody = '{"qdata":"RDc1Mjc0NEMwRDM3QjhDQ0E2M0ZFREYwQUQzODNERUEuY0dGeVlXMGZaRFpqWlRZMFpEQXROVFEwTkMwME5qUmpMVGxoTmprdE5XRmtORFF4WkRRNE1tWmtIblpsY25OcGIyNGZOaDV3YkdGMFptOXliUjloYm1SeWIybGtIbVZqSHpFPS6yX4TqfdGq7UlncPttSAmO98SwIzzXcI6YZ2gNLhDYtbNjQ01K1PC4GnUXQZNHV+iNz5rhOg6Bh0T9u6F8cpmq3phJPb4PNI4xLFF2eLnXb0uJfQ+32ytDE9DQd0nyyQl4pUgA73HCuzY14nU8YiXowL4xQk9+gBuafvFw7AtwUlDo44uR4KebxoxXZsh6r+1Vhuw="}'
-let ReadArr = [], cdsphd = "";
-  if (process.env.CD_HD && process.env.CD_HD.indexOf('&') > -1) {
-  cdsphd = process.env.CD_HD.split('&');
+//let ReadArr = [], cdsphd = "";
+let ReadArrtk = [], cdsptk = "";
+let ReadArrtoken = [], cdsptoken = "";
+  if (process.env.CD_TK && process.env.CD_TK.indexOf('&') > -1) {
+  cdsptk = process.env.CD_TK.split('&');
   console.log(`您选择的是用"&"隔开\n`)
   }
-  else if (process.env.CD_HD && process.env.CD_HD.indexOf('\n') > -1) {
-  cdsphd = process.env.CD_HD.split('\n');
+  else if (process.env.CD_TK && process.env.CD_TK.indexOf('\n') > -1) {
+  cdsptk = process.env.CD_TK.split('\n');
   console.log(`您选择的是用换行隔开\n`)
   } else {
-  cdsphd = process.env.CD_HD.split()
+  cdsptk = process.env.CD_TK.split()
   }
-  Object.keys(cdsphd).forEach((item) => {
-        if (cdsphd[item]) {
-          ReadArr.push(cdsphd[item])
+  Object.keys(cdsptk).forEach((item) => {
+        if (cdsptk[item]) {
+          ReadArrtk.push(cdsptk[item])
         }
     })
+
+  if (process.env.CD_TOKEN && process.env.CD_TOKEN.indexOf('&') > -1) {
+  cdsptoken = process.env.CD_TOKEN.split('&');
+  console.log(`您选择的是用"&"隔开\n`)
+  }
+  else if (process.env.CD_TOKEN && process.env.CD_TOKEN.indexOf('\n') > -1) {
+  cdsptoken = process.env.CD_TOKEN.split('\n');
+  console.log(`您选择的是用换行隔开\n`)
+  } else {
+  cdsptoken = process.env.CD_TOKEN.split()
+  }
+  Object.keys(cdsptoken).forEach((item) => {
+        if (cdsptoken[item]) {
+          ReadArrtoken.push(cdsptoken[item])
+        }
+    })
+
       console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
       console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
  !(async () => {
-  if (!ReadArr[0]) {
+  if (!ReadArrtk[0]) {
     console.log($.name, '【提示】请把headers填入Github 的 Secrets 中，请以&隔开')
     return;
   }
-  for (let i = 0; i < ReadArr.length; i++) {
-    if (ReadArr[i]) {
-      articlehd = ReadArr[i];
+  for (let i = 0; i < ReadArrtk.length; i++) {
+    if (ReadArrtk[i]) {
+      articletk = ReadArrtk[i];
+      articletoken = ReadArrtoken[i];
       $.index = i + 1;
       console.log(`-------------------------\n\n开始快手第${$.index}个账号阅读`)
     }
@@ -53,7 +73,7 @@ function AutoRead() {
     return new Promise((resolve, reject) => {
        let url = {
             url: `https://api-ddvideo.1sapp.com/task/timer_submit`,
-            headers: JSON.stringify(articlehd),
+            headers: {"Content-Type": "application/json","TK":articletk,"Token": articletoken,"User-Agent": "cai dan shi pin/1211 (iPhone; iOS 10.3.3; Scale/2.00)"},
             body: JSON.stringify(articlebody)
         };
         $.post(url, async(error, response, data) => {
