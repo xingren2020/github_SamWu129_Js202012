@@ -13,7 +13,9 @@ const $ = new Env("cdsp")
 //const notify = $.isNode() ? require('./sendNotify') : '';
 let articleurl = "https://api-ddvideo.1sapp.com/task/timer_submit"//`https://api-ddvideo.1sapp.com/task/timer_submit`
 let articlebody = '{"qdata":"RDc1Mjc0NEMwRDM3QjhDQ0E2M0ZFREYwQUQzODNERUEuY0dGeVlXMGZaRFpqWlRZMFpEQXROVFEwTkMwME5qUmpMVGxoTmprdE5XRmtORFF4WkRRNE1tWmtIblpsY25OcGIyNGZOaDV3YkdGMFptOXliUjloYm1SeWIybGtIbVZqSHpFPS6yX4TqfdGq7UlncPttSAmO98SwIzzXcI6YZ2gNLhDYtbNjQ01K1PC4GnUXQZNHV+iNz5rhOg6Bh0T9u6F8cpmq3phJPb4PNI4xLFF2eLnXb0uJfQ+32ytDE9DQd0nyyQl4pUgA73HCuzY14nU8YiXowL4xQk9+gBuafvFw7AtwUlDo44uR4KebxoxXZsh6r+1Vhuw="}'
-let ReadArr = [], cdsphd = "", articlehd = "";
+let articlehd = '{"Accept": "*/*","Accept-Encoding": "gzip, deflate","Accept-Language": "zh-Hans-CN;q=1","As-Version": "v1","Content-Length": "256","Content-Type": "application/json","Device-Code": "DB39CBD2-B832-4284-888A-FC71496B0855","Dtu": "appStore","Host": "api-ddvideo.1sapp.com","Lat": "0.000000","Lon": "0.000000","Mobile-Brand": "iPhone","Mobile-Model": "iPhone 5s","Network": "WIFI","Oaid": "78BE3580-7104-440C-BCB2-8AD09A3A9227","Os": "iOS","Os-Version": "10.3.3","Source": "appStore","TK": "ACLbOcvSuDJChIiK_HFJawhVxoUjtIKjf-ZkZHNw","Token": "ce6dgbCzRUBhUra8B69QHOJecQMkePXsbpA7idijFSACag4nX11daQioEXFxUtnu2PAoQzET-UHW988O3H9cPvtWc-2K79bml2IEblY7bT7FP6riDAIR2XoPqI7mvH5ACKRhhvj-Ci9dGwognXxnXJAEgesUX-A","Tuid": "2znL0rgyQoSIivxxSWsIVQ","User-Agent": "cai dan shi pin/1211 (iPhone; iOS 10.3.3; Scale/2.00)","Version": "1211","Version-Name": "",}'
+let newarticlehd = "";
+let ReadArr = [], cdsphd = "";
   if (process.env.CD_HD && process.env.CD_HD.indexOf('&') > -1) {
   cdsphd = process.env.CD_HD.split('&');
   console.log(`您选择的是用"&"隔开\n`)
@@ -22,7 +24,7 @@ let ReadArr = [], cdsphd = "", articlehd = "";
   cdsphd = process.env.CD_HD.split('\n');
   console.log(`您选择的是用换行隔开\n`)
   } else {
-  cdsphd = process.env.CD_HD.split()
+  cdsphd = articlehd
   }
   Object.keys(cdsphd).forEach((item) => {
         if (cdsphd[item]) {
@@ -39,7 +41,7 @@ let ReadArr = [], cdsphd = "", articlehd = "";
   }
   for (let i = 0; i < ReadArr.length; i++) {
     if (ReadArr[i]) {
-      articlehd = ReadArr[i];
+      newarticlehd = ReadArr[i];
       $.index = i + 1;
       console.log(`-------------------------\n\n开始快手第${$.index}个账号阅读`)
     }
