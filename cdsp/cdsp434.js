@@ -57,7 +57,7 @@ function AutoRead() {
     return new Promise((resolve, reject) => {
        let url = {
             url: articleurl,
-            headers: articlehd,
+            headers: newarticlehd,
             body: JSON.stringify(articlebody)
         };
         $.post(url, async(error, response, data) => {
