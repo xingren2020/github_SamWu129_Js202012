@@ -11,6 +11,7 @@ Github Actions使用方法见[@lxk0301](https://raw.githubusercontent.com/lxk030
 //let s = 30000 //等待延迟30s
 const $ = new Env("cdsp")
 //const notify = $.isNode() ? require('./sendNotify') : '';
+let articleurl = "https://api-ddvideo.1sapp.com/task/timer_submit"//`https://api-ddvideo.1sapp.com/task/timer_submit`
 let articlebody = '{"qdata":"RDc1Mjc0NEMwRDM3QjhDQ0E2M0ZFREYwQUQzODNERUEuY0dGeVlXMGZaRFpqWlRZMFpEQXROVFEwTkMwME5qUmpMVGxoTmprdE5XRmtORFF4WkRRNE1tWmtIblpsY25OcGIyNGZOaDV3YkdGMFptOXliUjloYm1SeWIybGtIbVZqSHpFPS6yX4TqfdGq7UlncPttSAmO98SwIzzXcI6YZ2gNLhDYtbNjQ01K1PC4GnUXQZNHV+iNz5rhOg6Bh0T9u6F8cpmq3phJPb4PNI4xLFF2eLnXb0uJfQ+32ytDE9DQd0nyyQl4pUgA73HCuzY14nU8YiXowL4xQk9+gBuafvFw7AtwUlDo44uR4KebxoxXZsh6r+1Vhuw="}'
 let ReadArr = [], cdsphd = "", articlehd = "";
   if (process.env.CD_HD && process.env.CD_HD.indexOf('&') > -1) {
@@ -53,7 +54,7 @@ let ReadArr = [], cdsphd = "", articlehd = "";
 function AutoRead() {
     return new Promise((resolve, reject) => {
        let url = {
-            url: `https://api-ddvideo.1sapp.com/task/timer_submit`,
+            url: articleurl,
             headers: articlehd,
             body: JSON.stringify(articlebody)
         };
