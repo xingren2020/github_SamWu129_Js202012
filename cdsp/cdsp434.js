@@ -36,7 +36,7 @@ let ReadArr = [], cdsphd = "", articlehd = "";
     console.log($.name, '【提示】请把headers填入Github 的 Secrets 中，请以&隔开')
     return;
   }
-  for (let i = 0; i < ReadArrtk.length; i++) {
+  for (let i = 0; i < ReadArr.length; i++) {
     if (ReadArr[i]) {
       articlehd = ReadArr[i];
       $.index = i + 1;
