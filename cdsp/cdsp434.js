@@ -53,7 +53,7 @@ function AutoRead() {
     return new Promise((resolve, reject) => {
        let url = {
             url: `https://api-ddvideo.1sapp.com/task/timer_submit`,
-            headers: articlehd,
+            headers: JSON.stringify(articlehd),
             body: JSON.stringify(articlebody)
         };
         $.post(url, async(error, response, data) => {
