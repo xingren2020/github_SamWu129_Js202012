@@ -37,6 +37,7 @@ let HDArr = [], cdsphd = "", articlehd = "";
 
 for(let i=0;i<HDArr.length;i++)
     {(function(i)
+      articlehd = HDArr[i]
       {setTimeout(function()
       { AutoRead(i)},i*1000)})(i)}
 
@@ -60,7 +61,6 @@ for(let i=0;i<HDArr.length;i++)
   .finally(() => $.done())*/
 
 function AutoRead(i) {
-  let articlehd = HDArr[i]
   console.log(`URL:`+articleurl)
   console.log(`headers:`+articlehd)
   console.log(`body:`+articlebody)
