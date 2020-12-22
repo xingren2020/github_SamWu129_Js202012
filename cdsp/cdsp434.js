@@ -89,8 +89,8 @@ function AutoRead() {
     return new Promise((resolve, reject) => {
        let myrequest = {
             url: articleurl,
-            headers: articlehd,
-            body: JSON.stringify(articlebody)
+            headers: JSON.parse(articlehd),
+            body: JSON.parse(articlebody)
         };
         $.post(myrequest, (error, response, data) => {
        /* if(error){
