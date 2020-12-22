@@ -56,7 +56,7 @@ let HDArr = [], cdsphd = "", articlehd = "";
 function AutoRead() {
     return new Promise((resolve, reject) => {
        let url = {
-            url: articleurl,
+            url: 'https://api-ddvideo.1sapp.com/task/timer_submit',
             headers: '{"Accept": "*/*","Accept-Encoding": "gzip, deflate","Accept-Language": "zh-Hans-CN;q=1","As-Version": "v1","Content-Length": "256","Content-Type": "application/json","Device-Code": "DB39CBD2-B832-4284-888A-FC71496B0855","Dtu": "appStore","Host": "api-ddvideo.1sapp.com","Lat": "0.000000","Lon": "0.000000","Mobile-Brand": "iPhone","Mobile-Model": "iPhone 5s","Network": "WIFI","Oaid": "78BE3580-7104-440C-BCB2-8AD09A3A9227","Os": "iOS","Os-Version": "10.3.3","Source": "appStore","TK": "ACLbOcvSuDJChIiK_HFJawhVxoUjtIKjf-ZkZHNw","Token": "ce6dgbCzRUBhUra8B69QHOJecQMkePXsbpA7idijFSACag4nX11daQioEXFxUtnu2PAoQzET-UHW988O3H9cPvtWc-2K79bml2IEblY7bT7FP6riDAIR2XoPqI7mvH5ACKRhhvj-Ci9dGwognXxnXJAEgesUX-A","Tuid": "2znL0rgyQoSIivxxSWsIVQ","User-Agent": "cai dan shi pin/1211 (iPhone; iOS 10.3.3; Scale/2.00)","Version": "1211","Version-Name": "",}',
             body: articlebody
         };
@@ -65,7 +65,8 @@ function AutoRead() {
            let readres = JSON.parse(data);
             console.log(readres)
            if (readres.code == '0') {
-              console.log(`\n本次阅读获得${readres.data.reward_value}个金币，请等待3s后执行下一个账号阅读\n`);
+            console.log(`\n本次阅读获得${readres.data.reward_value}个金币，请等待3s后执行下一个账号阅读\n`);
+           await $.wait(3000);
             }
           }
            catch(error) {     
