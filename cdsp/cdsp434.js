@@ -27,7 +27,7 @@ let HDArr = [], cdsphd = "";
   else
   {
   cdsphd = process.env.CD_HD.split()
-  console.log(`您只有1个HD`)
+ // console.log(`您只有1个HD`)
   } 
   Object.keys(cdsphd).forEach((item) => {
         if (cdsphd[item]) {
@@ -87,9 +87,9 @@ for(let i=0;i<HDArr.length;i++)
 function AutoRead() {
     return new Promise((resolve, reject) => {
        let myrequest = {
-            url: articleurl,
+            url: process.env.CD_URL,
             headers: articlehd,
-            body: articlebd
+            body: JSON.stringify(process.env.CD_BD434)
         };
   console.log(`URL:`+articleurl)
   console.log(`headers:`+articlehd)
