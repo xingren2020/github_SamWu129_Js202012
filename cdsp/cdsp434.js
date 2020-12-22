@@ -62,11 +62,11 @@ AutoRead()
   .finally(() => $.done())*/
 
 function AutoRead(i) {
+  let articlehd = HDArr[i]
   console.log(`URL:`+articleurl)
   console.log(`headers:`+articlehd)
   console.log(`body:`+articlebody)
     return new Promise((resolve, reject) => {
-       let articlehd = HDArr[i]
        let url = {
             url: articleurl,
             headers: articlehd,
