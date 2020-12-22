@@ -50,11 +50,11 @@ for(let i=0;i<HDArr.length;i++)
     return;
   }
   for (let i = 0; i < HDArr.length; i++) {
-    if (HDArr[i]) {
+//    if (HDArr[i]) {
       articlehd = HDArr[i];
       $.index = i + 1;
       console.log(`-------------------------\n\n开始彩蛋第${$.index}个账号阅读`)
-    }
+ //   }
   for (let j = 0; j < 5; j++) {
       await AutoRead();
       await $.wait(20000);
