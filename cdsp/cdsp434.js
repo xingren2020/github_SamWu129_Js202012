@@ -69,7 +69,9 @@ function AutoRead() {
            await $.wait(3000);
             }
           }
-           catch(error) {     
+           catch(error) {   
+               let readres = JSON.parse(data);
+               console.log(readres)
               console.log(`\n本次阅读出现异常，请等待3s后执行下一个账号阅读\n`)
             }
           resolve()
