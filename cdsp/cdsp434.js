@@ -63,7 +63,7 @@ function AutoRead() {
             headers: articlehd,
             body: articlebody
         };
-        $.post(url, async(error, response, data) => {
+        $.get(url, async(error, response, data) => {
         try{
            let readres = JSON.parse(data);
             console.log(readres)
