@@ -11,8 +11,8 @@ Github Actions使用方法见[@lxk0301](https://raw.githubusercontent.com/lxk030
 //let s = 30000 //等待延迟30s
 const $ = new Env("cdsp")
 //const notify = $.isNode() ? require('./sendNotify') : '';
-let articleurl = process.env.CD_URL
-let articlebody = process.env.CD_BD434
+let articleurl = process.env.CD_URL.split()
+let articlebody = process.env.CD_BD434.split()
 let HDArr = [], cdsphd = "", articlehd = "";
   if (process.env.CD_HD && process.env.CD_HD.indexOf('&') > -1) {
   cdsphd = process.env.CD_HD.split('&');
