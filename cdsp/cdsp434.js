@@ -15,7 +15,7 @@ let articleurl = process.env.CD_URL;
 let articlebody = process.env.CD_BD434;
 //let articlehd = process.env.CD_HD;
 
-let HDArr = [], cdsphd = "", articlehd = "";
+let HDArr = [], cdsphd = "";
   if (process.env.CD_HD && process.env.CD_HD.indexOf('&') > -1) {
   cdsphd = process.env.CD_HD.split('&');
   console.log(`您选择的是用"&"隔开\n`)
@@ -34,6 +34,7 @@ let HDArr = [], cdsphd = "", articlehd = "";
           HDArr.push(cdsphd[item])
         }
   })
+      console.log(`============ 共${HDArr.length}个账号  =============\n`)
       console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
       console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
 
@@ -80,18 +81,20 @@ for(let i=0;i<HDArr.length;i++)
       AutoRead();
  }
   */
-  console.log(`URL:`+articleurl)
-  console.log(`headers:`+articlehd)
-  console.log(`body:`+articlebody)
+
 
 
 function AutoRead() {
     return new Promise((resolve, reject) => {
        let myrequest = {
             url: articleurl,
-            headers: JSON.parse(articlehd),
-            body: JSON.parse(articlebody)
+            headers: rticlehd,
+            body: articlebody
         };
+  console.log(`URL:`+articleurl)
+  console.log(`headers:`+articlehd)
+  console.log(`body:`+articlebody)
+  console.log(`myrequest:`+myrequest)
         $.post(myrequest, (error, response, data) => {
        /* if(error){
      console.log("响应数据失败："+response.statusCode + "\n\n" + data);
