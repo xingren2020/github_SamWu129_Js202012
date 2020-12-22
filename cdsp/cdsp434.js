@@ -34,7 +34,7 @@ let HDArr = [], cdsphd = "", articlehd = "";
   })
       console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
       console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
- !(async () => {
+/* !(async () => {
   if (!HDArr[0]) {
     console.log($.name, '【提示】请把headers填入Github 的 Secrets 中，请以&隔开')
     return;
@@ -50,7 +50,7 @@ let HDArr = [], cdsphd = "", articlehd = "";
    console.log(`-------------------------\n\n快手共完成${$.index}个账号阅读`)
 })()
   .catch((e) => $.logErr(e))
-  .finally(() => $.done())
+  .finally(() => $.done())*/
 
 
 function AutoRead() {
@@ -69,7 +69,7 @@ function AutoRead() {
             console.log(readres)
            if (readres.code == '0') {
             console.log(`\n本次阅读获得${readres.data.reward_value}个金币，请等待3s后执行下一个账号阅读\n`);
-           await $.wait(3000);
+         //  await $.wait(3000);
             }
           }
            catch(error) {   
