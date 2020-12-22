@@ -62,7 +62,7 @@ function AutoRead() {
        let url = {
             url: articleurl,
             headers: articlehd,
-            body: articlebody
+            body: JSON.stringify(articlebody)
         };
         $.post(url, async(error, response, data) => {
         try{
