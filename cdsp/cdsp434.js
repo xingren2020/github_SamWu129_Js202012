@@ -59,11 +59,11 @@ function AutoRead() {
   console.log(`body:`+articlebody)
     return new Promise((resolve, reject) => {
        let url = {
-            url: articleurl,
+            url: `https://api-ddvideo.1sapp.com/task/timer_submit`//articleurl,
             headers: articlehd,
             body: articlebody
         };
-        $.get(url, async(error, response, data) => {
+        $.post(url, async(error, response, data) => {
         try{
            let readres = JSON.parse(data);
             console.log(readres)
