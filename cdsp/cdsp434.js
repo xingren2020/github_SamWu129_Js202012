@@ -41,8 +41,6 @@ for(let i=0;i<HDArr.length;i++)
       { AutoRead(i)},i*1000)})(i)}
 
 
-AutoRead()
-
 /* !(async () => {
   if (!HDArr[0]) {
     console.log($.name, '【提示】请把headers填入Github 的 Secrets 中，请以&隔开')
