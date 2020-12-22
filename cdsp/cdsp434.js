@@ -13,7 +13,7 @@ const $ = new Env("cdsp")
 //const notify = $.isNode() ? require('./sendNotify') : '';
 let articleurl = process.env.CD_URL
 let articlebody = process.env.CD_BD434
-let HDArr = [], cdsphd = ""，articlehd = "";
+let HDArr = [], cdsphd = "", articlehd = "";
   if (process.env.CD_HD && process.env.CD_HD.indexOf('&') > -1) {
   cdsphd = process.env.CD_HD.split('&');
   console.log(`您选择的是用"&"隔开\n`)
