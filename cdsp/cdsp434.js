@@ -87,15 +87,15 @@ for(let i=0;i<HDArr.length;i++)
 function AutoRead() {
     return new Promise((resolve, reject) => {
        let myrequest = {
-            url: process.env.CD_URL,
-            headers: process.env.CD_HD,
-            body: JSON.stringify(process.env.CD_BD434)
+            url: articleurl,
+            headers: articlehd,
+            body: articlebd
         };
   console.log(`URL:`+articleurl)
   console.log(`headers:`+articlehd)
   console.log(`body:`+articlebd)
   console.log(`myrequest:`+myrequest)
-        $.post(myrequest, (error, response, data) => {
+        $.post(JSON.stringify(myrequest), (error, response, data) => {
        /* if(error){
      console.log("响应数据失败："+response.statusCode + "\n\n" + data);
      }
