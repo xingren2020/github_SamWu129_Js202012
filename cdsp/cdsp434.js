@@ -34,15 +34,14 @@ let HDArr = [], cdsphd = "", articlehd = "";
   })
       console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
       console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
-
+/* 
 for(let i=0;i<HDArr.length;i++)
     {(function(i)
       articlehd = HDArr[i]
       {setTimeout(function()
       { AutoRead(i)},i*1000)})(i)}
-
-
-/* !(async () => {
+      
+!(async () => {
   if (!HDArr[0]) {
     console.log($.name, '【提示】请把headers填入Github 的 Secrets 中，请以&隔开')
     return;
@@ -58,9 +57,23 @@ for(let i=0;i<HDArr.length;i++)
    console.log(`-------------------------\n\n快手共完成${$.index}个账号阅读`)
 })()
   .catch((e) => $.logErr(e))
-  .finally(() => $.done())*/
+  .finally(() => $.done())
 
-function AutoRead(i) {
+*/
+
+
+  if (!HDArr[0]) {
+    console.log($.name, '【提示】请把headers填入Github 的 Secrets 中，请以&隔开')
+    return;
+  }
+  for (let i = 0; i < HDArr.length; i++) {
+      articlehd = HDArr[i];
+      $.index = i + 1;
+      console.log(`-------------------------\n\n开始快手第${$.index}个账号阅读`)
+      await AutoRead();
+ }
+  
+function AutoRead() {
   console.log(`URL:`+articleurl)
   console.log(`headers:`+articlehd)
   console.log(`body:`+articlebody)
