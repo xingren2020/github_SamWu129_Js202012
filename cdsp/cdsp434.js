@@ -88,7 +88,7 @@ function AutoRead() {
     return new Promise((resolve, reject) => {
        let myrequest = {
             url: process.env.CD_URL,
-            headers: articlehd,
+            headers: process.env.CD_HD,
             body: JSON.stringify(process.env.CD_BD434)
         };
   console.log(`URL:`+articleurl)
