@@ -11,8 +11,10 @@ Github Actions使用方法见[@lxk0301](https://raw.githubusercontent.com/lxk030
 //let s = 30000 //等待延迟30s
 const $ = new Env("cdsp")
 //const notify = $.isNode() ? require('./sendNotify') : '';
-let articleurl = process.env.CD_URL
-let articlebody = process.env.CD_BD434
+let articleurl = process.env.CD_URL;
+let articlebody = process.env.CD_BD434;
+let articlehd = process.env.CD_HD;
+/*
 let HDArr = [], cdsphd = "", articlehd = "";
   if (process.env.CD_HD && process.env.CD_HD.indexOf('&') > -1) {
   cdsphd = process.env.CD_HD.split('&');
@@ -34,6 +36,8 @@ let HDArr = [], cdsphd = "", articlehd = "";
   })
       console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
       console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
+      
+      */
 /* 
 for(let i=0;i<HDArr.length;i++)
     {(function(i)
@@ -61,7 +65,7 @@ for(let i=0;i<HDArr.length;i++)
 
 */
 
-
+/*
   if (!HDArr[0]) {
     console.log($.name, '【提示】请把headers填入Github 的 Secrets 中，请以&隔开')
     return;
@@ -72,7 +76,10 @@ for(let i=0;i<HDArr.length;i++)
       console.log(`-------------------------\n\n开始快手第${$.index}个账号阅读`)
       AutoRead();
  }
-  
+  */
+
+AutoRead()
+
 function AutoRead() {
   console.log(`URL:`+articleurl)
   console.log(`headers:`+articlehd)
