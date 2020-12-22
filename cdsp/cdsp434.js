@@ -54,7 +54,7 @@ let HDArr = [], cdsphd = "", articlehd = "";
 
 
 function AutoRead() {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
        let url = {
             url: articleurl,
             headers: articlehd,
