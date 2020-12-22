@@ -52,6 +52,7 @@ let HDArr = [], cdsphd = "", articlehd = "";
   .catch((e) => $.logErr(e))
   .finally(() => $.done())*/
 
+AutoRead()
 
 function AutoRead() {
   console.log(`URL:`+articleurl)
