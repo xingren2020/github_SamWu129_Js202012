@@ -70,7 +70,7 @@ for(let i=0;i<HDArr.length;i++)
       articlehd = HDArr[i];
       $.index = i + 1;
       console.log(`-------------------------\n\n开始快手第${$.index}个账号阅读`)
-      await AutoRead();
+      AutoRead();
  }
   
 function AutoRead() {
