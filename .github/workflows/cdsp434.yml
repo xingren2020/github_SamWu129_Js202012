@@ -11,7 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     env:
+        CD_URL: ${{ secrets.CD_URL }}
         CD_HD: ${{ secrets.CD_HD }}
+        CD_BD434: ${{ secrets.CD_BD434 }}
         TZ: Asia/shanghai
     steps:
       - name: Checkout
