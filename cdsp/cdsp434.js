@@ -77,17 +77,17 @@ for(let i=0;i<HDArr.length;i++)
       AutoRead();
  }
   */
+  console.log(`URL:`+articleurl)
+  console.log(`headers:`+articlehd)
+  console.log(`body:`+articlebody)
 
 AutoRead()
 
 function AutoRead() {
-  console.log(`URL:`+articleurl)
-  console.log(`headers:`+articlehd)
-  console.log(`body:`+articlebody)
     return new Promise((resolve, reject) => {
        let url = {
             url: articleurl,
-            headers: JSON.parse(articlehd),
+            headers: articlehd,
             body: JSON.stringify(articlebody)
         };
         $.post(url, (error, response, data) => {
