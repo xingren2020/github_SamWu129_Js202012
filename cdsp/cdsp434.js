@@ -61,6 +61,7 @@ function AutoRead() {
             body: articlebody
         };
         $.post(url, async(error, response, data) => {
+          if (response){
             console.log(`\n测试反馈\n`+data)
           let readres = JSON.parse(data);
              console.log(data)
@@ -70,7 +71,7 @@ function AutoRead() {
             }
            else {     
               console.log(`\n本次阅读出现异常，请等待3s后执行下一个账号阅读\n`)
-            }
+            }}
           resolve()
         })
     })
