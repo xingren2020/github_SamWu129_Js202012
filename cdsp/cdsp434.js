@@ -13,8 +13,8 @@ const $ = new Env("cdsp")
 //const notify = $.isNode() ? require('./sendNotify') : '';
 let articleurl = process.env.CD_URL;
 let articlebody = process.env.CD_BD434;
-let articlehd = process.env.CD_HD;
-/*
+//let articlehd = process.env.CD_HD;
+
 let HDArr = [], cdsphd = "", articlehd = "";
   if (process.env.CD_HD && process.env.CD_HD.indexOf('&') > -1) {
   cdsphd = process.env.CD_HD.split('&');
@@ -36,15 +36,14 @@ let HDArr = [], cdsphd = "", articlehd = "";
   })
       console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
       console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
-      
-      */
+
 /* 
 for(let i=0;i<HDArr.length;i++)
     {(function(i)
       articlehd = HDArr[i]
       {setTimeout(function()
       { AutoRead(i)},i*1000)})(i)}
-      
+ */     
 !(async () => {
   if (!HDArr[0]) {
     console.log($.name, '【提示】请把headers填入Github 的 Secrets 中，请以&隔开')
@@ -54,16 +53,20 @@ for(let i=0;i<HDArr.length;i++)
     if (HDArr[i]) {
       articlehd = HDArr[i];
       $.index = i + 1;
-      console.log(`-------------------------\n\n开始快手第${$.index}个账号阅读`)
+      console.log(`-------------------------\n\n开始彩蛋第${$.index}个账号阅读`)
     }
+  for (let j = 0; j < 5; j++) {
       await AutoRead();
+      await $.wait(20000);
+      console.log(`\n  请等待20s后继续视频${$.index}第${j+1}次任务`)
+    }
  }
-   console.log(`-------------------------\n\n快手共完成${$.index}个账号阅读`)
+   console.log(`-------------------------\n\n彩蛋共完成${$.index}个账号阅读`)
 })()
   .catch((e) => $.logErr(e))
   .finally(() => $.done())
 
-*/
+
 
 /*
   if (!HDArr[0]) {
@@ -81,17 +84,22 @@ for(let i=0;i<HDArr.length;i++)
   console.log(`headers:`+articlehd)
   console.log(`body:`+articlebody)
 
-AutoRead()
 
 function AutoRead() {
     return new Promise((resolve, reject) => {
-       let url = {
+       let myrequest = {
             url: articleurl,
             headers: articlehd,
             body: JSON.stringify(articlebody)
         };
-        $.post(url, (error, response, data) => {
-        try{
+        $.post(myRequest, (error, response, data) => {
+        if(error){
+     console.log("响应数据失败："+response.statusCode + "\n\n" + data);
+     }
+    console.log(response.statusCode + "\n\n" + data);
+    $.done();
+      })
+          /*try{
            let readres = JSON.parse(data);
             console.log(readres)
            if (readres.code == '0') {
@@ -103,7 +111,7 @@ function AutoRead() {
                let readres = JSON.parse(data);
                console.log(readres)
               console.log(`\n本次阅读出现异常，请等待3s后执行下一个账号阅读\n`)
-            }
+            }*/
           resolve()
         })
     })
