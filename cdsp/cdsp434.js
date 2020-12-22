@@ -22,6 +22,11 @@ let HDArr = [], cdsphd = "", articlehd = "";
   cdsphd = process.env.CD_HD.split('\n');
   console.log(`您选择的是用换行隔开\n`)
   } 
+  else
+  {
+  cdsphd = process.env.CD_HD
+  console.log(`您只有1个HD`)
+  } 
   Object.keys(cdsphd).forEach((item) => {
         if (cdsphd[item]) {
           HDArr.push(cdsphd[item])
