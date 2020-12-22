@@ -56,12 +56,12 @@ let HDArr = [], cdsphd = "", articlehd = "";
 function AutoRead() {
   console.log(`URL:`+articleurl)
   console.log(`headers:`+articlehd)
-  console.log(`body:`+JSON.stringify(articlebody))
+  console.log(`body:`+articlebody)
     return new Promise((resolve, reject) => {
        let url = {
             url: articleurl,
             headers: articlehd,
-            body: JSON.stringify(articlebody)
+            body: articlebody
         };
         $.post(url, async(error, response, data) => {
         try{
