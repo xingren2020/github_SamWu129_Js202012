@@ -61,8 +61,9 @@ function AutoRead() {
             body: articlebody
         };
         $.post(url, async(error, response, data) => {
-           let readres = JSON.parse(data);
-             //console.log(data)
+            console.log(`\n测试反馈\n`+data)
+          let readres = JSON.parse(data);
+             console.log(data)
            if (readres.code == '0') {
               console.log(`\n本次阅读获得${readres.data.reward_value}个金币，请等待3s后执行下一个账号阅读\n`);
               await $.wait(3000);
