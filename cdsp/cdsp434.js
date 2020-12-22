@@ -12,7 +12,7 @@ Github Actions使用方法见[@lxk0301](https://raw.githubusercontent.com/lxk030
 const $ = new Env("cdsp")
 //const notify = $.isNode() ? require('./sendNotify') : '';
 let articleurl = process.env.CD_URL;
-let articlebody = process.env.CD_BD434;
+let articlebd = process.env.CD_BD434;
 //let articlehd = process.env.CD_HD;
 
 let HDArr = [], cdsphd = "";
@@ -88,12 +88,12 @@ function AutoRead() {
     return new Promise((resolve, reject) => {
        let myrequest = {
             url: articleurl,
-            headers: rticlehd,
-            body: articlebody
+            headers: articlehd,
+            body: articlebd
         };
   console.log(`URL:`+articleurl)
   console.log(`headers:`+articlehd)
-  console.log(`body:`+articlebody)
+  console.log(`body:`+articlebd)
   console.log(`myrequest:`+myrequest)
         $.post(myrequest, (error, response, data) => {
        /* if(error){
