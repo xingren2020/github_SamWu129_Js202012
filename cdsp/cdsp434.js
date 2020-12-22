@@ -88,14 +88,14 @@ function AutoRead() {
     return new Promise((resolve, reject) => {
        let myrequest = {
             url: articleurl,
-            headers: articlehd,
-            body: articlebd
+            headers: JSON.parse(articlehd),
+            body: JSON.stringify(articlebd)
         };
   console.log(`URL:`+articleurl)
   console.log(`headers:`+articlehd)
   console.log(`body:`+articlebd)
   console.log(`myrequest:`+myrequest)
-        $.post(JSON.stringify(myrequest), (error, response, data) => {
+        $.post(myrequest, (error, response, data) => {
        /* if(error){
      console.log("响应数据失败："+response.statusCode + "\n\n" + data);
      }
