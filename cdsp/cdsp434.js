@@ -59,7 +59,7 @@ function AutoRead() {
   console.log(`body:`+articlebody)
     return new Promise((resolve, reject) => {
        let url = {
-            url: `https://api-ddvideo.1sapp.com/task/timer_submit`,//articleurl,
+            url: articleurl,
             headers: articlehd,
             body: articlebody
         };
