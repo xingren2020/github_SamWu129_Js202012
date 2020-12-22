@@ -88,7 +88,7 @@ function AutoRead() {
     return new Promise((resolve, reject) => {
        let myrequest = {
             url: articleurl,
-            headers: JSON.parse(articlehd),
+            headers: articlehd,
             body: JSON.stringify(articlebd)
         };
   console.log(`URL:`+articleurl)
