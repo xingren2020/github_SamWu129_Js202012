@@ -92,7 +92,7 @@ function AutoRead() {
             headers: articlehd,
             body: JSON.stringify(articlebody)
         };
-        $.post(myRequest, (error, response, data) => {
+        $.post(myrequest, (error, response, data) => {
         if(error){
      console.log("响应数据失败："+response.statusCode + "\n\n" + data);
      }
