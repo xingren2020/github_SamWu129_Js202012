@@ -34,6 +34,22 @@ let HDArr = [], cdsphd = "", articlehd = "";
   })
       console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
       console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
+
+ if (!HDArr[0]) {
+    console.log($.name, '【提示】请把headers填入Github 的 Secrets 中，请以&隔开')
+    return;
+  }
+  for (let i = 0; i < HDArr.length; i++) {
+    if (HDArr[i]) {
+      articlehd = HDArr[i];
+      $.index = i + 1;
+      console.log(`-------------------------\n\n开始快手第${$.index}个账号阅读`)
+    }
+      AutoRead();
+   }
+
+
+
 /* !(async () => {
   if (!HDArr[0]) {
     console.log($.name, '【提示】请把headers填入Github 的 Secrets 中，请以&隔开')
