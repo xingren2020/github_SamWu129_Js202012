@@ -57,9 +57,9 @@ for(let i=0;i<HDArr.length;i++)
       console.log(`-------------------------\n\n开始彩蛋第${$.index}个账号阅读`)
  //   }
   for (let j = 0; j < 5; j++) {
-      await AutoRead();
-      await $.wait(20000);
-      console.log(`\n  请等待20s后继续视频${$.index}第${j+1}次任务`)
+     console.log(`\n  请等待20s后继续视频${$.index}第${j+1}次任务`)
+     await AutoRead();
+     await $.wait(20000);
     }
  }
    console.log(`-------------------------\n\n彩蛋共完成${$.index}个账号阅读`)
@@ -88,7 +88,7 @@ function AutoRead() {
     return new Promise((resolve, reject) => {
        let myrequest = {
             url: articleurl,
-            headers: {"Accept": "*/*","Accept-Encoding": "gzip, deflate","Accept-Language": "zh-Hans-CN;q=1","As-Version": "v1","Content-Length": "256","Device-Code": "DB39CBD2-B832-4284-888A-FC71496B0855","Dtu": "appStore","Host": "api-ddvideo.1sapp.com","Lat": "0.000000","Lon": "0.000000","Mobile-Brand": "iPhone","Mobile-Model": "iPhone 5s","Network": "WIFI","Oaid": "78BE3580-7104-440C-BCB2-8AD09A3A9227","Os": "iOS","Os-Version": "10.3.3","Source": "appStore","TK": "ACLbOcvSuDJChIiK_HFJawhVxoUjtIKjf-ZkZHNw","Token": "ce6dgbCzRUBhUra8B69QHOJecQMkePXsbpA7idijFSACag4nX11daQioEXFxUtnu2PAoQzET-UHW988O3H9cPvtWc-2K79bml2IEblY7bT7FP6riDAIR2XoPqI7mvH5ACKRhhvj-Ci9dGwognXxnXJAEgesUX-A","Tuid": "2znL0rgyQoSIivxxSWsIVQ","User-Agent": "cai dan shi pin/1211 (iPhone; iOS 10.3.3; Scale/2.00)","Version": "1211","Version-Name": "",},
+            headers: {{"Accept": "*/*","Accept-Encoding": "gzip, deflate","Accept-Language": "zh-Hans-CN;q=1","Host": "api-ddvideo.1sapp.com","TK": "ACLbOcvSuDJChIiK_HFJawhVxoUjtIKjf-ZkZHNw","Token": "ce6dgbCzRUBhUra8B69QHOJecQMkePXsbpA7idijFSACag4nX11daQioEXFxUtnu2PAoQzET-UHW988O3H9cPvtWc-2K79bml2IEblY7bT7FP6riDAIR2XoPqI7mvH5ACKRhhvj-Ci9dGwognXxnXJAEgesUX-A","User-Agent": "cai dan shi pin/1211 (iPhone; iOS 10.3.3; Scale/2.00)"}},
             body: JSON.stringify(articlebd)
         };
   console.log(`URL:`+articleurl)
