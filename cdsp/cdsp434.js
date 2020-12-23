@@ -12,7 +12,8 @@ Github Actions使用方法见[@lxk0301](https://raw.githubusercontent.com/lxk030
 const $ = new Env("cdsp")
 //const notify = $.isNode() ? require('./sendNotify') : '';
 let articleurl = process.env.CD_URL;
-let articlebd = process.env.CD_BD434;
+let articlebd = {"qdata": "NUVFMEZCMUFCNTE5MTg0MjMzNDUyMTVCMUQ5QURENkUuY0dGeVlXMGZOa1kyUmpVeVF6VXRSRE0xUVMwME5UVTBMVUUzUlVVdE1qVTVNakk1T0RKRE5Ua3pIblpsY25OcGIyNGZNaDV3YkdGMFptOXliUjlwYjNNZVpXTWZNUT09LvP+9g72i3B2FDvFruM+F1GsteFIN/UtzzJhG2DEbJclEX/2cvECLPGMOzNStgWmidtW7Q=="};
+//let articlebd = process.env.CD_BD434;
 //let articlehd = process.env.CD_HD;
 
 let HDArr = [], cdsphd = "";
@@ -95,7 +96,7 @@ function AutoRead() {
               "Token": "2a79A1FjK4LLsNRrLBn0ilLELUADWupTgwDfP0tczxEstMYStbkAyL59ePMGhUbXOfgRYVoX0NdFuJD3HTHoqZF--3HUc-3kIfJqX3UJzDfPA_3IDqbdEOIEX1HsaPhknakWHTpUSLJDk6hD-sgd2ar8eoep-ak",
               "User-Agent": "cai dan shi pin/1211 (iPhone; iOS 10.3.3; Scale/2.00)"
             },
-            body: {"qdata": "NUVFMEZCMUFCNTE5MTg0MjMzNDUyMTVCMUQ5QURENkUuY0dGeVlXMGZOa1kyUmpVeVF6VXRSRE0xUVMwME5UVTBMVUUzUlVVdE1qVTVNakk1T0RKRE5Ua3pIblpsY25OcGIyNGZNaDV3YkdGMFptOXliUjlwYjNNZVpXTWZNUT09LvP+9g72i3B2FDvFruM+F1GsteFIN/UtzzJhG2DEbJclEX/2cvECLPGMOzNStgWmidtW7Q=="}
+            body: JSON.stringify(articlebd)
         };
   console.log(`URL:`+articleurl)
   console.log(`headers:`+articlehd)
