@@ -88,7 +88,12 @@ function AutoRead() {
     return new Promise((resolve, reject) => {
        let myrequest = {
             url: articleurl,
-            headers: {"Accept": "*/*","Accept-Encoding": "gzip, deflate","Accept-Language": "zh-Hans-CN;q=1","Host": "api-ddvideo.1sapp.com","TK": "ACLbOcvSuDJChIiK_HFJawhVxoUjtIKjf-ZkZHNw","Token": "ce6dgbCzRUBhUra8B69QHOJecQMkePXsbpA7idijFSACag4nX11daQioEXFxUtnu2PAoQzET-UHW988O3H9cPvtWc-2K79bml2IEblY7bT7FP6riDAIR2XoPqI7mvH5ACKRhhvj-Ci9dGwognXxnXJAEgesUX-A","User-Agent": "cai dan shi pin/1211 (iPhone; iOS 10.3.3; Scale/2.00)"},
+            headers: {
+              "Content-Type": "application/json",
+              "TK": "ACLbOcvSuDJChIiK_HFJawhVxoUjtIKjf-ZkZHNw",
+              "Token": "ce6dgbCzRUBhUra8B69QHOJecQMkePXsbpA7idijFSACag4nX11daQioEXFxUtnu2PAoQzET-UHW988O3H9cPvtWc-2K79bml2IEblY7bT7FP6riDAIR2XoPqI7mvH5ACKRhhvj-Ci9dGwognXxnXJAEgesUX-A",
+              "User-Agent": "cai dan shi pin/1211 (iPhone; iOS 10.3.3; Scale/2.00)"
+            },
             body: JSON.stringify(articlebd)
         };
   console.log(`URL:`+articleurl)
