@@ -51,16 +51,28 @@ for(let i=0;i<HDArr.length;i++)
     console.log($.name, '【提示】请把headers填入Github 的 Secrets 中，请以&隔开')
     return;
   }
-  for (let i = 0; i < HDArr.length; i++) {
+  /*for (let i = 0; i < HDArr.length; i++) {
     if (HDArr[i]) {
       articlehd = HDArr[i];
       $.index = i + 1;
       console.log(`-------------------------\n\n开始彩蛋第${$.index}个账号阅读`)
     }
   for (let j = 0; j < 5; j++) {
+     console.log(`\n  开始账号${$.index}第${j+1}次任务`)
      await AutoRead();
      await $.wait(20000);
-     console.log(`\n  请等待20s后继续视频${$.index}第${j+1}次任务`)
+    }
+ }
+   console.log(`-------------------------\n\n彩蛋共完成${$.index}个账号阅读`)*/
+  for (let j = 0; j < 5; j++) {
+        for (let i = 0; i < HDArr.length; i++) {
+    if (HDArr[i]) {
+      articlehd = HDArr[i];
+      $.index = i + 1;
+     console.log(`\n  开始账号${$.index}第${j+1}次任务`)
+     await AutoRead();
+     }
+     await $.wait(20000);
     }
  }
    console.log(`-------------------------\n\n彩蛋共完成${$.index}个账号阅读`)
@@ -109,16 +121,16 @@ function AutoRead() {
     console.log(response.statusCode + "\n\n" + data);
    // $.done();*/
           try{
-           //let readres = JSON.parse(data);
-            console.log(data)
-           //if (readres.code == '0') {
-            //console.log(`\n本次阅读获得${readres.data.reward_value}个金币，请等待3s后执行下一个账号阅读\n`);
-         //  await $.wait(3000);
-          //  }
+           let readres = JSON.parse(data);
+            console.log(readres)
+           if (readres.code == '0') {
+            console.log(`\n本次阅读获得${readres.data.reward_value}个金币，请等待3s后执行下一个账号阅读\n`);
+           await $.wait(3000);
+            }
           }
            catch(error) {   
-               //let readres = JSON.parse(data);
-               console.log(data)
+               let readres = JSON.parse(data);
+               console.log(readres)
               console.log(`\n本次阅读出现异常，请等待3s后执行下一个账号阅读\n`)
             }
           resolve()
