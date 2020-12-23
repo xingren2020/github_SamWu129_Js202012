@@ -87,14 +87,14 @@ for(let i=0;i<HDArr.length;i++)
 function AutoRead() {
     return new Promise((resolve, reject) => {
        let myrequest = {
-            `url`: articleurl,
-            `headers`: {
-              `Content-Type`: `application/json`,
-              `TK`: `ACLbOcvSuDJChIiK_HFJawhVxoUjtIKjf-ZkZHNw`,
-              `Token`: `ce6dgbCzRUBhUra8B69QHOJecQMkePXsbpA7idijFSACag4nX11daQioEXFxUtnu2PAoQzET-UHW988O3H9cPvtWc-2K79bml2IEblY7bT7FP6riDAIR2XoPqI7mvH5ACKRhhvj-Ci9dGwognXxnXJAEgesUX-A`,
-              `User-Agent`: `cai dan shi pin/1211 (iPhone; iOS 10.3.3; Scale/2.00)`
+            url: articleurl,
+            headers: {
+              "Content-Type": "application/json",
+              "TK": "ACLbOcvSuDJChIiK_HFJawhVxoUjtIKjf-ZkZHNw",
+              "Token": "ce6dgbCzRUBhUra8B69QHOJecQMkePXsbpA7idijFSACag4nX11daQioEXFxUtnu2PAoQzET-UHW988O3H9cPvtWc-2K79bml2IEblY7bT7FP6riDAIR2XoPqI7mvH5ACKRhhvj-Ci9dGwognXxnXJAEgesUX-A",
+              "User-Agent": "cai dan shi pin/1211 (iPhone; iOS 10.3.3; Scale/2.00)"
             },
-            "body": JSON.stringify(articlebd)
+            body: JSON.stringify(articlebd)
         };
   console.log(`URL:`+articleurl)
   console.log(`headers:`+articlehd)
