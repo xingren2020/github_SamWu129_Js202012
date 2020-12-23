@@ -91,10 +91,10 @@ function AutoRead() {
             headers: {
               "Content-Type": "application/json",
               "TK": "ACLbOcvSuDJChIiK_HFJawhVxoUjtIKjf-ZkZHNw",
-              "Token": "ce6dgbCzRUBhUra8B69QHOJecQMkePXsbpA7idijFSACag4nX11daQioEXFxUtnu2PAoQzET-UHW988O3H9cPvtWc-2K79bml2IEblY7bT7FP6riDAIR2XoPqI7mvH5ACKRhhvj-Ci9dGwognXxnXJAEgesUX-A",
+              "Token": "2a79A1FjK4LLsNRrLBn0ilLELUADWupTgwDfP0tczxEstMYStbkAyL59ePMGhUbXOfgRYVoX0NdFuJD3HTHoqZF--3HUc-3kIfJqX3UJzDfPA_3IDqbdEOIEX1HsaPhknakWHTpUSLJDk6hD-sgd2ar8eoep-ak",
               "User-Agent": "cai dan shi pin/1211 (iPhone; iOS 10.3.3; Scale/2.00)"
             },
-            body: JSON.stringify(articlebd)
+            body: {"qdata": "NUVFMEZCMUFCNTE5MTg0MjMzNDUyMTVCMUQ5QURENkUuY0dGeVlXMGZOa1kyUmpVeVF6VXRSRE0xUVMwME5UVTBMVUUzUlVVdE1qVTVNakk1T0RKRE5Ua3pIblpsY25OcGIyNGZNaDV3YkdGMFptOXliUjlwYjNNZVpXTWZNUT09LvP+9g72i3B2FDvFruM+F1GsteFIN/UtzzJhG2DEbJclEX/2cvECLPGMOzNStgWmidtW7Q=="}
         };
   console.log(`URL:`+articleurl)
   console.log(`headers:`+articlehd)
