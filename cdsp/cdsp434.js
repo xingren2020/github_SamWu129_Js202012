@@ -110,11 +110,11 @@ function AutoRead() {
             },
             body: JSON.stringify(articlebd)
         };
-  console.log(`URL:`+articleurl)
-  console.log(`headers:`+articlehd)
-  console.log(`body:`+articlebd)
-  console.log(`myrequest:`+myrequest)
-        $.post(myrequest, (error, response, data) => {
+ // console.log(`URL:`+articleurl)
+ // console.log(`headers:`+articlehd)
+ // console.log(`body:`+articlebd)
+ // console.log(`myrequest:`+myrequest)
+        $.post(myrequest, async(error, response, data) => {
        /* if(error){
      console.log("响应数据失败："+response.statusCode + "\n\n" + data);
      }
@@ -125,7 +125,7 @@ function AutoRead() {
             console.log(readres)
            if (readres.code == '0') {
             console.log(`\n本次阅读获得${readres.data.reward_value}个金币，请等待3s后执行下一个账号阅读\n`);
-           await $.wait(3000);
+            await $.wait(3000);
             }
           }
            catch(error) {   
