@@ -107,16 +107,16 @@ function AutoRead() {
     console.log(response.statusCode + "\n\n" + data);
    // $.done();*/
           try{
-           let readres = JSON.parse(data);
-            console.log(readres)
-           if (readres.code == '0') {
-            console.log(`\n本次阅读获得${readres.data.reward_value}个金币，请等待3s后执行下一个账号阅读\n`);
+           //let readres = JSON.parse(data);
+            console.log(data)
+           //if (readres.code == '0') {
+            //console.log(`\n本次阅读获得${readres.data.reward_value}个金币，请等待3s后执行下一个账号阅读\n`);
          //  await $.wait(3000);
             }
           }
            catch(error) {   
-               let readres = JSON.parse(data);
-               console.log(readres)
+               //let readres = JSON.parse(data);
+               console.log(data)
               console.log(`\n本次阅读出现异常，请等待3s后执行下一个账号阅读\n`)
             }
           resolve()
