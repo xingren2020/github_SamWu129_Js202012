@@ -6,7 +6,7 @@
 const $ = new Env("cdsp")
 //const notify = $.isNode() ? require('./sendNotify') : '';
 let articleurl = process.env.CD_URL;
-//let articlebd = process.env.CD_BD434;
+let articlebd = JSON.stringify(process.env.CD_BD434);
 //let articlebd = {"qdata": "NUVFMEZCMUFCNTE5MTg0MjMzNDUyMTVCMUQ5QURENkUuY0dGeVlXMGZOa1kyUmpVeVF6VXRSRE0xUVMwME5UVTBMVUUzUlVVdE1qVTVNakk1T0RKRE5Ua3pIblpsY25OcGIyNGZNaDV3YkdGMFptOXliUjlwYjNNZVpXTWZNUT09LvP+9g72i3B2FDvFruM+F1GsteFIN/UtzzJhG2DEbJclEX/2cvECLPGMOzNStgWmidtW7Q=="};
 let TKArr = [], TK = "";
 let TokenArr = [], Token = "";
@@ -118,7 +118,7 @@ function AutoRead() {
               "Token": articleToken,//"2a79A1FjK4LLsNRrLBn0ilLELUADWupTgwDfP0tczxEstMYStbkAyL59ePMGhUbXOfgRYVoX0NdFuJD3HTHoqZF--3HUc-3kIfJqX3UJzDfPA_3IDqbdEOIEX1HsaPhknakWHTpUSLJDk6hD-sgd2ar8eoep-ak",
               "User-Agent": "cai dan shi pin/1211 (iPhone; iOS 10.3.3; Scale/2.00)"
             },
-            body: JSON.stringify(process.env.CD_BD434)
+            body: articlebd
         };
      //console.log(`AutoRead_AutoRead_articleTK:`+articleTK)
      //console.log(`AutoRead_AutoRead_articleToken:`+articleToken)
