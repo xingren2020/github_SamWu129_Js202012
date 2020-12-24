@@ -25,13 +25,13 @@ let TokenArr = [], Token = "";
         }
   })
 
-  if (process.env.CD_Token && process.env.CD_Token.indexOf('\n') > -1) {
-  Token = process.env.CD_Token.split('\n');
+  if (process.env.CD_TOKEN && process.env.CD_TOKEN.indexOf('\n') > -1) {
+  Token = process.env.CD_TOKEN.split('\n');
   console.log(`您选择的是用换行隔开\n`)
   } 
   else
   {
-  Token = process.env.CD_Token.split()
+  Token = process.env.CD_TOKEN.split()
   } 
   Object.keys(Token).forEach((item) => {
         if (Token[item]) {
