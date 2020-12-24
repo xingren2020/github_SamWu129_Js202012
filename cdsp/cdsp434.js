@@ -1,41 +1,48 @@
 /*
-更新时间: 2020-09-26 8:46
-Github Actions使用方法见[@lxk0301](https://raw.githubusercontent.com/lxk0301/scripts/master/githubAction.md) 使用方法大同小异
-
-请自行抓包，阅读文章和看视频，倒计时转一圈显示青豆到账即可，多看几篇文章和视频，获得更多包数据，抓包地址为"https://ios.baertt.com/v5/article/complete.json"，在Github Actions中的Secrets新建name为'YOUTH_READ'的一个值，拷贝抓包的请求体到下面Value的文本框中，添加的请求体越多，获得青豆次数越多，本脚本不包含任何推送通知
-
-多个请求体时用'&'号或者换行隔开" ‼️
-
+更新时间: 2020-12-24 8:46
 */
 
 //let s = 30000 //等待延迟30s
 const $ = new Env("cdsp")
 //const notify = $.isNode() ? require('./sendNotify') : '';
 let articleurl = process.env.CD_URL;
-let articlebd = {"qdata": "NUVFMEZCMUFCNTE5MTg0MjMzNDUyMTVCMUQ5QURENkUuY0dGeVlXMGZOa1kyUmpVeVF6VXRSRE0xUVMwME5UVTBMVUUzUlVVdE1qVTVNakk1T0RKRE5Ua3pIblpsY25OcGIyNGZNaDV3YkdGMFptOXliUjlwYjNNZVpXTWZNUT09LvP+9g72i3B2FDvFruM+F1GsteFIN/UtzzJhG2DEbJclEX/2cvECLPGMOzNStgWmidtW7Q=="};
-//let articlebd = process.env.CD_BD434;
-//let articlehd = process.env.CD_HD;
+let articlebd = process.env.CD_BD434;
 
-let HDArr = [], cdsphd = "";
-  if (process.env.CD_HD && process.env.CD_HD.indexOf('&') > -1) {
-  cdsphd = process.env.CD_HD.split('&');
-  console.log(`您选择的是用"&"隔开\n`)
-  }
-  else if (process.env.CD_HD && process.env.CD_HD.indexOf('\n') > -1) {
-  cdsphd = process.env.CD_HD.split('\n');
+let TKArr = [], TK = "";
+let TokenArr = [], Token = "";
+
+  if (process.env.CD_TK && process.env.CD_TK.indexOf('\n') > -1) {
+  TK = process.env.CD_TK.split('\n');
   console.log(`您选择的是用换行隔开\n`)
   } 
   else
   {
-  cdsphd = process.env.CD_HD.split()
- // console.log(`您只有1个HD`)
+  TK = process.env.CD_TK.split()
   } 
-  Object.keys(cdsphd).forEach((item) => {
-        if (cdsphd[item]) {
-          HDArr.push(cdsphd[item])
+  Object.keys(TK).forEach((item) => {
+        if (TK[item]) {
+          TKArr.push(TK[item])
         }
   })
-      console.log(`============ 共${HDArr.length}个账号  =============\n`)
+
+  if (process.env.CD_Token && process.env.CD_Token.indexOf('\n') > -1) {
+  Token = process.env.CD_Token.split('\n');
+  console.log(`您选择的是用换行隔开\n`)
+  } 
+  else
+  {
+  Token = process.env.CD_Token.split()
+  } 
+  Object.keys(Token).forEach((item) => {
+        if (Token[item]) {
+          TokenArr.push(Token[item])
+        }
+  })
+
+
+
+
+      console.log(`============ 共${TKArr.length}个账号  =============\n`)
       console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
       console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
 
@@ -47,8 +54,8 @@ for(let i=0;i<HDArr.length;i++)
       { AutoRead(i)},i*1000)})(i)}
  */     
 !(async () => {
-  if (!HDArr[0]) {
-    console.log($.name, '【提示】请把headers填入Github 的 Secrets 中，请以&隔开')
+  if (!TKArr[0]) {
+    console.log($.name, '【提示】请把TK填入Github 的 Secrets 中，请以回车隔开')
     return;
   }
   /*for (let i = 0; i < HDArr.length; i++) {
@@ -65,9 +72,10 @@ for(let i=0;i<HDArr.length;i++)
  }
    console.log(`-------------------------\n\n彩蛋共完成${$.index}个账号阅读`)*/
   for (let j = 0; j < 5; j++) {
-        for (let i = 0; i < HDArr.length; i++) {
-    if (HDArr[i]) {
-      articlehd = HDArr[i];
+        for (let i = 0; i < TKArr.length; i++) {
+    if (TKArr[i]) {
+      articleTK = TKArr[i];
+      articleToken = TokenArr[i]; 
       $.index = i + 1;
      console.log(`\n  开始账号${$.index}第${j+1}次任务`)
      await AutoRead();
@@ -103,9 +111,9 @@ function AutoRead() {
             url: articleurl,
             headers: {
               "Content-Type": "application/json",
-              "Host": "api-ddvideo.1sapp.com",
-              "TK": "ACLbOcvSuDJChIiK_HFJawhVxoUjtIKjf-ZkZHNw",
-              "Token": "2a79A1FjK4LLsNRrLBn0ilLELUADWupTgwDfP0tczxEstMYStbkAyL59ePMGhUbXOfgRYVoX0NdFuJD3HTHoqZF--3HUc-3kIfJqX3UJzDfPA_3IDqbdEOIEX1HsaPhknakWHTpUSLJDk6hD-sgd2ar8eoep-ak",
+              //"Host": "api-ddvideo.1sapp.com",
+              "TK": articleTK,
+              "Token": articleToken,
               "User-Agent": "cai dan shi pin/1211 (iPhone; iOS 10.3.3; Scale/2.00)"
             },
             body: JSON.stringify(articlebd)
@@ -124,13 +132,13 @@ function AutoRead() {
            let readres = JSON.parse(data);
             console.log(readres)
            if (readres.code == '0') {
-            console.log(`\n本次阅读获得${readres.data.reward_value}个金币，请等待3s后执行下一个账号阅读\n`);
-            await $.wait(3000);
+            console.log(`\n本次阅读获得${readres.data.reward_value}个金币，请等待1s后执行下一个账号阅读\n`);
+            await $.wait(1000);
             }
           }
            catch(error) {   
                let readres = JSON.parse(data);
-               console.log(readres)
+               //console.log(readres)
               console.log(`\n本次阅读出现异常，请等待3s后执行下一个账号阅读\n`)
             }
           resolve()
