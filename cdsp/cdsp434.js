@@ -114,7 +114,7 @@ function AutoRead() {
             url: articleurl,
             headers: {
               "Content-Type": "application/json",
-              "Host": "api-ddvideo.1sapp.com",
+              //"Host": "api-ddvideo.1sapp.com",
               "TK": articleTK,//"ACLbOcvSuDJChIiK_HFJawhVxoUjtIKjf-ZkZHNw",
               "Token": articleToken,//"2a79A1FjK4LLsNRrLBn0ilLELUADWupTgwDfP0tczxEstMYStbkAyL59ePMGhUbXOfgRYVoX0NdFuJD3HTHoqZF--3HUc-3kIfJqX3UJzDfPA_3IDqbdEOIEX1HsaPhknakWHTpUSLJDk6hD-sgd2ar8eoep-ak",
               "User-Agent": "cai dan shi pin/1211 (iPhone; iOS 10.3.3; Scale/2.00)"
