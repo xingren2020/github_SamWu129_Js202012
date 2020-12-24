@@ -6,7 +6,8 @@
 const $ = new Env("cdsp")
 //const notify = $.isNode() ? require('./sendNotify') : '';
 let articleurl = process.env.CD_URL;
-let articlebd = JSON.stringify(process.env.CD_BD434);
+let articlebd = process.env.CD_BD434;
+//let articlebd = JSON.stringify(process.env.CD_BD434);
 //let articlebd = {"qdata": "NUVFMEZCMUFCNTE5MTg0MjMzNDUyMTVCMUQ5QURENkUuY0dGeVlXMGZOa1kyUmpVeVF6VXRSRE0xUVMwME5UVTBMVUUzUlVVdE1qVTVNakk1T0RKRE5Ua3pIblpsY25OcGIyNGZNaDV3YkdGMFptOXliUjlwYjNNZVpXTWZNUT09LvP+9g72i3B2FDvFruM+F1GsteFIN/UtzzJhG2DEbJclEX/2cvECLPGMOzNStgWmidtW7Q=="};
 let TKArr = [], TK = "";
 let TokenArr = [], Token = "";
