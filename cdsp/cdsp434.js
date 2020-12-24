@@ -6,8 +6,8 @@
 const $ = new Env("cdsp")
 //const notify = $.isNode() ? require('./sendNotify') : '';
 let articleurl = process.env.CD_URL;
-//let articlebd = process.env.CD_BD434;
-let articlebd = {"qdata": "NUVFMEZCMUFCNTE5MTg0MjMzNDUyMTVCMUQ5QURENkUuY0dGeVlXMGZOa1kyUmpVeVF6VXRSRE0xUVMwME5UVTBMVUUzUlVVdE1qVTVNakk1T0RKRE5Ua3pIblpsY25OcGIyNGZNaDV3YkdGMFptOXliUjlwYjNNZVpXTWZNUT09LvP+9g72i3B2FDvFruM+F1GsteFIN/UtzzJhG2DEbJclEX/2cvECLPGMOzNStgWmidtW7Q=="};
+let articlebd = process.env.CD_BD434;
+//let articlebd = {"qdata": "NUVFMEZCMUFCNTE5MTg0MjMzNDUyMTVCMUQ5QURENkUuY0dGeVlXMGZOa1kyUmpVeVF6VXRSRE0xUVMwME5UVTBMVUUzUlVVdE1qVTVNakk1T0RKRE5Ua3pIblpsY25OcGIyNGZNaDV3YkdGMFptOXliUjlwYjNNZVpXTWZNUT09LvP+9g72i3B2FDvFruM+F1GsteFIN/UtzzJhG2DEbJclEX/2cvECLPGMOzNStgWmidtW7Q=="};
 let TKArr = [], TK = "";
 let TokenArr = [], Token = "";
 
@@ -78,8 +78,8 @@ for(let i=0;i<HDArr.length;i++)
       articleToken = TokenArr[i]; 
       $.index = i + 1;
      console.log(`\n  开始账号${$.index}第${j+1}次任务`)
-     console.log(`articleTK:`+articleTK)
-     console.log(`articleToken:`+articleToken)
+     //console.log(`articleTK:`+articleTK)
+     //console.log(`articleToken:`+articleToken)
      await AutoRead();
      }
      await $.wait(20000);
@@ -120,8 +120,8 @@ function AutoRead() {
             },
             body: JSON.stringify(articlebd)
         };
-     console.log(`AutoRead_AutoRead_articleTK:`+articleTK)
-     console.log(`AutoRead_AutoRead_articleToken:`+articleToken)
+     //console.log(`AutoRead_AutoRead_articleTK:`+articleTK)
+     //console.log(`AutoRead_AutoRead_articleToken:`+articleToken)
  // console.log(`URL:`+articleurl)
  // console.log(`headers:`+articlehd)
  // console.log(`body:`+articlebd)
@@ -143,7 +143,8 @@ function AutoRead() {
            catch(error) {   
                let readres = JSON.parse(data);
                //console.log(readres)
-              console.log(`\n本次阅读出现异常，请等待3s后执行下一个账号阅读\n`)
+              console.log(`\n本次阅读出现异常，请等待1s后执行下一个账号阅读\n`)
+            await $.wait(1000);
             }
           resolve()
         })
