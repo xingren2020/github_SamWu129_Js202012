@@ -12,7 +12,8 @@ jobs:
     if: github.event.repository.owner.id == github.event.sender.id
     env:
         CD_URL: ${{ secrets.CD_URL }}
-        CD_HD: ${{ secrets.CD_HD }}
+        CD_TK: ${{ secrets.CD_TK }}
+        CD_TOKEN: ${{ secrets.CD_TOKEN }}
         CD_BD434: ${{ secrets.CD_BD434 }}
         TZ: Asia/shanghai
     steps:
