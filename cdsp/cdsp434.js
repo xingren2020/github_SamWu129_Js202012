@@ -78,6 +78,8 @@ for(let i=0;i<HDArr.length;i++)
       articleToken = TokenArr[i]; 
       $.index = i + 1;
      console.log(`\n  开始账号${$.index}第${j+1}次任务`)
+     console.log(`articleTK:`+articleTK)
+     console.log(`articleToken:`+articleToken)
      await AutoRead();
      }
      await $.wait(20000);
@@ -118,6 +120,8 @@ function AutoRead() {
             },
             body: JSON.stringify(articlebd)
         };
+     console.log(`AutoRead_AutoRead_articleTK:`+articleTK)
+     console.log(`AutoRead_AutoRead_articleToken:`+articleToken)
  // console.log(`URL:`+articleurl)
  // console.log(`headers:`+articlehd)
  // console.log(`body:`+articlebd)
