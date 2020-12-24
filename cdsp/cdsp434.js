@@ -111,7 +111,7 @@ function AutoRead() {
             url: articleurl,
             headers: {
               "Content-Type": "application/json",
-              //"Host": "api-ddvideo.1sapp.com",
+              "Host": "api-ddvideo.1sapp.com",
               "TK": articleTK,
               "Token": articleToken,
               "User-Agent": "cai dan shi pin/1211 (iPhone; iOS 10.3.3; Scale/2.00)"
