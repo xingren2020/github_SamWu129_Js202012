@@ -29,7 +29,7 @@ jobs:
           cd ~/Js202012
           npm install
       - name: '运行 【cdsp434】'
-        if: env.CD_HD
+        if: env.CD_TK
         run: |
           cd ~/Js202012
           node cdsp/cdsp434.js
