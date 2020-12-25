@@ -67,7 +67,7 @@ if ($.isNode()) {
         if (wkbody[item]) {
           bodyArr.push(wkbody[item])
         }	
-	
+   })
   //判定读取Secret合集，赋值于bodyArr与headerArr
   if (process.env.ZFBWK_HEADER && process.env.ZFBWK_HEADER.indexOf('\n') > -1) {
    wkheader = process.env.ZFBWK_HEADER.split('\n');
@@ -79,7 +79,7 @@ if ($.isNode()) {
         if (wkheader[item]) {
           headerArr.push(wkheader[item])
         }
-  
+    })
     console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
     console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
  } else {
