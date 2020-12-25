@@ -6,7 +6,7 @@
 const $ = new Env("cdsp")
 //const notify = $.isNode() ? require('./sendNotify') : '';
 let articleurl = process.env.CD_URL;
-let articlebd = process.env.CD_BD434;
+let articlebd = process.env.CD_BD433;
 let TKArr = [], TK = "";
 let TokenArr = [], Token = "";
 
