@@ -1,9 +1,6 @@
-/*ZIYE     感谢 Sunert 大佬的原js   天天挖矿
+/*
 
-
-js制作时间：2020-10-20 
-
-https://raw.githubusercontent.com/ziye12/JavaScript/master/ttwkziye.js
+更新时间：2020-12-25 22：28 
 
 本脚本仅适用支付宝小程序天天挖矿，支持Actions多账号运行  
 获取Cookie方法:
@@ -21,41 +18,36 @@ https:\/\/operation-api\.jimistore\.com\/* url script-request-header https://raw
 
 ~~~~~~~~~~~~~~~~
 
-Loon 2.1.0+
+Loon 2.1.0+ 本地
 [Script]
 #支付宝天天挖矿
-cron "04 00 * * *" script-path=https://raw.githubusercontent.com/ziye12/JavaScript/master/ttwkziye.js, enabled=true, tag=支付宝天天挖矿
-http-request https:\/\/operation-api\.jimistore\.com\/* script-path=https://raw.githubusercontent.com/ziye12/JavaScript/master/ttwkziye.js
-
-
-
+cron "04 00 * * *" script-path=ttwk.js, enabled=true, tag=支付宝天天挖矿
+http-request https:\/\/operation-api\.jimistore\.com\/* script-path=ttwk.js
 
 ~~~~~~~~~~~~~~~~
-Surge 4.0 :
+Surge 4.0 本地
 [Script]
-支付宝天天挖矿 = type=cron,cronexp=35 5 0 * * *,script-path=https://raw.githubusercontent.com/ziye12/JavaScript/master/ttwkziye.js,script-update-interval=0
+支付宝天天挖矿 = type=cron,cronexp=35 5 0 * * *,script-path=ttwk.js,script-update-interval=0
 
-支付宝天天挖矿 = type=http-request,pattern=https:\/\/operation-api\.jimistore\.com\/*,script-path=https://raw.githubusercontent.com/ziye12/JavaScript/master/ttwkziye.js
-
-
+支付宝天天挖矿 = type=http-request,pattern=https:\/\/operation-api\.jimistore\.com\/*,script-path=ttwk.js
 
 [MITM]
 hostname = operation-api.jimistore.com
 ~~~~~~~~~~~~~~~~
 */
 
-const $ = new Env('支付宝天天挖矿')//js名字 支付宝天天挖矿
+const $ = new Env('支付宝天天挖矿')
 
 
 const notify = $.isNode() ? require('./sendNotify') : '';
 let bodyArr = [], wkbody = "";
-let headerArr = [], wkheader = ""; //定义Secret设置 合集
+let headerArr = [], wkheader = ""; 
 
 if (isGetCookie = typeof $request !==`undefined`) {
    GetCookie();
-   $.done()   //cookie获取判定
+   $.done()   
 } 
-//Secret合集循环方式判定，其中  ZFBWK_BODY   ZFBWK_HEADER   为git仓库中的Secret合集等同于手机js的ck
+
 if ($.isNode()) {
   if (process.env.ZFBWK_BODY && process.env.ZFBWK_BODY.indexOf('\n') > -1) {
    wkbody = process.env.ZFBWK_BODY.split('\n');
@@ -68,7 +60,7 @@ if ($.isNode()) {
           bodyArr.push(wkbody[item])
         }	
    })
-  //判定读取Secret合集，赋值于bodyArr与headerArr
+ 
   if (process.env.ZFBWK_HEADER && process.env.ZFBWK_HEADER.indexOf('\n') > -1) {
    wkheader = process.env.ZFBWK_HEADER.split('\n');
    console.log(`您选择的是用换行隔开\n`)	  
@@ -83,8 +75,8 @@ if ($.isNode()) {
     console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
     console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
  } else {
-    bodyArr.push($.getdata('sy_body_wk'))//判定读取ck
-    headerArr.push($.getdata('sy_header_wk'))//判定读取ck
+    bodyArr.push($.getdata('sy_body_wk'))
+    headerArr.push($.getdata('sy_header_wk'))
 }
  //异步运行
 !(async () => {
@@ -105,7 +97,7 @@ if ($.isNode()) {
     } else {
     wksy = `【天天挖矿】❌ 未获取Cooiekie`
     };
-    $.msg($.name, wksign,wksy)//手机js通知项   wksign   headerbag   docard
+    $.msg($.name, wksign,wksy)//本地js通知项   wksign   headerbag   docard
   if ($.isNode()) {
        await notify.sendNotify($.name+ wksign,wksy)//git通知项   wksign   headerbag   docard
      }
@@ -116,21 +108,14 @@ if ($.isNode()) {
     .finally(() => $.done())
 
 
-
-
-
-
-
-
-// Cookie获取
+// 本地Cookie获取
 function GetCookie() {
 if ($request && $request.method != 'OPTIONS' && $request.url.match(/createSign/)) {
   const signurlVal = $request.url
   const bodyVal = $request.body
   const headerVal = JSON.stringify($request.headers)
-  
-  //const signheaderVal = JSON.stringify($request.headers)
-   $.log(`bodyVal:${bodyVal}`)
+  //$.log(`bodyVal:${bodyVal}`)
+  //$.log(`headerVal:${headerVal}`)
   if (bodyVal) $.setdata(bodyVal, 'sy_body_wk') 
   if (headerVal) $.setdata(headerVal,  'sy_header_wk')
 	$.msg($.name, `获取天天挖矿Cookie: 成功`, ``)
