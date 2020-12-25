@@ -48,7 +48,8 @@ const $ = new Env('支付宝天天挖矿')//js名字 支付宝天天挖矿
 
 
 const notify = $.isNode() ? require('./sendNotify') : '';
-let bodyArr = [],headerArr = [];//定义Secret设置 合集
+let bodyArr = [], wkbody = "";
+let headerArr = [], wkheader = ""; //定义Secret设置 合集
 
 if (isGetCookie = typeof $request !==`undefined`) {
    GetCookie();
@@ -56,35 +57,29 @@ if (isGetCookie = typeof $request !==`undefined`) {
 } 
 //Secret合集循环方式判定，其中  ZFBWK_BODY   ZFBWK_HEADER   为git仓库中的Secret合集等同于手机js的ck
 if ($.isNode()) {
-  if (process.env.ZFBWK_BODY && process.env.ZFBWK_BODY.indexOf('#') > -1) {
-   wkbody = process.env.ZFBWK_BODY.split('#');
-   console.log(`您选择的是用"#"隔开\n`)
-  }
-  else if (process.env.ZFBWK_BODY && process.env.ZFBWK_BODY.indexOf('\n') > -1) {
+  if (process.env.ZFBWK_BODY && process.env.ZFBWK_BODY.indexOf('\n') > -1) {
    wkbody = process.env.ZFBWK_BODY.split('\n');
    console.log(`您选择的是用换行隔开\n`)
   } else {
    wkbody = process.env.ZFBWK_BODY.split()
   };
-  //判定读取Secret合集，赋值于bodyArr与headerArr
-  if (process.env.ZFBWK_HEADER && process.env.ZFBWK_HEADER.indexOf('#') > -1) {
-   wkheader = process.env.ZFBWK_HEADER.split('#');
-  }
-  else if (process.env.ZFBWK_HEADER && process.env.ZFBWK_HEADER.split('\n').length > 0) {
-   wkheader = process.env.ZFBWK_HEADER.split('\n');
-  } else  {
-   wkheader = process.env.ZFBWK_HEADER.split()
-  };
   Object.keys(wkbody).forEach((item) => {
         if (wkbody[item]) {
           bodyArr.push(wkbody[item])
-        }
-    });
-    Object.keys(wkheader).forEach((item) => {
+        }	
+	
+  //判定读取Secret合集，赋值于bodyArr与headerArr
+  if (process.env.ZFBWK_HEADER && process.env.ZFBWK_HEADER.indexOf('\n') > -1) {
+   wkheader = process.env.ZFBWK_HEADER.split('\n');
+   console.log(`您选择的是用换行隔开\n`)	  
+  } else  {
+   wkheader = process.env.ZFBWK_HEADER.split()
+  };
+  Object.keys(wkheader).forEach((item) => {
         if (wkheader[item]) {
           headerArr.push(wkheader[item])
         }
-    });
+  
     console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
     console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
  } else {
@@ -149,12 +144,11 @@ if ($request && $request.method != 'OPTIONS' && $request.url.match(/createSign/)
 
 //天天挖矿
 function getsign() {
-bodyVal = bodyArr[0];
-headerVal = headerArr[0];
   return new Promise((resolve, reject) =>{
    let signurl =  {
       url: `https://operation-api.jimistore.com/api/mining/v1/sign/createSign`,
-      headers: JSON.parse(headerVal),body: bodyVal
+      headers: JSON.parse(headerVal),
+      body: bodyVal
 	  }
      $.post(signurl, async(error, response, data) => {
      let result = JSON.parse(data)
@@ -188,8 +182,6 @@ headerVal = headerArr[0];
 
 //天天挖矿收益
 function getsy() {
-bodyVal = bodyArr[0];
-headerVal = headerArr[0];
   return new Promise((resolve, reject) =>{
    let syurl =  {
       url: `https://operation-api.jimistore.com/api/mining/v1/sign/showSignInfo`,
