@@ -30,13 +30,13 @@ jobs:
       - name: npm install
         if: env.YOUTH_HEADER
         run: |
-          cd ~/Js202012/youth
+          cd ~/Js202012
           npm install
       - name: '运行 【youth】'
         if: env.YOUTH_HEADER
         run: |
-          cd ~/Js202012/youth
-          node youth.js
+          cd ~/Js202012
+          node youth/youth.js
         env:
           YOUTH_NOTIFY_CONTROL: ${{ secrets.YOUTH_NOTIFY_CONTROL }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
