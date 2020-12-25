@@ -7,8 +7,6 @@ const $ = new Env("cdsp")
 //const notify = $.isNode() ? require('./sendNotify') : '';
 let articleurl = process.env.CD_URL;
 let articlebd = process.env.CD_BD434;
-//let articlebd = JSON.stringify(process.env.CD_BD434);
-//let articlebd = {"qdata": "NUVFMEZCMUFCNTE5MTg0MjMzNDUyMTVCMUQ5QURENkUuY0dGeVlXMGZOa1kyUmpVeVF6VXRSRE0xUVMwME5UVTBMVUUzUlVVdE1qVTVNakk1T0RKRE5Ua3pIblpsY25OcGIyNGZNaDV3YkdGMFptOXliUjlwYjNNZVpXTWZNUT09LvP+9g72i3B2FDvFruM+F1GsteFIN/UtzzJhG2DEbJclEX/2cvECLPGMOzNStgWmidtW7Q=="};
 let TKArr = [], TK = "";
 let TokenArr = [], Token = "";
 
@@ -46,41 +44,18 @@ let TokenArr = [], Token = "";
       console.log(`============ 共${TKArr.length}个账号  =============\n`)
       console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
       console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
-
-/* 
-for(let i=0;i<HDArr.length;i++)
-    {(function(i)
-      articlehd = HDArr[i]
-      {setTimeout(function()
-      { AutoRead(i)},i*1000)})(i)}
- */     
 !(async () => {
   if (!TKArr[0]) {
     console.log($.name, '【提示】请把TK填入Github 的 Secrets 中，请以回车隔开')
     return;
   }
-  /*for (let i = 0; i < HDArr.length; i++) {
-    if (HDArr[i]) {
-      articlehd = HDArr[i];
-      $.index = i + 1;
-      console.log(`-------------------------\n\n开始彩蛋第${$.index}个账号阅读`)
-    }
-  for (let j = 0; j < 5; j++) {
-     console.log(`\n  开始账号${$.index}第${j+1}次任务`)
-     await AutoRead();
-     await $.wait(20000);
-    }
- }
-   console.log(`-------------------------\n\n彩蛋共完成${$.index}个账号阅读`)*/
-  for (let j = 0; j < 5; j++) {
+  for (let j = 0; j < 50; j++) {
         for (let i = 0; i < TKArr.length; i++) {
     if (TKArr[i]) {
       articleTK = TKArr[i];
       articleToken = TokenArr[i]; 
       $.index = i + 1;
      console.log(`\n  开始账号${$.index}第${j+1}次任务`)
-     //console.log(`articleTK:`+articleTK)
-     //console.log(`articleToken:`+articleToken)
      await AutoRead();
      }
      await $.wait(20000);
@@ -91,48 +66,18 @@ for(let i=0;i<HDArr.length;i++)
   .catch((e) => $.logErr(e))
   .finally(() => $.done())
 
-
-
-/*
-  if (!HDArr[0]) {
-    console.log($.name, '【提示】请把headers填入Github 的 Secrets 中，请以&隔开')
-    return;
-  }
-  for (let i = 0; i < HDArr.length; i++) {
-      articlehd = HDArr[i];
-      $.index = i + 1;
-      console.log(`-------------------------\n\n开始快手第${$.index}个账号阅读`)
-      AutoRead();
- }
-  */
-
-
-
 function AutoRead() {
     return new Promise((resolve, reject) => {
        let myrequest = {
             url: articleurl,
             headers: {
               "Content-Type": "application/json",
-              //"Host": "api-ddvideo.1sapp.com",
-              "TK": articleTK,//"ACLbOcvSuDJChIiK_HFJawhVxoUjtIKjf-ZkZHNw",
-              "Token": articleToken,//"2a79A1FjK4LLsNRrLBn0ilLELUADWupTgwDfP0tczxEstMYStbkAyL59ePMGhUbXOfgRYVoX0NdFuJD3HTHoqZF--3HUc-3kIfJqX3UJzDfPA_3IDqbdEOIEX1HsaPhknakWHTpUSLJDk6hD-sgd2ar8eoep-ak",
-              //"User-Agent": "cai dan shi pin/1211 (iPhone; iOS 10.3.3; Scale/2.00)"
+              "TK": articleTK,
+              "Token": articleToken
             },
             body: articlebd
         };
-     //console.log(`AutoRead_AutoRead_articleTK:`+articleTK)
-     //console.log(`AutoRead_AutoRead_articleToken:`+articleToken)
- // console.log(`URL:`+articleurl)
- // console.log(`headers:`+articlehd)
- // console.log(`body:`+articlebd)
- // console.log(`myrequest:`+myrequest)
         $.post(myrequest, async(error, response, data) => {
-       /* if(error){
-     console.log("响应数据失败："+response.statusCode + "\n\n" + data);
-     }
-    console.log(response.statusCode + "\n\n" + data);
-   // $.done();*/
           try{
            let readres = JSON.parse(data);
            // console.log(readres)
