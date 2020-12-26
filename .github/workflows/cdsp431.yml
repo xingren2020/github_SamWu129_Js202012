@@ -1,0 +1,43 @@
+name: cdsp431
+
+on:
+  workflow_dispatch:
+  schedule:
+     - cron: '*/29 2 * * *'
+  watch:
+    types: started
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    env:
+        CD_URL: ${{ secrets.CD_URL }}
+        CD_TK: ${{ secrets.CD_TK }}
+        CD_TOKEN: ${{ secrets.CD_TOKEN }}
+        CD_BD434: ${{ secrets.CD_BD431 }}
+        TZ: Asia/shanghai
+    steps:
+      - name: Checkout
+        run: |
+          git clone https://github.com/SamWu129/Js202012.git ~/Js202012
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: npm install
+        run: |
+          cd ~/Js202012
+          npm install
+      - name: '运行 【cdsp431】'
+        if: env.CD_TK
+        run: |
+          cd ~/Js202012
+          node cdsp/cdsp431.js
+        env:
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
