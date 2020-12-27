@@ -14,7 +14,7 @@ jobs:
         CD_URL: ${{ secrets.CD_URL }}
         CD_TK: ${{ secrets.CD_TK }}
         CD_TOKEN: ${{ secrets.CD_TOKEN }}
-        CD_BD434: ${{ secrets.CD_BD433 }}
+        CD_BD433: ${{ secrets.CD_BD433 }}
         TZ: Asia/shanghai
     steps:
       - name: Checkout
