@@ -49,7 +49,7 @@ let TokenArr = [], Token = "";
     console.log($.name, '【提示】请把TK填入Github 的 Secrets 中，请以回车隔开')
     return;
   }
-  for (let j = 0; j < 40; j++) {
+  for (let j = 0; j < 30; j++) {
         for (let i = 0; i < TKArr.length; i++) {
     if (TKArr[i]) {
       articleTK = TKArr[i];
@@ -60,7 +60,7 @@ let TokenArr = [], Token = "";
      }
     }
      await $.wait(20000);
-  }
+ }
    console.log(`-------------------------\n\n彩蛋共完成${$.index}个账号阅读`)
 })()
   .catch((e) => $.logErr(e))
@@ -80,18 +80,18 @@ function AutoRead() {
         $.post(myrequest, async(error, response, data) => {
           try{
            let readres = JSON.parse(data);
-            console.log(readres)
+          //  console.log(readres)
            if (readres.code == '0') {
             console.log(`\n本次阅读获得${readres.data.reward_value}个金币，请等待1s后执行下一个账号阅读\n`);
+            await $.wait(1000);
             }
           }
            catch(error) {   
                let readres = JSON.parse(data);
-               console.log(readres)
+           //    console.log(readres)
               console.log(`\n本次阅读出现异常，请等待1s后执行下一个账号阅读\n`)
+            await $.wait(1000);
             }
-          console.log(`\n请等待1s后执行下一个账号阅读\n`)
-          await $.wait(1000);
           resolve()
         })
     })
