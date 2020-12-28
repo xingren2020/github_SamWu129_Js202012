@@ -180,7 +180,7 @@ for ( j=0;j<4;j++){
   await $.wait(20000);
   await readTime();
   };
-for ( k=0;k<5;k++){
+for ( k=0;k<6;k++){
  console.log("等待5s进行抽奖任务")
   await $.wait(5000);
   await rotary();
