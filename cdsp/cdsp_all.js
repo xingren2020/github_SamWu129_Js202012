@@ -127,12 +127,12 @@ function cdsign() {
             //console.log(readres)
            if (readres.code == '0') {
             console.log(`【今日签到】获得${readres.data.reward_value}金币；`);
-            detali+ = `【今日签到】获得${readres.data.reward_value}金币；`;
+            detail+ = `【今日签到】获得${readres.data.reward_value}金币；`;
             await $.wait(1000);
             }
            else if (readres.code == '422') {
             console.log(`【今日签到】任务已完成；`);
-            detali+ = `【今日签到】任务已完成；`;
+            detail+ = `【今日签到】任务已完成；`;
             await $.wait(1000);
             }
           }
@@ -140,7 +140,7 @@ function cdsign() {
                let readres = JSON.parse(data);
                //console.log(readres)
               console.log(`本次任务出现异常，请等待1s后执行下一个任务。`)
-              detali+ = `本次任务出现异常，请等待1s后执行下一个任务。`;
+              detail+ = `本次任务出现异常，请等待1s后执行下一个任务。`;
             await $.wait(1000);
             }
           resolve()
@@ -165,12 +165,12 @@ function signsp() {
             //console.log(readres)
            if (readres.code == '0') {
             console.log(`【签到视频】获得${readres.data.reward_value}金币；`);
-            detali+ = `【签到视频】获得${readres.data.reward_value}金币；`
+            detail+ = `【签到视频】获得${readres.data.reward_value}金币；`
             await $.wait(1000);
             }
            else if (readres.code == '422') {
             console.log(`【签到视频】任务已完成；`);
-            detali+ = `【签到视频】任务已完成；`
+            detail+ = `【签到视频】任务已完成；`
             await $.wait(1000);
             }
           }
@@ -178,7 +178,7 @@ function signsp() {
                let readres = JSON.parse(data);
                //console.log(readres)
               console.log(`本次任务出现异常，请等待1s后执行下一个任务。`)
-              detali+ = `本次任务出现异常，请等待1s后执行下一个任务。`;
+              detail+ = `本次任务出现异常，请等待1s后执行下一个任务。`;
             await $.wait(1000);
             }
           resolve()
@@ -203,12 +203,12 @@ function cdsigndouble() {
             //console.log(readres)
            if (readres.code == '0') {
             console.log(`【签到翻倍】获得${readres.data.reward_value}金币；`);
-            detali+ = `【签到翻倍】获得${readres.data.reward_value}金币；`
+            detail+ = `【签到翻倍】获得${readres.data.reward_value}金币；`
             await $.wait(1000);
             }
            else if (readres.code == '422') {
             console.log(`【签到翻倍】任务已完成；`);
-            detali+ = `【签到翻倍】任务已完成；`
+            detail+ = `【签到翻倍】任务已完成；`
             await $.wait(1000);
             }
           }
@@ -216,7 +216,7 @@ function cdsigndouble() {
                let readres = JSON.parse(data);
                //console.log(readres)
               console.log(`本次任务出现异常，请等待1s后执行下一个任务。`)
-              detali+ = `本次任务出现异常，请等待1s后执行下一个任务。`;
+              detail+ = `本次任务出现异常，请等待1s后执行下一个任务。`;
             await $.wait(1000);
             }
           resolve()
@@ -241,12 +241,12 @@ function cdsdreward() {
             //console.log(readres)
            if (readres.code == '0') {
             console.log(`【时段奖励】获得${readres.data.reward_value}金币；`);
-            detali+ = `【时段奖励】获得${readres.data.reward_value}金币；`
+            detail+ = `【时段奖励】获得${readres.data.reward_value}金币；`
             await $.wait(1000);
             }
            else if (readres.code == '422') {
             console.log(`【时段奖励】任务已完成；`);
-            detali+ = `【时段奖励】任务已完成；`
+            detail+ = `【时段奖励】任务已完成；`
             await $.wait(1000);
             }
           }
@@ -254,7 +254,7 @@ function cdsdreward() {
                let readres = JSON.parse(data);
                //console.log(readres)
             console.log(`本次任务出现异常，请等待1s后执行下一个任务。`)
-            detali+ = `本次任务出现异常，请等待1s后执行下一个任务。`;
+            detail+ = `本次任务出现异常，请等待1s后执行下一个任务。`;
             await $.wait(1000);
             }
           resolve()
@@ -279,12 +279,12 @@ function cdgfreward() {
             //console.log(readres)
            if (readres.code == '0') {
             console.log(`【瓜分奖励】获得${readres.data.prize_coin}金币；`);
-            detali+ = `【瓜分奖励】获得${readres.data.prize_coin}金币；`
+            detail+ = `【瓜分奖励】获得${readres.data.prize_coin}金币；`
             await $.wait(1000);
             }
            else if (readres.code == '10013') {
             console.log(`【瓜分奖励】任务已完成；`);
-            detali+ = `【瓜分奖励】任务已完成；`
+            detail+ = `【瓜分奖励】任务已完成；`
             await $.wait(1000);
             }
           }
@@ -292,7 +292,7 @@ function cdgfreward() {
                let readres = JSON.parse(data);
                //console.log(readres)
               console.log(`本次任务出现异常，请等待1s后执行下一个任务。`)
-              detali+ = `本次任务出现异常，请等待1s后执行下一个任务。`;
+              detail+ = `本次任务出现异常，请等待1s后执行下一个任务。`;
             await $.wait(1000);
             }
           resolve()
@@ -317,12 +317,12 @@ function cdzpreward() {
             //console.log(readres)
            if (readres.code == '0') {
             console.log(`【转盘奖励】获得${readres.data.prize_value}金币；`);
-            detali+ = `【转盘奖励】获得${readres.data.prize_value}金币；`
+            detail+ = `【转盘奖励】获得${readres.data.prize_value}金币；`
             await $.wait(1000);
             }
            else if (readres.code == '422') {
             console.log(`【转盘奖励】任务已完成；`);
-            detali+ = `【转盘奖励】任务已完成；`
+            detail+ = `【转盘奖励】任务已完成；`
             await $.wait(1000);
             }
           }
@@ -330,7 +330,7 @@ function cdzpreward() {
                let readres = JSON.parse(data);
                //console.log(readres)
               console.log(`本次任务出现异常，请等待1s后执行下一个任务。`)
-              detali+ = `本次任务出现异常，请等待1s后执行下一个任务。`;
+              detail+ = `本次任务出现异常，请等待1s后执行下一个任务。`;
             await $.wait(1000);
             }
           resolve()
@@ -368,7 +368,7 @@ function cdxspreward() {
                let readres = JSON.parse(data);
                //console.log(readres)
               console.log(`本次任务出现异常，请等待1s后执行下一个任务。`)
-              detali+ = `本次任务出现异常，请等待1s后执行下一个任务。`;
+              detail+ = `本次任务出现异常，请等待1s后执行下一个任务。`;
             await $.wait(1000);
             }
           resolve()
@@ -401,7 +401,7 @@ function info() {
                let readres = JSON.parse(data);
                //console.log(readres)
               console.log(`本次任务出现异常，⏱⏱⏱请等待3s后执行下一个账号任务。\n`)
-              detali+ = `本次任务出现异常，⏱⏱⏱请等待3s后执行下一个账号任务。`;
+              detail+ = `本次任务出现异常，⏱⏱⏱请等待3s后执行下一个账号任务。`;
             await $.wait(3000);
             }
           resolve()
