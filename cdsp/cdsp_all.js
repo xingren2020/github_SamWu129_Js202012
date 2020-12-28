@@ -3,7 +3,7 @@
 */
 
 //let s = 30000 //等待延迟30s
-const $ = new Env("cdsp")
+const $ = new Env("cdsp_all")
 //const notify = $.isNode() ? require('./sendNotify') : '';
 let URLArr = [], URL = "";
 let BDArr = [], BD = "";
