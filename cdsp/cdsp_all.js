@@ -85,7 +85,7 @@ let TokenArr = [], Token = "";
       articleTK = TKArr[i];
       articleToken = TokenArr[i]; 
       $.index = i + 1;
-     console.log(`\n  开始账号${$.index}第${j+1}次任务`)
+     console.log(`\n  开始账号${$.index}任务`)
      await info();
      }
     }
