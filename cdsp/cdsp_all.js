@@ -109,7 +109,7 @@ function info() {
         $.post(myrequest, async(error, response, data) => {
           try{
            let readres = JSON.parse(data);
-            //console.log(readres)
+            console.log(readres)
            if (readres.code == '0') {
             console.log(`\n今日获得${readres.data.coin_daily}金币，今日阅读${readres.data.view_duration}分钟；\n账户共计${readres.data.coins}金币，约${readres.data.coin_value}元\n请等待1s后执行下一个账号\n`);
             await $.wait(1000);
