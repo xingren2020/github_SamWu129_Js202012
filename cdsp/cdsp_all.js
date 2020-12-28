@@ -95,10 +95,10 @@ let TokenArr = [], Token = "";
     else if(j==3) await cdsdreward();
     else if(j==4) await cdgfreward();
     else if(j==5) await cdzpreward();
-    else if(j==6)  await cdxspreward();
+    else if(j==6) await cdxspreward();
     else if(j==7) await info();
      }
-     console.log(`【完成任务】共完成账号${$.account}的${$.task}个任务`)
+    // console.log(`【完成任务】共完成账号${$.account}的${$.task}个任务`)
     }
    }  
      console.log(`🎉🎉🎉运行结束🎉🎉🎉`)
@@ -367,14 +367,14 @@ function info() {
            let readres = JSON.parse(data);
             //console.log(readres)
            if (readres.code == '0') {
-            console.log(`【今日金币】${readres.data.coin_daily}金币；\n【今日时长】${readres.data.view_duration}分钟；\n【账户总计】${readres.data.coins}金币，约${readres.data.coin_value}元；\n请等待3s后执行下一个账号\n`);
+            console.log(`【今日金币】${readres.data.coin_daily}金币；\n【今日时长】${readres.data.view_duration}分钟；\n【账户总计】${readres.data.coins}金币，约${readres.data.coin_value}元；\n⏱⏱⏱请等待3s后执行下一个账号任务\n`);
             await $.wait(3000);
             }
           }
            catch(error) {   
                let readres = JSON.parse(data);
                //console.log(readres)
-              console.log(`本次任务出现异常，请等待3s后执行下一个账号\n`)
+              console.log(`本次任务出现异常，⏱⏱⏱请等待3s后执行下一个账号任务\n`)
             await $.wait(3000);
             }
           resolve()
