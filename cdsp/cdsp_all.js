@@ -78,29 +78,29 @@ let TokenArr = [], Token = "";
     return;
   }
        
-    for (let j = 0; j < URLArr.length; j++) {
-      articleURL = URLArr[j];
-      articleBD = BDArr[j]; 
-      $.task = j + 1;
-     console.log(`\n  开始第${$.task}个任务`)
    for (let i = 0; i < TKArr.length; i++) {
     if (TKArr[i]) {
       articleTK = TKArr[i];
       articleToken = TokenArr[i]; 
       $.account = i + 1;
-     console.log(`\n  开始执行账号${$.account}的第${$.task}个任务`)
-     await cdsign();
-     await signsp();
-     await cdsigndouble();
-     await cdsdreward();
-     await cdgfreward();
-     await cdzpreward();
-     await cdxspreward();
-     await info();
+     console.log(`\n  开始执行账号${$.account}的任务`)
+   for (let j = 0; j < URLArr.length; j++) {
+      articleURL = URLArr[j];
+      articleBD = BDArr[j]; 
+      $.task = j + 1;
+     console.log(`\n  开始执行${$.task}个任务`)
+    if(j==0) await cdsign();
+    else if(j==1) await signsp();
+    else if(j==2) await cdsigndouble();
+    else if(j==3) await cdsdreward();
+    else if(j==4) await cdgfreward();
+    else if(j==5) await cdzpreward();
+    else if(j==6)  await cdxspreward();
+    else if(j==7) await info();
      }
-     console.log(`\n  已完成账号${$.accout}的${$.task}个任务`)
-    }
      console.log(`\n  已完成第${$.task}个任务`)
+    }
+     console.log(`\n  已完成账号${$.accout}的任务`)
    }  
      console.log(`-------------------------\n\n所有任务已完成`)
 })()
