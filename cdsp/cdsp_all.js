@@ -78,18 +78,19 @@ let TokenArr = [], Token = "";
     return;
   }
 
+    for (let j = 0; j < URLArr.length; j++) {
+      articleURL = URLArr[j];
+      articleBD = BDArr[j]; 
+      $.index = j + 1;
         for (let i = 0; i < TKArr.length; i++) {
     if (TKArr[i]) {
-      articleURL = URLArr[i];
-      articleBD = BDArr[i]; 
       articleTK = TKArr[i];
       articleToken = TokenArr[i]; 
-      $.index = i + 1;
      console.log(`\n  开始账号${$.index}任务`)
      await info();
      }
     }
-     
+   }  
    console.log(`-------------------------\n\n彩蛋共完成${$.index}个账号任务`)
 })()
   .catch((e) => $.logErr(e))
