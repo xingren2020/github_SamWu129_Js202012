@@ -24,9 +24,9 @@ let TokenArr = [], Token = "";
         }
   })
 
- if (process.env.CD_BD_ALL && process.CD_BD_ALL.indexOf('&') > -1) {
-  BD = process.env.CD_BD_ALL.split('&');
-  console.log(`您选择的是用 & 隔开\n`)
+ if (process.env.CD_BD_ALL && process.env.CD_BD_ALL.indexOf('\n') > -1) {
+  BD = process.env.CD_BD_ALL.split('\n');
+  console.log(`您选择的是用换行隔开\n`)
   } 
   else
   {
