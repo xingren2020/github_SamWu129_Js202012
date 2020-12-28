@@ -77,24 +77,279 @@ let TokenArr = [], Token = "";
     console.log($.name, '【提示】请把TK填入Github 的 Secrets 中，请以回车隔开')
     return;
   }
-
-    for (let j = 0; j < URLArr.length; j++) {
-      articleURL = URLArr[j];
-      articleBD = BDArr[j]; 
-      $.index = j + 1;
+       
         for (let i = 0; i < TKArr.length; i++) {
     if (TKArr[i]) {
       articleTK = TKArr[i];
       articleToken = TokenArr[i]; 
-     console.log(`\n  开始账号${$.index}任务`)
+      $.account= i + 1;
+     console.log(`\n  开始执行账号${$.accout}的任务`)
+    for (let j = 0; j < URLArr.length; j++) {
+      articleURL = URLArr[j];
+      articleBD = BDArr[j]; 
+      $.task = j + 1;
+     console.log(`\n  开始账号${$.accout}第${$.task}个任务`)
+     await cdsign();
+     await signsp();
+     await cdsigndouble();
+     await cdsdreward();
+     await cdgfreward();
+     await cdzpreward();
+     await cdxspreward();
      await info();
      }
     }
+     console.log(`\n  已完成账号${$.accout}的${$.task}个任务`)
    }  
-   console.log(`-------------------------\n\n彩蛋共完成${$.index}个账号任务`)
+     console.log(`-------------------------\n\n彩蛋已完成${$.account}个账号任务`)
 })()
   .catch((e) => $.logErr(e))
   .finally(() => $.done())
+
+function cdsign() {
+    return new Promise((resolve, reject) => {
+       let myrequest = {
+            url: articleURL,
+            headers: {
+              "Content-Type": "application/json",
+              "TK": articleTK,
+              "Token": articleToken
+            },
+            body: articleBD
+        };
+        $.post(myrequest, async(error, response, data) => {
+          try{
+           let readres = JSON.parse(data);
+            //console.log(readres)
+           if (readres.code == '0') {
+            console.log(`\n【今日签到】获得${readres.data.reward_value}金币；\n`);
+            await $.wait(1000);
+            }
+           else if (readres.code == '422') {
+            console.log(`\n【今日签到】任务已完成；\n`);
+            await $.wait(1000);
+            }
+          }
+           catch(error) {   
+               let readres = JSON.parse(data);
+               //console.log(readres)
+              console.log(`\n本次任务出现异常，请等待1s后执行下一个任务\n`)
+            await $.wait(1000);
+            }
+          resolve()
+        })
+    })
+}
+
+function signsp() {
+    return new Promise((resolve, reject) => {
+       let myrequest = {
+            url: articleURL,
+            headers: {
+              "Content-Type": "application/json",
+              "TK": articleTK,
+              "Token": articleToken
+            },
+            body: articleBD
+        };
+        $.post(myrequest, async(error, response, data) => {
+          try{
+           let readres = JSON.parse(data);
+            //console.log(readres)
+           if (readres.code == '0') {
+            console.log(`\n【签到视频】获得${readres.data.reward_value}金币；\n`);
+            await $.wait(1000);
+            }
+           else if (readres.code == '422') {
+            console.log(`\n【签到视频】任务已完成；\n`);
+            await $.wait(1000);
+            }
+          }
+           catch(error) {   
+               let readres = JSON.parse(data);
+               //console.log(readres)
+              console.log(`\n本次任务出现异常，请等待1s后执行下一个任务\n`)
+            await $.wait(1000);
+            }
+          resolve()
+        })
+    })
+}
+
+function cdsigndouble() {
+    return new Promise((resolve, reject) => {
+       let myrequest = {
+            url: articleURL,
+            headers: {
+              "Content-Type": "application/json",
+              "TK": articleTK,
+              "Token": articleToken
+            },
+            body: articleBD
+        };
+        $.post(myrequest, async(error, response, data) => {
+          try{
+           let readres = JSON.parse(data);
+            //console.log(readres)
+           if (readres.code == '0') {
+            console.log(`\n【签到翻倍】获得${readres.data.reward_value}金币；\n`);
+            await $.wait(1000);
+            }
+           else if (readres.code == '422') {
+            console.log(`\n【签到翻倍】任务已完成；\n`);
+            await $.wait(1000);
+            }
+          }
+           catch(error) {   
+               let readres = JSON.parse(data);
+               //console.log(readres)
+              console.log(`\n本次任务出现异常，请等待1s后执行下一个任务\n`)
+            await $.wait(1000);
+            }
+          resolve()
+        })
+    })
+}
+
+function cdsdreward() {
+    return new Promise((resolve, reject) => {
+       let myrequest = {
+            url: articleURL,
+            headers: {
+              "Content-Type": "application/json",
+              "TK": articleTK,
+              "Token": articleToken
+            },
+            body: articleBD
+        };
+        $.post(myrequest, async(error, response, data) => {
+          try{
+           let readres = JSON.parse(data);
+            //console.log(readres)
+           if (readres.code == '0') {
+            console.log(`\n【时段奖励】获得${readres.data.reward_value}金币；\n`);
+            await $.wait(1000);
+            }
+           else if (readres.code == '422') {
+            console.log(`\n【时段奖励】任务已完成；\n`);
+            await $.wait(1000);
+            }
+          }
+           catch(error) {   
+               let readres = JSON.parse(data);
+               //console.log(readres)
+              console.log(`\n本次任务出现异常，请等待1s后执行下一个任务\n`)
+            await $.wait(1000);
+            }
+          resolve()
+        })
+    })
+}
+
+function cdgfreward() {
+    return new Promise((resolve, reject) => {
+       let myrequest = {
+            url: articleURL,
+            headers: {
+              "Content-Type": "application/json",
+              "TK": articleTK,
+              "Token": articleToken
+            },
+            body: articleBD
+        };
+        $.post(myrequest, async(error, response, data) => {
+          try{
+           let readres = JSON.parse(data);
+            //console.log(readres)
+           if (readres.code == '0') {
+            console.log(`\n【瓜分奖励】获得${readres.data.prize_coin}金币；\n`);
+            await $.wait(1000);
+            }
+           else if (readres.code == '10013') {
+            console.log(`\n【瓜分奖励】任务已完成；\n`);
+            await $.wait(1000);
+            }
+          }
+           catch(error) {   
+               let readres = JSON.parse(data);
+               //console.log(readres)
+              console.log(`\n本次任务出现异常，请等待1s后执行下一个任务\n`)
+            await $.wait(1000);
+            }
+          resolve()
+        })
+    })
+}
+
+function cdzpreward() {
+    return new Promise((resolve, reject) => {
+       let myrequest = {
+            url: articleURL,
+            headers: {
+              "Content-Type": "application/json",
+              "TK": articleTK,
+              "Token": articleToken
+            },
+            body: articleBD
+        };
+        $.post(myrequest, async(error, response, data) => {
+          try{
+           let readres = JSON.parse(data);
+            //console.log(readres)
+           if (readres.code == '0') {
+            console.log(`\n【转盘奖励】获得${readres.data.prize_value}金币；\n`);
+            await $.wait(1000);
+            }
+           else if (readres.code == '422') {
+            console.log(`\n【转盘奖励】任务已完成；\n`);
+            await $.wait(1000);
+            }
+          }
+           catch(error) {   
+               let readres = JSON.parse(data);
+               //console.log(readres)
+              console.log(`\n本次任务出现异常，请等待1s后执行下一个任务\n`)
+            await $.wait(1000);
+            }
+          resolve()
+        })
+    })
+}
+
+function cdxspreward() {
+    return new Promise((resolve, reject) => {
+       let myrequest = {
+            url: articleURL,
+            headers: {
+              "Content-Type": "application/json",
+              "TK": articleTK,
+              "Token": articleToken
+            },
+            body: articleBD
+        };
+        $.post(myrequest, async(error, response, data) => {
+          try{
+           let readres = JSON.parse(data);
+            //console.log(readres)
+           if (readres.code == '0') {
+            console.log(`\n【小视频】获得${readres.data.reward_value}金币；\n`);
+            await $.wait(1000);
+            }
+           else if (readres.code == '422') {
+            console.log(`\n【小视频】任务已完成；\n`);
+            await $.wait(1000);
+            }
+          }
+           catch(error) {   
+               let readres = JSON.parse(data);
+               //console.log(readres)
+              console.log(`\n本次任务出现异常，请等待1s后执行下一个任务\n`)
+            await $.wait(1000);
+            }
+          resolve()
+        })
+    })
+}
 
 function info() {
     return new Promise((resolve, reject) => {
@@ -110,17 +365,17 @@ function info() {
         $.post(myrequest, async(error, response, data) => {
           try{
            let readres = JSON.parse(data);
-            console.log(readres)
+            //console.log(readres)
            if (readres.code == '0') {
-            console.log(`\n今日获得${readres.data.coin_daily}金币，今日阅读${readres.data.view_duration}分钟；\n账户共计${readres.data.coins}金币，约${readres.data.coin_value}元\n请等待1s后执行下一个账号\n`);
-            await $.wait(1000);
+            console.log(`\n【今日金币】${readres.data.coin_daily}金币；\n【今日时长】${readres.data.view_duration}分钟；\n【账户总计】${readres.data.coins}金币，约${readres.data.coin_value}元\n请等待3s后执行下一个账号\n`);
+            await $.wait(3000);
             }
           }
            catch(error) {   
                let readres = JSON.parse(data);
                //console.log(readres)
-              console.log(`\n本次阅读出现异常，请等待1s后执行下一个账号\n`)
-            await $.wait(1000);
+              console.log(`\n本次任务出现异常，请等待3s后执行下一个账号\n`)
+            await $.wait(3000);
             }
           resolve()
         })
