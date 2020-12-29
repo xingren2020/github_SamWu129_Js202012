@@ -104,7 +104,7 @@ let Account = ["【Sam】","【小爱豆】","【QF】","【RL】","【WYDSZ】"
    console.log(`⏱⏱⏱请等待1s后执行下一个账号任务⏱⏱⏱`);
    await $.wait(1000);    
    }  
-   console.log(`第${$.task}次运行完成，⏱⏱⏱请等待60s后执行下一次任务⏱⏱⏱`)
+   console.log(`第${$.index}次运行完成，⏱⏱⏱请等待60s后执行下一次任务⏱⏱⏱`)
    await $.wait(60000);     
    }   
 })()
