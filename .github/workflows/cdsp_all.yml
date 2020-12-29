@@ -3,7 +3,7 @@ name: cdsp_all
 on:
   workflow_dispatch:
   schedule:
-     - cron: '29 0 * * *'
+     - cron: '3 0-10 * * *'
   watch:
     types: started
 jobs:
