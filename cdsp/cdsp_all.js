@@ -101,7 +101,7 @@ let Account = ["【Sam】","【小爱豆】","【QF】","【RL】","【WYDSZ】"
     else if(j==6) await cdxspreward();
     else if(j==7) await info();
      }
-    await notify.sendNotify($.name+${account}+'\n', detail)
+    await notify.sendNotify($.name+'\n', detail)
     // console.log(`【完成任务】共完成账号${$.account}的${$.task}个任务`)
     }
    console.log(`⏱⏱⏱请等待3s后执行下一个账号任务⏱⏱⏱`);
