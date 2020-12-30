@@ -152,9 +152,8 @@ function task() {
         };
         $.get(myrequest, async(error, response, data) => {
           try{
-            console.log(data)
            let readres = JSON.parse(data);
-            console.log(readres)
+            //console.log(readres)
            if (readres.code == '0') {
             console.log(`【task】${readres.message}；`);
             detail += `【task】${readres.message}；\n`;
