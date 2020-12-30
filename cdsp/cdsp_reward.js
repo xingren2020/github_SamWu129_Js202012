@@ -148,7 +148,7 @@ function task() {
 
 function egg() {
  detail += `【Egg】开始执行任务；\n`;
- for (let m = 0; m < EggBDLArr.length; m++) {
+ for (let m = 0; m < EggBDArr.length; m++) {
       articleBD = EggBDArr[m]; 
     return new Promise((resolve, reject) => {
        let myrequest = {
