@@ -86,7 +86,7 @@ let Account = ["【Sam】","【小爱豆】","【QF】","【RL】","【WYDSZ】"
       account = Account[i];
       //$.account = i + 1;
      console.log(`【开启任务】开始执行账号${account}的任务`);
-     detail = `【开启任务】开始执行账号${account}的任务；\n`;
+     detail = `【账号】${account}\n`;
    for (let j = 0; j < URLArr.length; j++) {
       articleURL = URLArr[j];
       articleBD = BDArr[j]; 
