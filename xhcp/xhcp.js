@@ -94,7 +94,7 @@ let Account = ["【Sam】","【小爱豆】"];
      await sign();
      await bx();     
      await zssp();
-  // if($.time('HH')==11){
+   if($.time('HH')==11){
    for (let m = 0; m < TaskBDArr.length; m++) {
      articleBD = TaskBDArr[m]; 
      await task();
@@ -104,7 +104,7 @@ let Account = ["【Sam】","【小爱豆】"];
      await double();  
       };  
    //await notify.sendNotify($.name+'\n', detail)
-  //  }
+    }
     // console.log(`【完成任务】共完成账号${$.account}的${$.task}个任务`)
     }
    console.log(`⏱⏱⏱请等待3s后执行下一个账号任务⏱⏱⏱`);
