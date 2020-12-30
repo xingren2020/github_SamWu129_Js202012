@@ -37,6 +37,7 @@ let ReadArr = [], YouthBody = "",readscore = 0;
     console.log($.name, '【提示】请把抓包的请求体填入Github 的 Secrets 中，请以&隔开')
     return;
   }
+  for (let h = 0; h < 3; h++) {
   for (let i = 0; i < ReadArr.length; i++) {
     if (ReadArr[i]) {
       articlebody = ReadArr[i];
@@ -44,6 +45,7 @@ let ReadArr = [], YouthBody = "",readscore = 0;
       console.log(`-------------------------\n\n开始中青看点第${$.index}次阅读`)
     }
       await AutoRead();
+ }
  }
    console.log(`-------------------------\n\n中青看点共完成${$.index}次阅读，共计获得${readscore}个青豆，阅读请求全部结束`)
 })()
