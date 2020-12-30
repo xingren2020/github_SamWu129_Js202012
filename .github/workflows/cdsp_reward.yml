@@ -3,7 +3,7 @@ name: cdsp_reward
 on:
   workflow_dispatch:
   schedule:
-     - cron: '3 0 * * *'
+     - cron: '3 9 * * *'
   watch:
     types: started
 jobs:
