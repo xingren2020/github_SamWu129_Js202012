@@ -131,12 +131,12 @@ function cdsign() {
             //console.log(readres)
            if (readres.code == '0') {
             console.log(`【今日签到】获得${readres.data.reward_value}金币；`);
-            detail += `【今日签到】获得${readres.data.reward_value}金币；\n`;
+            //detail += `【今日签到】获得${readres.data.reward_value}金币；\n`;
             await $.wait(1000);
             }
            else if (readres.code == '422') {
             console.log(`【今日签到】任务已完成；`);
-            detail += `【今日签到】任务已完成；\n`;
+            //detail += `【今日签到】任务已完成；\n`;
             await $.wait(1000);
             }
           }
@@ -169,12 +169,12 @@ function signsp() {
             //console.log(readres)
            if (readres.code == '0') {
             console.log(`【签到视频】获得${readres.data.reward_value}金币；`);
-            detail += `【签到视频】获得${readres.data.reward_value}金币；\n`
+            //detail += `【签到视频】获得${readres.data.reward_value}金币；\n`
             await $.wait(1000);
             }
            else if (readres.code == '422') {
             console.log(`【签到视频】任务已完成；`);
-            detail += `【签到视频】任务已完成；\n`
+            //detail += `【签到视频】任务已完成；\n`
             await $.wait(1000);
             }
           }
@@ -207,12 +207,12 @@ function cdsigndouble() {
             //console.log(readres)
            if (readres.code == '0') {
             console.log(`【签到翻倍】获得${readres.data.reward_value}金币；`);
-            detail += `【签到翻倍】获得${readres.data.reward_value}金币；\n`
+            //detail += `【签到翻倍】获得${readres.data.reward_value}金币；\n`
             await $.wait(1000);
             }
            else if (readres.code == '422') {
             console.log(`【签到翻倍】任务已完成；`);
-            detail += `【签到翻倍】任务已完成；\n`
+            //detail += `【签到翻倍】任务已完成；\n`
             await $.wait(1000);
             }
           }
@@ -245,12 +245,12 @@ function cdsdreward() {
             //console.log(readres)
            if (readres.code == '0') {
             console.log(`【时段奖励】获得${readres.data.reward_value}金币；`);
-            detail += `【时段奖励】获得${readres.data.reward_value}金币；\n`
+            //detail += `【时段奖励】获得${readres.data.reward_value}金币；\n`
             await $.wait(1000);
             }
            else if (readres.code == '422') {
             console.log(`【时段奖励】任务已完成；`);
-            detail += `【时段奖励】任务已完成；\n`
+            //detail += `【时段奖励】任务已完成；\n`
             await $.wait(1000);
             }
           }
@@ -283,12 +283,12 @@ function cdgfreward() {
             //console.log(readres)
            if (readres.code == '0') {
             console.log(`【瓜分奖励】获得${readres.data.prize_coin}金币；`);
-            detail += `【瓜分奖励】获得${readres.data.prize_coin}金币；\n`
+            //detail += `【瓜分奖励】获得${readres.data.prize_coin}金币；\n`
             await $.wait(1000);
             }
            else if (readres.code == '10013') {
             console.log(`【瓜分奖励】任务已完成；`);
-            detail += `【瓜分奖励】任务已完成；\n`
+            //detail += `【瓜分奖励】任务已完成；\n`
             await $.wait(1000);
             }
           }
@@ -321,12 +321,12 @@ function cdzpreward() {
             //console.log(readres)
            if (readres.code == '0') {
             console.log(`【转盘奖励】获得${readres.data.prize_value}金币；`);
-            detail += `【转盘奖励】获得${readres.data.prize_value}金币；\n`
+            //detail += `【转盘奖励】获得${readres.data.prize_value}金币；\n`
             await $.wait(1000);
             }
            else if (readres.code == '422') {
             console.log(`【转盘奖励】任务已完成；`);
-            detail += `【转盘奖励】任务已完成；\n`
+            //detail += `【转盘奖励】任务已完成；\n`
             await $.wait(1000);
             }
           }
@@ -359,12 +359,12 @@ function cdxspreward() {
             //console.log(readres)
            if (readres.code == '0') {
             console.log(`【小视频】获得${readres.data.reward_value}金币；`);
-            detail += `【小视频】获得${readres.data.reward_value}金币；\n`
+            //detail += `【小视频】获得${readres.data.reward_value}金币；\n`
             await $.wait(1000);
             }
            else if (readres.code == '422') {
             console.log(`【小视频】任务已完成；`);
-            detail += `【小视频】任务已完成；\n`
+            //detail += `【小视频】任务已完成；\n`
             await $.wait(1000);
             }
           }
