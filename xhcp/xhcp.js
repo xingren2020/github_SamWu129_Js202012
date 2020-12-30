@@ -100,7 +100,7 @@ let Account = ["【Sam】","【小爱豆】"];
      await task();
       };
    for (let n = 0; n < DoubleBDArr.length; n++) {
-     articleBD = DoubleBDArr[m]; 
+     articleBD = DoubleBDArr[n]; 
      await double();  
       };  
    //await notify.sendNotify($.name+'\n', detail)
@@ -128,12 +128,12 @@ function sign() {
           try{
            let readres = JSON.parse(data);
             console.log(readres)
-           if (readres.status == 'true') {
+           if (readres.status == true) {
             console.log(`【今日签到】获得${readres.res.coin}金币；`);
             //detail += `【今日签到】获得${readres.res.coin}金币；\n`;
             await $.wait(1000);
             }
-           else if (readres.status == 'false') {
+           else if (readres.status == false) {
             console.log(`【今日签到】${readres.msg}；`);
             //detail += `【今日签到】${readres.msg}；\n`;
             await $.wait(1000);
