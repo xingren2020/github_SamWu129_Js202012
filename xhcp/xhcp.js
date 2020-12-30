@@ -127,7 +127,7 @@ function sign() {
         $.get(myrequest, async(error, response, data) => {
           try{
            let readres = JSON.parse(data);
-            console.log(readres)
+            //console.log(readres)
            if (readres.status == true) {
             console.log(`【今日签到】获得${readres.res.coin}金币；`);
             //detail += `【今日签到】获得${readres.res.coin}金币；\n`;
@@ -163,13 +163,13 @@ function bx() {
         $.get(myrequest, async(error, response, data) => {
           try{
            let readres = JSON.parse(data);
-            console.log(readres)
-           if (readres.status == 'true') {
+            //console.log(readres)
+           if (readres.status == true) {
             console.log(`【开启宝箱】获得${readres.coin}金币；`);
             //detail += `【开启宝箱】获得${readres.coin}金币；\n`;
             await $.wait(1000);
             }
-           else if (readres.status == 'false') {
+           else if (readres.status == false) {
             console.log(`【开启宝箱】${readres.error}；`);
             //detail += `【开启宝箱】${readres.error}；\n`;
             await $.wait(1000);
@@ -200,13 +200,13 @@ function zssp() {
         $.post(myrequest, async(error, response, data) => {
           try{
            let readres = JSON.parse(data);
-            console.log(readres)
-           if (readres.status == 'true') {
+            //console.log(readres)
+           if (readres.status == true) {
             console.log(`【专属视频】获得${readres.data.coin}金币；`);
             //detail += `【专属视频】获得${readres.data.coin}金币；\n`;
             await $.wait(1000);
             }
-           else if (readres.status == 'false') {
+           else if (readres.status == false) {
             console.log(`【专属视频】${readres.error}；`);
             //detail += `【专属视频】${readres.error}；\n`;
             await $.wait(1000);
@@ -237,13 +237,13 @@ function task() {
         $.post(myrequest, async(error, response, data) => {
           try{
            let readres = JSON.parse(data);
-            console.log(readres)
-           if (readres.status == 'true') {
+            //console.log(readres)
+           if (readres.status == true) {
             console.log(`【观看视频】获得${readres.data.coin}金币；`);
             //detail += `【观看视频】获得${readres.data.coin}金币；\n`;
             await $.wait(1000);
             }
-           else if (readres.status == 'false') {
+           else if (readres.status == false) {
             console.log(`【观看视频】${readres.error}；`);
             //detail += `【观看视频】${readres.error}；\n`;
             await $.wait(1000);
@@ -274,13 +274,13 @@ function double() {
         $.post(myrequest, async(error, response, data) => {
           try{
            let readres = JSON.parse(data);
-            console.log(readres)
-           if (readres.status == 'true') {
+            //console.log(readres)
+           if (readres.status == true) {
             console.log(`【宝箱翻倍】获得${readres.data.coin}金币；`);
             //detail += `【宝箱翻倍】获得${readres.data.coin}金币；\n`;
             await $.wait(1000);
             }
-           else if (readres.status == 'false') {
+           else if (readres.status == false) {
             console.log(`【宝箱翻倍】${readres.error}；`);
             //detail += `【宝箱翻倍】${readres.error}；\n`;
             await $.wait(1000);
