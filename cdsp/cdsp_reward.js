@@ -105,7 +105,15 @@ let Account = ["【Sam】","【小爱豆】","【QF】","【RL】","【WYDSZ】"
    for (let j = 0; j < URLArr.length; j++) {
       articleURL = URLArr[j];
    if(j==0) await task();
-   if(j==1) await egg();
+   if(j==1) for (let m = 0; m < EggBDArr.length; m++) {
+      articleBD = EggBDArr[m]; 
+      console.log(`Egg[articleBD]:`+articleBD)
+      //detail += `【Egg】开始执行任务；\n`;
+      await egg();
+      }
+      console.log(`【Egg】获得${eggcoin}金币；`);
+      detail += `【Egg】获得${eggcoin}金币；\n`;
+      //notify.sendNotify($.name+'\n', detail)
    if(j==2) await prize();
      }
    await notify.sendNotify($.name+'\n', detail)
@@ -146,12 +154,9 @@ function task() {
     })
 }
 
+
 function egg() {
- detail += `【Egg】开始执行任务；\n`;
- for (let m = 0; m < EggBDArr.length; m++) {
-      articleBD = EggBDArr[m]; 
-      console.log(`Egg[articleBD]:`+articleBD)
-    return new Promise((resolve, reject) => {
+     return new Promise((resolve, reject) => {
        let myrequest = {
             url: articleURL,
             headers: {
@@ -165,7 +170,7 @@ function egg() {
           try{
            let readres = JSON.parse(data);
             console.log(readres)
-           if (readres.code == '0') {
+           if (readres.code == '0' || readres.code == '422') {
             console.log(`【Egg】获得${readres.prize}金币；`);
             eggcoin += readres.prize
             await $.wait(1000);
@@ -181,9 +186,6 @@ function egg() {
           resolve()
         })
     })
-  }
- detail += `【Egg】获得${eggcoin}金币；\n`;
- //notify.sendNotify($.name+'\n', detail)
 }
 
 function prize() {
@@ -205,7 +207,7 @@ function prize() {
           try{
            let readres = JSON.parse(data);
             console.log(readres)
-           if (readres.code == '0') {
+           if (readres.code == '0' || readres.code == '422') {
             console.log(`【Prize】获得${readres.data.reward_value}金币；`);
             prizecoin += readres.data.reward_value
             await $.wait(1000);
