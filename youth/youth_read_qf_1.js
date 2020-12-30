@@ -12,15 +12,16 @@ Github Actions使用方法见[@lxk0301](https://raw.githubusercontent.com/lxk030
 const $ = new Env("中青看点")
 //const notify = $.isNode() ? require('./sendNotify') : '';
 let ReadArr = [], YouthBody = "",readscore = 0;
-  if (process.env.YOUTH_READ_QF && process.env.YOUTH_READ_QF.indexOf('&') > -1) {
-  YouthBody = process.env.YOUTH_READ_QF.split('&');
+
+  if (process.env.YOUTH_READ_QF_1 && process.env.YOUTH_READ_QF_1.indexOf('&') > -1) {
+  YouthBody = process.env.YOUTH_READ_QF_1.split('&');
   console.log(`您选择的是用"&"隔开\n`)
   }
-  else if (process.env.YOUTH_READ_QF && process.env.YOUTH_READ_QF.indexOf('\n') > -1) {
-  YouthBody = process.env.YOUTH_READ_QF.split('\n');
+  else if (process.env.YOUTH_READ_QF_1 && process.env.YOUTH_READ_QF_1.indexOf('\n') > -1) {
+  YouthBody = process.env.YOUTH_READ_QF_1.split('\n');
   console.log(`您选择的是用换行隔开\n`)
   } else {
-  YouthBody = process.env.YOUTH_READ_QF.split()
+  YouthBody = process.env.YOUTH_READ_QF_1.split()
   }
   Object.keys(YouthBody).forEach((item) => {
         if (YouthBody[item]) {
