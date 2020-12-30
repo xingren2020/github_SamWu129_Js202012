@@ -4,7 +4,7 @@ name: youth_read_qf_1
 on:
   workflow_dispatch:
   schedule:
-     - cron: '5 21 * * *'
+     - cron: '5 20 * * *'
   watch:
     types: started
 jobs:
