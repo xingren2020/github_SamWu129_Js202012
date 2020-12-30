@@ -119,7 +119,7 @@ let Account = ["【Sam】","【小爱豆】","【QF】","【RL】","【WYDSZ】"
       eggcoin = 0;
       prizecoin = 0;
      console.log(`【开启任务】开始执行账号${account}的任务`);
-     detail = `【开启任务】开始执行账号${account}的任务；\n`;
+     detail = `【账号】${account}\n`;
    for (let j = 0; j < URLArr.length; j++) {
       articleURL = URLArr[j];
    if(j==0) await task();
@@ -127,10 +127,10 @@ let Account = ["【Sam】","【小爱豆】","【QF】","【RL】","【WYDSZ】"
       articleBD = EggBDArr[m]; 
       await egg();
       };
- /*  if(j==2) for (let n = 0; n < PrizeBDArr.length; n++) {
+   if(j==2) for (let n = 0; n < PrizeBDArr.length; n++) {
       articleBD = PrizeBDArr[n]; 
       await prize();
-      };*/
+      };
      }
    detail += `【Egg】获得${eggcoin}金币；\n`;
    detail += `【Prize】获得${prizecoin}金币；\n`;
@@ -155,8 +155,8 @@ function task() {
            let readres = JSON.parse(data);
             //console.log(readres)
            if (readres.code == '0') {
-            console.log(`【task】${readres.message}；`);
-            detail += `【task】${readres.message}；\n`;
+            console.log(`【task】${readres.message}；\n【DailyCoin】${readres.data.user.coin_daily}金币；`);
+            detail += `【task】${readres.message}；\n【DailyCoin】${readres.data.user.coin_daily}金币；\n`;
             await $.wait(1000);
             }
           }
