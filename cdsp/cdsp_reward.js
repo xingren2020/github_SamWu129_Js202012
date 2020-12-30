@@ -8,6 +8,7 @@ const notify = $.isNode() ? require('./sendNotify') : '';
 let URLArr = [], URL = "";
 let EggBDArr = [], EggBD = "";
 let PrizeBDArr = [], PrizeBD = "";
+let HDArr = [], HD = "";
 let TKArr = [], TK = "";
 let TokenArr = [], Token = "";
 let detail = ``;
@@ -55,6 +56,20 @@ let Account = ["【Sam】","【小爱豆】","【QF】","【RL】","【WYDSZ】"
         }
   })
 
+  if (process.env.CD_HD_TASK && process.env.CD_HD_TASK.indexOf('\n') > -1) {
+  HD = process.env.CD_HD_TASK.split('\n');
+  console.log(`您选择的是用换行隔开\n`)
+  } 
+  else
+  {
+  HD = process.env.CD_HD_TASK.split()
+  } 
+  Object.keys(HD).forEach((item) => {
+        if (HD[item]) {
+          HDArr.push(HD[item])
+        }
+  })
+
   if (process.env.CD_TK && process.env.CD_TK.indexOf('\n') > -1) {
   TK = process.env.CD_TK.split('\n');
   console.log(`您选择的是用换行隔开\n`)
@@ -99,6 +114,7 @@ let Account = ["【Sam】","【小爱豆】","【QF】","【RL】","【WYDSZ】"
     if (TKArr[i]) {
       articleTK = TKArr[i];
       articleToken = TokenArr[i]; 
+      articleHD = HDArr[i];
       account = Account[i];
       eggcoin = 0;
       prizecoin = 0;
@@ -109,20 +125,12 @@ let Account = ["【Sam】","【小爱豆】","【QF】","【RL】","【WYDSZ】"
    if(j==0) await task();
    if(j==1) for (let m = 0; m < EggBDArr.length; m++) {
       articleBD = EggBDArr[m]; 
-      //console.log(`Egg[articleBD]:`+articleBD)
-      //detail += `【Egg】开始执行任务；\n`;
       await egg();
       };
-      //console.log(`【Egg】获得${eggcoin}金币；`);
-      //notify.sendNotify($.name+'\n', detail)
-   if(j==2)  for (let n = 0; n < PrizeBDArr.length; n++) {
+   if(j==2) for (let n = 0; n < PrizeBDArr.length; n++) {
       articleBD = PrizeBDArr[n]; 
-      //console.log(`Prize[articleBD]:`+articleBD)
-      //detail += `【Prize】开始执行任务；\n`;
       await prize();
-      }
-      //console.log(`【Prize】获得${prizecoin}金币；`);
-      // notify.sendNotify($.name+'\n', detail)
+      };
      }
    detail += `【Egg】获得${eggcoin}金币；\n`;
    detail += `【Prize】获得${prizecoin}金币；\n`;
@@ -140,11 +148,7 @@ function task() {
     return new Promise((resolve, reject) => {
        let myrequest = {
             url: articleURL,
-            headers: {
-              "Content-Type": "application/json",
-              "TK": articleTK,
-              "Token": articleToken
-            }
+            headers: articleHD
         };
         $.get(myrequest, async(error, response, data) => {
           try{
