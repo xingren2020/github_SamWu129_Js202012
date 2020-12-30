@@ -11,7 +11,7 @@ let PrizeBDArr = [], PrizeBD = "";
 let TKArr = [], TK = "";
 let TokenArr = [], Token = "";
 let detail = ``;
-let eggcoin = 0, prizecoin = 0;
+let eggcoin = ``, prizecoin = ``;
 let Account = ["【Sam】","【小爱豆】","【QF】","【RL】","【WYDSZ】","【月锡】"];
  if (process.env.CD_URL_REWARD && process.env.CD_URL_REWARD.indexOf('\n') > -1) {
   URL = process.env.CD_URL_REWARD.split('\n');
@@ -100,6 +100,8 @@ let Account = ["【Sam】","【小爱豆】","【QF】","【RL】","【WYDSZ】"
       articleTK = TKArr[i];
       articleToken = TokenArr[i]; 
       account = Account[i];
+      eggcoin = 0;
+      prizecoin = 0;
      console.log(`【开启任务】开始执行账号${account}的任务`);
      detail = `【开启任务】开始执行账号${account}的任务；\n`;
    for (let j = 0; j < URLArr.length; j++) {
@@ -112,7 +114,6 @@ let Account = ["【Sam】","【小爱豆】","【QF】","【RL】","【WYDSZ】"
       await egg();
       };
       //console.log(`【Egg】获得${eggcoin}金币；`);
-      detail += `【Egg】获得${eggcoin}金币；\n`;
       //notify.sendNotify($.name+'\n', detail)
    if(j==2)  for (let n = 0; n < PrizeBDArr.length; n++) {
       articleBD = PrizeBDArr[n]; 
@@ -121,9 +122,10 @@ let Account = ["【Sam】","【小爱豆】","【QF】","【RL】","【WYDSZ】"
       await prize();
       }
       //console.log(`【Prize】获得${prizecoin}金币；`);
-      detail += `【Prize】获得${prizecoin}金币；\n`;
       // notify.sendNotify($.name+'\n', detail)
      }
+   detail += `【Egg】获得${eggcoin}金币；\n`;
+   detail += `【Prize】获得${prizecoin}金币；\n`;
    await notify.sendNotify($.name+'\n', detail)
     }
    console.log(`⏱⏱⏱请等待3s后执行下一个账号任务⏱⏱⏱`);
@@ -177,7 +179,7 @@ function egg() {
         $.post(myrequest, async(error, response, data) => {
           try{
            let readres = JSON.parse(data);
-            console.log(readres)
+            //console.log(readres)
            if (readres.code == '0' || readres.code == '422') {
             console.log(`【Egg】获得${readres.prize}金币；`);
             eggcoin += readres.prize
@@ -210,7 +212,7 @@ function prize() {
         $.post(myrequest, async(error, response, data) => {
           try{
            let readres = JSON.parse(data);
-            console.log(readres)
+            //console.log(readres)
            if (readres.code == '0' || readres.code == '422') {
             console.log(`【Prize】获得${readres.data.reward_value}金币；`);
             prizecoin += readres.data.reward_value
