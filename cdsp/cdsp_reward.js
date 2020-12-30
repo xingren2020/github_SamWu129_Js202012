@@ -127,10 +127,10 @@ let Account = ["【Sam】","【小爱豆】","【QF】","【RL】","【WYDSZ】"
       articleBD = EggBDArr[m]; 
       await egg();
       };
-   if(j==2) for (let n = 0; n < PrizeBDArr.length; n++) {
+ /*  if(j==2) for (let n = 0; n < PrizeBDArr.length; n++) {
       articleBD = PrizeBDArr[n]; 
       await prize();
-      };
+      };*/
      }
    detail += `【Egg】获得${eggcoin}金币；\n`;
    detail += `【Prize】获得${prizecoin}金币；\n`;
@@ -152,9 +152,14 @@ function task() {
         };
         $.get(myrequest, async(error, response, data) => {
           try{
-            console.log(`【task】任务完成；`);
-            detail += `【task】任务完成；\n`;
+            console.log(data)
+           let readres = JSON.parse(data);
+            console.log(readres)
+           if (readres.code == '0') {
+            console.log(`【task】${readres.message}；`);
+            detail += `【task】${readres.message}；\n`;
             await $.wait(1000);
+            }
           }
            catch(error) {   
                let readres = JSON.parse(data);
