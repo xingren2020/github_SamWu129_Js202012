@@ -187,7 +187,7 @@ function egg() {
 
 function prize() {
  detail += `【Prize】开始执行任务；\n`;
- for (let n = 0; n < PrizeBDLArr.length; n++) {
+ for (let n = 0; n < PrizeBDArr.length; n++) {
       articleBD = PrizeBDArr[n]; 
     return new Promise((resolve, reject) => {
        let myrequest = {
