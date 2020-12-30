@@ -150,6 +150,7 @@ function egg() {
  detail += `【Egg】开始执行任务；\n`;
  for (let m = 0; m < EggBDArr.length; m++) {
       articleBD = EggBDArr[m]; 
+      console.log(`Egg[articleBD]:`+articleBD)
     return new Promise((resolve, reject) => {
        let myrequest = {
             url: articleURL,
@@ -163,7 +164,7 @@ function egg() {
         $.post(myrequest, async(error, response, data) => {
           try{
            let readres = JSON.parse(data);
-            //console.log(readres)
+            console.log(readres)
            if (readres.code == '0') {
             console.log(`【Egg】获得${readres.prize}金币；`);
             eggcoin += readres.prize
@@ -189,6 +190,7 @@ function prize() {
  detail += `【Prize】开始执行任务；\n`;
  for (let n = 0; n < PrizeBDArr.length; n++) {
       articleBD = PrizeBDArr[n]; 
+      console.log(`Prize[articleBD]:`+articleBD)
     return new Promise((resolve, reject) => {
        let myrequest = {
             url: articleURL,
@@ -202,7 +204,7 @@ function prize() {
         $.post(myrequest, async(error, response, data) => {
           try{
            let readres = JSON.parse(data);
-            //console.log(readres)
+            console.log(readres)
            if (readres.code == '0') {
             console.log(`【Prize】获得${readres.data.reward_value}金币；`);
             prizecoin += readres.data.reward_value
