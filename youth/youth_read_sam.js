@@ -1,16 +1,10 @@
 /*
-更新时间: 2020-09-26 8:46
-Github Actions使用方法见[@lxk0301](https://raw.githubusercontent.com/lxk0301/scripts/master/githubAction.md) 使用方法大同小异
-
-请自行抓包，阅读文章和看视频，倒计时转一圈显示青豆到账即可，多看几篇文章和视频，获得更多包数据，抓包地址为"https://ios.baertt.com/v5/article/complete.json"，在Github Actions中的Secrets新建name为'YOUTH_READ'的一个值，拷贝抓包的请求体到下面Value的文本框中，添加的请求体越多，获得青豆次数越多，本脚本不包含任何推送通知
-
-多个请求体时用'&'号或者换行隔开" ‼️
-
+更新时间: 2020-12-31
 */
 
 //let s = 30000 //等待延迟30s
-const $ = new Env("中青看点")
-//const notify = $.isNode() ? require('./sendNotify') : '';
+const $ = new Env("【youth_read_sam】")
+const notify = $.isNode() ? require('./sendNotify') : '';
 let ReadArr = [], YouthBody = "",readscore = 0;
   if (process.env.YOUTH_READ && process.env.YOUTH_READ.indexOf('&') > -1) {
   YouthBody = process.env.YOUTH_READ.split('&');
@@ -27,6 +21,8 @@ let ReadArr = [], YouthBody = "",readscore = 0;
           ReadArr.push(YouthBody[item])
         }
     })
+     
+      console.log(`============ 共${ReadArr.length}个Body  =============\n`)
       console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
       console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
  !(async () => {
@@ -34,15 +30,18 @@ let ReadArr = [], YouthBody = "",readscore = 0;
     console.log($.name, '【提示】请把抓包的请求体填入Github 的 Secrets 中，请以&隔开')
     return;
   }
+  for (let h = 0; h < 3; h++) {  
   for (let i = 0; i < ReadArr.length; i++) {
     if (ReadArr[i]) {
       articlebody = ReadArr[i];
       $.index = i + 1;
-      console.log(`-------------------------\n\n开始中青看点第${$.index}次阅读`)
+      console.log(`-------------------------\n\n开始第${$.index}次阅读`)
     }
       await AutoRead();
  }
-   console.log(`-------------------------\n\n中青看点共完成${$.index}次阅读，共计获得${readscore}个青豆，阅读请求全部结束`)
+  }
+     console.log(`-------------------------\n\n共完成${$.index}次阅读，共计获得${readscore}个青豆，阅读请求全部结束`)
+     await notify.sendNotify($.name+'\n', `共完成${$.index}次阅读，共计获得${readscore}个青豆!`)
 })()
   .catch((e) => $.logErr(e))
   .finally(() => $.done())
