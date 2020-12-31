@@ -5,7 +5,7 @@
 
 //let s = 30000 //等待延迟30s
 const $ = new Env("【youth_read_qf】")
-//const notify = $.isNode() ? require('./sendNotify') : '';
+const notify = $.isNode() ? require('./sendNotify') : '';
 let ReadArr = [], YouthBody = "",readscore = 0;
   if (process.env.YOUTH_READ && process.env.YOUTH_READ.indexOf('&') > -1) {
   YouthBody = process.env.YOUTH_READ.split('&');
@@ -23,7 +23,7 @@ let ReadArr = [], YouthBody = "",readscore = 0;
         }
     })
      
-     console.log(`============ 共${ReadArr.length}个Body  =============\n`)
+      console.log(`============ 共${ReadArr.length}个Body  =============\n`)
       console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
       console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
  !(async () => {
@@ -42,6 +42,7 @@ let ReadArr = [], YouthBody = "",readscore = 0;
  }
   }
    console.log(`-------------------------\n\n共完成${$.index}次阅读，共计获得${readscore}个青豆，阅读请求全部结束`)
+     await notify.sendNotify($.name+'\n', `共完成${$.index}次阅读，共计获得${readscore}个青豆!`)
 })()
   .catch((e) => $.logErr(e))
   .finally(() => $.done())
