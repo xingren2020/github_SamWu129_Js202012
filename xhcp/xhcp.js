@@ -94,7 +94,7 @@ let Account = ["【Sam】","【小爱豆】"];
      await sign();
      await bx();     
      await zssp();
-   if($.time('HH')==12){
+   if($.time('HH')==13){
    for (let m = 0; m < TaskBDArr.length; m++) {
      articleBD = TaskBDArr[m]; 
      await task();
