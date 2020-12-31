@@ -41,6 +41,7 @@ let ReadArr = [], YouthBody = "",readscore = 0;
  }
   }
    console.log(`-------------------------\n\n共完成${$.index}次阅读，共计获得${readscore}个青豆，阅读请求全部结束`)
+     await notify.sendNotify($.name+'\n', `共完成${$.index}次阅读，共计获得${readscore}个青豆!`)
 })()
   .catch((e) => $.logErr(e))
   .finally(() => $.done())
