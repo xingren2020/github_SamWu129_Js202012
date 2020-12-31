@@ -3,7 +3,7 @@ name: xhcp
 on:
   workflow_dispatch:
   schedule:
-     - cron: '1 0-12 * * *'
+     - cron: '1 0-13 * * *'
   watch:
     types: started
 jobs:
