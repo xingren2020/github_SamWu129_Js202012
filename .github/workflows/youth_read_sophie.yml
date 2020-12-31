@@ -1,0 +1,85 @@
+
+name: youth_read_sophie
+
+on:
+  workflow_dispatch:
+  schedule:
+     - cron: '27 20 * * *'
+  watch:
+    types: started
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    env:
+        YOUTH_READ_SOPHIE_1: ${{ secrets.YOUTH_READ_SOPHIE_1 }}
+        YOUTH_READ_SOPHIE_2: ${{ secrets.YOUTH_READ_SOPHIE_2 }}
+        YOUTH_READ_SOPHIE_3: ${{ secrets.YOUTH_READ_SOPHIE_3 }}
+        YOUTH_READ_SOPHIE_4: ${{ secrets.YOUTH_READ_SOPHIE_4 }}
+        TZ: Asia/shanghai
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: npm install
+        run: |
+          npm install
+          
+      - name: '运行 【youth_read_sophie_1】'
+        if: env.YOUTH_READ_SOPHIE_1
+        run: |
+          node youth/youth_read_sophie.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_READ_SOPHIE_1 }} 
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+          
+      - name: '运行 【youth_read_sophie_2】'
+        if: env.YOUTH_READ_SOPHIE_2
+        run: |
+          node youth/youth_read_sophie.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_READ_SOPHIE_2 }} 
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+          
+      - name: '运行 【youth_read_sophie_3】'
+        if: env.YOUTH_READ_SOPHIE_3
+        run: |
+          node youth/youth_read_sophie.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_READ_SOPHIE_3 }} 
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+          
+      - name: '运行 【youth_read_sophie_4】'
+        if: env.YOUTH_READ_SOPHIE_4
+        run: |
+          node youth/youth_read_sophie.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_READ_SOPHIE_4 }} 
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
