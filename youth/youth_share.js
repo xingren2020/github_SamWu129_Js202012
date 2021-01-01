@@ -35,8 +35,6 @@ if (process.env.YOUTH_HD_SHARE && process.env.YOUTH_HD_SHARE.indexOf('\n') > -1)
     if (HDArr[i]) {
       articleHD = HDArr[i];
       account = Account[i];
-      time = new Date().getTime();
-      str = randomWord(false,32);
      console.log(`【开启任务】开始执行账号${account}的任务`);
      detail = `【账号】${account}\n`;
      await share();
@@ -50,6 +48,8 @@ if (process.env.YOUTH_HD_SHARE && process.env.YOUTH_HD_SHARE.indexOf('\n') > -1)
   .finally(() => $.done())
 
 function share() {
+    let time = new Date().getTime();
+    let str = randomWord(false,32);
     return new Promise((resolve, reject) => {
        let myrequest = {
             url: "https://script.baertt.com/count2/callback?si="+str+"&_="+time+"&jsonpcallback=jsonp4",
@@ -57,7 +57,6 @@ function share() {
         };
         $.get(myrequest, async(error, response, data) => {
           try{
-            console.log(`【url】${url}；`);
             console.log(`【time】${time}；\n【str】${str}；`);
             await $.wait(1000);
           }
