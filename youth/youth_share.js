@@ -54,7 +54,7 @@ function share() {
     return new Promise((resolve, reject) => {
        let myrequest = {
             url: articleurl,
-            headers: articleHD
+            headers: JSON.parse(articleHD)
         };
         $.get(myrequest, async(error, response, data) => {
           try{
