@@ -48,9 +48,9 @@ if (process.env.YOUTH_HD_SHARE && process.env.YOUTH_HD_SHARE.indexOf('\n') > -1)
   .finally(() => $.done())
 
 function share() {
-    let time = new Date().getTime();
-    let str = randomWord(false,32);
-    let articleurl = `https://script.baertt.com/count2/callback?si=${str}&_=${time}&jsonpcallback=jsonp4`；
+    time = new Date().getTime();
+    str = randomWord(false,32);
+    articleurl = `https://script.baertt.com/count2/callback?si=${str}&_=${time}&jsonpcallback=jsonp4`；
     return new Promise((resolve, reject) => {
        let myrequest = {
             url: articleurl,
