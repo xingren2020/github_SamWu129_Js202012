@@ -57,6 +57,7 @@ function share() {
         };
         $.get(myrequest, async(error, response, data) => {
           try{
+            console.log(`【url】${url}；`);
             console.log(`【time】${time}；\n【str】${str}；`);
             await $.wait(1000);
           }
