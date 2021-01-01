@@ -50,7 +50,7 @@ if (process.env.YOUTH_HD_SHARE && process.env.YOUTH_HD_SHARE.indexOf('\n') > -1)
 function share() {
     time = new Date().getTime();
     str = randomWord(false,32);
-    articleurl = `https://script.baertt.com/count2/callback?si=${str}&_=${time}&jsonpcallback=jsonp4`；
+    articleurl = "https://script.baertt.com/count2/callback?si="+str+"&_="+time+"&jsonpcallback=jsonp4";
     return new Promise((resolve, reject) => {
        let myrequest = {
             url: articleurl,
