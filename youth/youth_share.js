@@ -52,7 +52,7 @@ function share() {
     let str = randomWord(false,32);
     return new Promise((resolve, reject) => {
        let myrequest = {
-            url: "https://script.baertt.com/count2/callback?si=${str}&_=${time}&jsonpcallback=jsonp4",
+            url: `https://script.baertt.com/count2/callback?si=${str}&_=${time}&jsonpcallback=jsonp4`,
             headers: articleHD
         };
         $.get(myrequest, async(error, response, data) => {
