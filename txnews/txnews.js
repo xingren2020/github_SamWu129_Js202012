@@ -54,6 +54,7 @@ let SignArr = [],SignUrl = "";
     cookiesArr = [],CookieTxnews = "";
     VideoArr = [],SignUrl = "",order = "",
     detail = ``, subTitle = ``;
+let Account = ["【MiniSam】","【QF】","【RL】","【Sam】","【妞宝】","【JH】"];
 
 if ($.isNode()) {
   if (process.env.TXNEWS_COOKIE && process.env.TXNEWS_COOKIE.indexOf('&') > -1) {
@@ -112,8 +113,9 @@ if (isGetCookie) {
       cookieVal = cookiesArr[i];
       signurlVal = SignArr[i];
       videoVal = VideoArr[i];
+      account = Account[i];
       $.index = i + 1;
-      console.log(`-------------------------\n\n开始【腾讯新闻账号${$.index}】`)
+      console.log(`-------------------------\n\n开始【腾讯新闻${account}账号${$.index}】`)
     }
       ID = signurlVal.match(/devid=[a-zA-Z0-9_-]+/g)[0]
       token = signurlVal.split("&mac")[1]
@@ -136,7 +138,7 @@ if (isGetCookie) {
       await showmsg();
     if ($.isNode()){
        if (readnum%notifyInterval==0&&cashtotal > 2){
-     await notify.sendNotify($.name,subTile+'\n'+detail)
+     await notify.sendNotify($.name+'|'+account,subTile+'\n'+detail)
        }
      }
     }
