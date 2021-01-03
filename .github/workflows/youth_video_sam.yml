@@ -1,0 +1,85 @@
+
+name: youth_video_sam
+
+on:
+  workflow_dispatch:
+  schedule:
+     - cron: '35 1 * * *'
+  watch:
+    types: started
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    env:
+        YOUTH_VIDEO_SAM_1: ${{ secrets.YOUTH_VIDEO_SAM_1 }}
+        YOUTH_VIDEO_SAM_2: ${{ secrets.YOUTH_VIDEO_SAM_2 }}
+        YOUTH_VIDEO_SAM_3: ${{ secrets.YOUTH_VIDEO_SAM_3 }}
+        YOUTH_VIDEO_SAM_4: ${{ secrets.YOUTH_VIDEO_SAM_4 }}
+        TZ: Asia/shanghai
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: npm install
+        run: |
+          npm install
+          
+      - name: '运行 【youth_video_sam_1】'
+        if: env.YOUTH_VIDEO_SAM_1
+        run: |
+          node youth/youth_video_sam.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_VIDEO_SAM_1 }} 
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+          
+      - name: '运行 【youth_video_sam_2】'
+        if: env.YOUTH_VIDEO_SAM_2
+        run: |
+          node youth/youth_video_sam.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_VIDEO_SAM_2 }} 
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+          
+      - name: '运行 【youth_video_sam_3】'
+        if: env.YOUTH_VIDEO_SAM_3
+        run: |
+          node youth/youth_video_sam.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_VIDEO_SAM_3 }} 
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+          
+      - name: '运行 【youth_video_sam_4】'
+        if: env.YOUTH_VIDEO_SAM_4
+        run: |
+          node youth/youth_video_sam.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_VIDEO_SAM_4 }} 
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
