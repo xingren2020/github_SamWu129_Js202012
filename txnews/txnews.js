@@ -107,7 +107,7 @@ if (isGetCookie) {
       console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
       console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}=============\n`)
      }
-  for (let j = 0; j < 40; j++) {     
+  for (let j = 0; j < 10; j++) {     
   for (let i = 0; i < cookiesArr.length; i++) {
     if (cookiesArr[i]) {
       cookieVal = cookiesArr[i];
