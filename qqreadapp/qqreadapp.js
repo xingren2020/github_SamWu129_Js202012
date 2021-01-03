@@ -61,9 +61,7 @@ let Account = ["【Sam】","【MiniSam】","【QF】","【RL】","【WYDSZ】","
       articleURL = URLArr[j];
      // $.task = j + 1;
     // console.log(`开始执行${$.task}个任务`)
-    if(j==0)    if($.time('HH')==2){
-     await sign();
-         }
+    if(j==0 && $.time('HH')==2)  await sign();
     else if(j==1) await video();
     else if(j==2) await box();
     else if(j==3) await info();
