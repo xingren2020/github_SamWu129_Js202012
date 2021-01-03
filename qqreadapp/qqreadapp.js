@@ -8,7 +8,7 @@ const notify = $.isNode() ? require('./sendNotify') : '';
 let URLArr = [], URL = "";
 let CKArr = [], CK = "";
 let detail = ``;
-let Account = ["【Sam】","【MiniSam】","【QF】","【RL】","【WYDSZ】","【月锡】"];
+let Account = ["【Sam】","【MiniSam】","【妞宝】","【QF】","【待定】","【待定】"];
 
   if (process.env.QRP_URL && process.env.QRP_URL.indexOf('\n') > -1) {
   URL = process.env.QRP_URL.split('\n');
