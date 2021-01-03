@@ -61,10 +61,11 @@ let Account = ["【Sam】","【MiniSam】","【QF】","【RL】","【WYDSZ】","
       articleURL = URLArr[j];
      // $.task = j + 1;
     // console.log(`开始执行${$.task}个任务`)
-    if(j==0 && $.time('HH')==2)  await sign();
-    else if(j==1) await video();
-    else if(j==2) await box();
-    else if(j==3) await info();
+    if(j==0) await task();
+    if(j==1 && $.time('HH')==2)  await sign();
+    else if(j==2) await video();
+    else if(j==3) await box();
+    else if(j==4) await info();
      }
    if($.time('HH')==2 || $.time('HH')==12){
     await notify.sendNotify($.name+'|'+account, detail)
@@ -78,6 +79,41 @@ let Account = ["【Sam】","【MiniSam】","【QF】","【RL】","【WYDSZ】","
 })()
   .catch((e) => $.logErr(e))
   .finally(() => $.done())
+
+function task() {
+    return new Promise((resolve, reject) => {
+       let myrequest = {
+            url: articleURL,
+            headers: {
+              "Cookie":articleCK
+            }
+        };
+        $.post(myrequest, async(error, response, data) => {
+          try{
+           let readres = JSON.parse(data);
+            //console.log(readres)
+           if (readres.code == '0') {
+            console.log(`【任务中心】登录状态：${readres.isLogin}；`);
+            detail += `【任务中心】登录状态：${readres.isLogin}；\n`;
+            await $.wait(1000);
+            }
+           else  {
+            console.log(`【任务中心】${readres.msg}；`);
+            detail += `【任务中心】${readres.msg}；\n`;
+            await $.wait(1000);
+            }
+          }
+           catch(error) {   
+               let readres = JSON.parse(data);
+               //console.log(readres)
+              console.log(`本次任务出现异常，请等待1s后执行下一个任务。`)
+              detail += `本次任务出现异常，请等待1s后执行下一个任务。\n`;
+            await $.wait(1000);
+            }
+          resolve()
+        })
+    })
+}
 
 function sign() {
     return new Promise((resolve, reject) => {
