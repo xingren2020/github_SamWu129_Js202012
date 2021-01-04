@@ -173,7 +173,7 @@ function video() {
           try{
            let readres = JSON.parse(data);
             //console.log(readres)
-           if (readres.code == '0') {
+           if (readres.err_no == '0') {
             console.log(`【观看视频】获得${readres.data.score_amount}音符；`);
             //detail += `【观看视频】获得${readres.data.score_amount}音符；\n`;
             await $.wait(20000);
