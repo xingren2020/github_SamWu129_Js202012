@@ -108,8 +108,8 @@ if (process.env.DYJS_S_HD && process.env.DYJS_S_HD.indexOf('\n') > -1) {
       account = Account[i];
      console.log(`【开启任务】开始执行账号${account}的任务`);
      detail = `【账号】${account}\n`;
-   for (let j = 0; j < URLArr.length; j++) {
-      AppBD = BArr[j];
+   for (let j = 0; j < BDArr.length; j++) {
+      AppBD = BDArr[j];
     if(j==0 && $.time('HH')==21)  await sign();
     else if(j==1)  for (let k = 0; k < 3; k++) {
     await video();
