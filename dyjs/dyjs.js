@@ -97,6 +97,8 @@ if (process.env.DYJS_S_HD && process.env.DYJS_S_HD.indexOf('\n') > -1) {
   }
     
  for (let h = 0; h < 15; h++) {   
+   $.index = h + 1
+   console.log(`🏃‍♀️🏃‍♀️🏃‍♀️开始执行第${$.index}轮🏃‍♀️🏃‍♀️🏃‍♀️`);
    for (let i = 0; i <SHDArr.length; i++) {
     if (SHDArr[i]) {
       SignURL = SURLArr[i];
@@ -114,12 +116,14 @@ if (process.env.DYJS_S_HD && process.env.DYJS_S_HD.indexOf('\n') > -1) {
      }
      }
      }
+     console.log(`⏱⏱⏱执行下一个账号任务⏱⏱⏱`);
 //     if($.time('HH')==21 || 9 {
 //    await notify.sendNotify($.name+'|'+account, detail)
 //    }
 //   console.log(`⏱⏱⏱请等待3s后执行下一个账号任务⏱⏱⏱`);
 //   await $.wait(3000);    
    }  
+     console.log(`⏱⏱⏱等待2分钟执行下一轮⏱⏱⏱`);
      await $.wait(120000);    
    }  
      console.log(`🎉🎉🎉运行结束🎉🎉🎉`)
@@ -132,7 +136,7 @@ function sign() {
        let myrequest = {
             url: SignURL,
             headers: JSON.parse(SignHD),
-            body: AppBD
+            body: JSON.stringify(AppBD)
         };
         $.post(myrequest, async(error, response, data) => {
           try{
@@ -163,7 +167,7 @@ function video() {
        let myrequest = {
             url: VideoURL,
             headers: JSON.parse(VideoHD),
-            body: AppBD
+            body: JSON.stringify(AppBD)
         };
         $.post(myrequest, async(error, response, data) => {
           try{
