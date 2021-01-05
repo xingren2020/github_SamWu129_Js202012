@@ -183,12 +183,12 @@ function earn() {
            let readres = JSON.parse(data);
             //console.log(readres)
            if (readres.code == '0') {
-            console.log(`【观看视频】获得${readres.data.earnCoin}狐币；`);
-            //detail += `【观看视频】获得${readres.data.earnCoin}狐币；\n`;
+            console.log(`【领取狐币】获得${readres.data.earnCoin}狐币；`);
+            //detail += `【领取狐币】获得${readres.data.earnCoin}狐币；\n`;
             }
            else  {
-            console.log(`【观看视频】${readres.msg}；`);
-            //detail += `【观看视频】${readres.msg}；\n`;
+            console.log(`【领取狐币】${readres.msg}；`);
+            //detail += `【领取狐币】${readres.msg}；\n`;
             }
           }
            catch(error) {   
