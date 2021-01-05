@@ -122,15 +122,15 @@ let Account = ["【Sam】"];
       await Mealreward();
       await $.wait(1000); 
          }
-      if(n==2 && $.time('HH')==3){
+      else if(n==2 && $.time('HH')==3){
       await Mealreward();
       await $.wait(1000); 
          }
-      if(n==3 && $.time('HH')==9){
+      else if(n==3 && $.time('HH')==9){
       await Mealreward();
       await $.wait(1000); 
          }
-      if(n==4 && $.time('HH')==13){
+      else if(n==4 && $.time('HH')==13){
       await Mealreward();
       await $.wait(1000); 
          }
@@ -140,13 +140,13 @@ let Account = ["【Sam】"];
       if(p==1 && $.time('HH')==22){
       await ADreward();
          }
-      if(p==2 && $.time('HH')==3){
+      else if(p==2 && $.time('HH')==3){
       await ADreward();
          }
-      if(p==3 && $.time('HH')==9){
+      else if(p==3 && $.time('HH')==9){
       await ADreward();
          }
-      if(p==4 && $.time('HH')==13){
+      else if(p==4 && $.time('HH')==13){
       await ADreward();
          }
                   }
