@@ -7,6 +7,8 @@ const $ = new Env("【shzx】")
 const notify = $.isNode() ? require('./sendNotify') : '';
 let URLArr = [], URL = "";
 let BDArr = [], BD = "";
+let TimeBDArr = [], TimeBD = "";
+let MealBDArr = [], MealBD = "";
 let HDArr = [], HD = "";
 let detail = ``;
 let Account = ["【Sam】"];
@@ -39,6 +41,35 @@ let Account = ["【Sam】"];
         }
   })
 
+  if (process.env.SHZX_BD_TIME && process.env.SHZX_BD_TIME.indexOf('\n') > -1) {
+  TimeBD = process.env.SHZX_BD_TIME.split('\n');
+  console.log(`您选择的是用换行隔开\n`)
+  } 
+  else
+  {
+  TimeBD = process.env.SHZX_BD_TIME.split()
+  } 
+  Object.keys(TimeBD).forEach((item) => {
+        if (TimeBD[item]) {
+          TimeBDArr.push(TimeBD[item])
+        }
+  })
+
+  if (process.env.SHZX_BD_MEAL && process.env.SHZX_BD_MEAL.indexOf('\n') > -1) {
+  MealBD = process.env.SHZX_BD_MEAL.split('\n');
+  console.log(`您选择的是用换行隔开\n`)
+  } 
+  else
+  {
+  MealBD = process.env.SHZX_BD_MEAL.split()
+  } 
+  Object.keys(MealBD).forEach((item) => {
+        if (MealBD[item]) {
+          MealBDArr.push(MealBD[item])
+        }
+  })
+
+
   if (process.env.SHZX_HD && process.env.SHZX_HD.indexOf('\n') > -1) {
   HD = process.env.SHZX_HD.split('\n');
   console.log(`您选择的是用换行隔开\n`)
@@ -52,7 +83,6 @@ let Account = ["【Sam】"];
           HDArr.push(HD[item])
         }
   }) 
-
 
 
       console.log(`============ 共${HDArr.length}个账号  =============\n`)
@@ -81,16 +111,53 @@ let Account = ["【Sam】"];
       await video();
                   }
     else if(j==2) await earn();
-    else if(j==3) await info();
+    else if(j==3 && $.time('HH')==1) for (let m = 0; m < 5; m++) {
+      articleBD = TimeBDArr[m]
+      await Timereward();
+      await $.wait(1000); 
+                  }
+    else if(j==4) for (let n = 0; n < 4; n++) {
+      articleBD = MealBDArr[n]
+      if(n==1 && $.time('HH')==22){
+      await Mealreward();
+      await $.wait(1000); 
+         }
+      if(n==2 && $.time('HH')==3){
+      await Mealreward();
+      await $.wait(1000); 
+         }
+      if(n==3 && $.time('HH')==9){
+      await Mealreward();
+      await $.wait(1000); 
+         }
+      if(n==4 && $.time('HH')==13){
+      await Mealreward();
+      await $.wait(1000); 
+         }
+                  }
+    else if(j==5) for (let p = 0; p < 4; p++) {
+      articleBD = MealBDArr[p]
+      if(p==1 && $.time('HH')==22){
+      await ADreward();
+         }
+      if(p==2 && $.time('HH')==3){
+      await ADreward();
+         }
+      if(p==3 && $.time('HH')==9){
+      await ADreward();
+         }
+      if(p==4 && $.time('HH')==13){
+      await ADreward();
+         }
+                  }
+    else if(j==6) await info();
     }
    }
    if($.time('HH')==3 || $.time('HH')==12){
     await notify.sendNotify($.name+'|'+account, detail)
     }
-    // console.log(`【完成任务】共完成账号${$.account}的${$.task}个任务`)
     }
-   console.log(`⏱⏱⏱请等待3s后执行下一个账号任务⏱⏱⏱`);
-   //await $.wait(3000);    
+   console.log(`⏱⏱⏱执行下一个账号任务⏱⏱⏱`);  
    }  
      console.log(`🎉🎉🎉运行结束🎉🎉🎉`)
 })()
@@ -146,13 +213,13 @@ function video() {
            let readres = JSON.parse(data);
             //console.log(readres)
            if (readres.code == '0') {
-            console.log(`【观看视频】获得${readres.data.addCoin}狐币；`);
-            //detail += `【观看视频】获得${readres.data.addCoin}狐币；\n`;
+            console.log(`【阅读观看】获得${readres.data.addCoin}狐币；`);
+            //detail += `【阅读观看】获得${readres.data.addCoin}狐币；\n`;
             await $.wait(20000);
             }
            else  {
-            console.log(`【观看视频】${readres.msg}；`);
-            //detail += `【观看视频】${readres.msg}；\n`;
+            console.log(`【阅读观看】${readres.msg}；`);
+            //detail += `【阅读观看】${readres.msg}；\n`;
             await $.wait(20000);
             }
           }
@@ -202,6 +269,108 @@ function earn() {
     })
 }
 
+function Timereward() {
+    return new Promise((resolve, reject) => {
+       let myrequest = {
+            url: articleURL,
+            headers: {
+             "Content-Type": "application/json; charset=utf-8",
+             "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 iphone sohuinfonews5_1_1"
+            },
+            body: articleBD
+        };
+        $.post(myrequest, async(error, response, data) => {
+          try{
+           let readres = JSON.parse(data);
+            //console.log(readres)
+           if (readres.code == '0') {
+            console.log(`【时长奖励】获得${readres.data.earnCoin}狐币；`);
+            //detail += `【时长奖励】获得${readres.data.earnCoin}狐币；\n`;
+            }
+           else  {
+            console.log(`【时长奖励】${readres.msg}；`);
+            //detail += `【时长奖励】${readres.msg}；\n`;
+            }
+          }
+           catch(error) {   
+               let readres = JSON.parse(data);
+               //console.log(readres)
+              console.log(`本次任务出现异常，请等待1s后执行下一个任务。`)
+              detail += `本次任务出现异常，请等待1s后执行下一个任务。\n`;
+            }
+          resolve()
+        })
+    })
+}
+
+function Mealreward() {
+    return new Promise((resolve, reject) => {
+       let myrequest = {
+            url: articleURL,
+            headers: {
+             "Content-Type": "application/json; charset=utf-8",
+             "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 iphone sohuinfonews5_1_1"
+            },
+            body: articleBD
+        };
+        $.post(myrequest, async(error, response, data) => {
+          try{
+           let readres = JSON.parse(data);
+            //console.log(readres)
+           if (readres.code == '0') {
+            console.log(`【用餐奖励】获得${readres.data.addCount}狐币；`);
+            //detail += `【用餐奖励】获得${readres.data.addCount}狐币；\n`;
+            }
+           else  {
+            console.log(`【用餐奖励】${readres.msg}；`);
+            //detail += `【用餐奖励】${readres.msg}；\n`;
+            }
+          }
+           catch(error) {   
+               let readres = JSON.parse(data);
+               //console.log(readres)
+              console.log(`本次任务出现异常，请等待1s后执行下一个任务。`)
+              detail += `本次任务出现异常，请等待1s后执行下一个任务。\n`;
+            }
+          resolve()
+        })
+    })
+}
+
+function ADreward() {
+    return new Promise((resolve, reject) => {
+       let myrequest = {
+            url: articleURL,
+            headers: {
+             "Content-Type": "application/json; charset=utf-8",
+             "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 iphone sohuinfonews5_1_1"
+            },
+            body: articleBD
+        };
+        $.post(myrequest, async(error, response, data) => {
+          try{
+           let readres = JSON.parse(data);
+            //console.log(readres)
+           if (readres.code == '0') {
+            console.log(`【用餐广告】获得${readres.data.rewardCoin}狐币；`);
+            //detail += `【用餐广告】获得${readres.data.rewardCoin}狐币；\n`;
+            }
+           else  {
+            console.log(`【用餐广告】${readres.msg}；`);
+            //detail += `【用餐广告】${readres.msg}；\n`;
+            }
+          }
+           catch(error) {   
+               let readres = JSON.parse(data);
+               //console.log(readres)
+              console.log(`本次任务出现异常，请等待1s后执行下一个任务。`)
+              detail += `本次任务出现异常，请等待1s后执行下一个任务。\n`;
+            }
+          resolve()
+        })
+    })
+}
+
 
 function info() {
     return new Promise((resolve, reject) => {
@@ -220,18 +389,18 @@ function info() {
             //console.log(readres)
            if (readres.code == '0') {
             console.log(`【收益信息】现金收益：${readres.data.money}分；金币收益：${readres.data.gold}狐币；`);
-            detail += `【收益信息】现金收益：${readres.data.money}分；金币收益：${readres.data.gold}狐币；\n`;
+            detail = `【收益信息】现金收益：${readres.data.money}分；金币收益：${readres.data.gold}狐币；\n`;
             }
            else  {
             console.log(`【收益信息】${readres.msg}；`);
-            detail += `【收益信息】${readres.msg}；\n`;
+            detail = `【收益信息】${readres.msg}；\n`;
             }
           }
            catch(error) {   
                let readres = JSON.parse(data);
                //console.log(readres)
               console.log(`本次任务出现异常，请等待1s后执行下一个任务。`)
-              detail += `本次任务出现异常，请等待1s后执行下一个任务。\n`;
+              detail = `本次任务出现异常，请等待1s后执行下一个任务。\n`;
             }
           resolve()
         })
