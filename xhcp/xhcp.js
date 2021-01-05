@@ -91,7 +91,10 @@ let Account = ["【Sam】","【小爱豆】"];
       //$.account = i + 1;
      console.log(`【开启任务】开始执行账号${account}的任务`);
      detail = `【账号】${account}\n`;
+   if($.time('HH')==0){
      await sign();
+     await notify.sendNotify($.name+'\n', detail)
+      };
      await bx();     
      await zssp();
    if($.time('HH')==13){
@@ -130,12 +133,12 @@ function sign() {
             //console.log(readres)
            if (readres.status == true) {
             console.log(`【今日签到】获得${readres.res.coin}金币；`);
-            //detail += `【今日签到】获得${readres.res.coin}金币；\n`;
+            detail += `【今日签到】获得${readres.res.coin}金币；\n`;
             await $.wait(1000);
             }
            else if (readres.status == false) {
             console.log(`【今日签到】${readres.msg}；`);
-            //detail += `【今日签到】${readres.msg}；\n`;
+            detail += `【今日签到】${readres.msg}；\n`;
             await $.wait(1000);
             }
           }
@@ -143,7 +146,7 @@ function sign() {
                let readres = JSON.parse(data);
                //console.log(readres)
               console.log(`本次任务出现异常，请等待1s后执行下一个任务。`)
-              //detail += `本次任务出现异常，请等待1s后执行下一个任务。\n`;
+              detail += `本次任务出现异常，请等待1s后执行下一个任务。\n`;
             await $.wait(1000);
             }
           resolve()
