@@ -105,7 +105,7 @@ function sign() {
              "Content-Type": "application/json; charset=utf-8",
              "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 iphone sohuinfonews5_1_1"
             },
-            body: JSON.stringify(articleBD)
+            body: articleBD
         };
         $.post(myrequest, async(error, response, data) => {
           try{
@@ -139,7 +139,7 @@ function video() {
              "Content-Type": "application/json; charset=utf-8",
              "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 iphone sohuinfonews5_1_1"
             },
-            body: JSON.stringify(articleBD)
+            body: articleBD
         };
         $.post(myrequest, async(error, response, data) => {
           try{
@@ -176,7 +176,7 @@ function earn() {
              "Content-Type": "application/json; charset=utf-8",
              "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 iphone sohuinfonews5_1_1"
             },
-            body: JSON.stringify(articleBD)
+            body: articleBD
         };
         $.post(myrequest, async(error, response, data) => {
           try{
@@ -212,7 +212,7 @@ function info() {
              "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 iphone sohuinfonews5_1_1",
              "Cookie":articleHD
             },
-            body: JSON.stringify(articleBD)
+            body: articleBD
         };
         $.post(myrequest, async(error, response, data) => {
           try{
