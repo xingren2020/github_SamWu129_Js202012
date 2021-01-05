@@ -41,7 +41,7 @@ let Account = ["【Sam】"];
         }
   })
 
-  if (process.env.SHZX_BD_TIME && process.SHZX_BD_TIME.indexOf('\n') > -1) {
+  if (process.env.SHZX_BD_TIME && process.env.SHZX_BD_TIME.indexOf('\n') > -1) {
   TimeBD = process.env.SHZX_BD_TIME.split('\n');
   console.log(`您选择的是用换行隔开\n`)
   } 
@@ -370,7 +370,6 @@ function ADreward() {
         })
     })
 }
-
 
 function info() {
     return new Promise((resolve, reject) => {
