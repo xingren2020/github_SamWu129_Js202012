@@ -9,7 +9,7 @@ let URLArr = [], URL = "";
 let BDArr = [], BD = "";
 let HDArr = [], HD = "";
 let detail = ``;
-let Account = ["【Sam】","【MiniSam】","【妞宝】","【QF】","【RL】","【月夕】"];
+let Account = ["【Sam】"];
 
   if (process.env.SHZX_URL && process.env.SHZX_URL.indexOf('\n') > -1) {
   URL = process.env.SHZX_URL.split('\n');
@@ -209,7 +209,7 @@ function info() {
             url: articleURL,
              headers: {
              "Content-Type": "application/json; charset=utf-8",
-             "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 iphone sohuinfonews5_1_1"
+             "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 iphone sohuinfonews5_1_1",
              "Cookie":articleHD
             },
             body: JSON.stringify(articleBD)
