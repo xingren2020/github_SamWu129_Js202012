@@ -115,40 +115,40 @@ let Account = ["【Sam】"];
       articleBD = TimeBDArr[m]
       await Timereward();
       await $.wait(1000); 
-                  };
+                  }
     else if(j==4) for (let n = 0; n < 4; n++) {
       articleBD = MealBDArr[n]
       if(n==1 && $.time('HH')==22){
       await Mealreward();
       await $.wait(1000); 
-         };
+         }
       else if(n==2 && $.time('HH')==3){
       await Mealreward();
       await $.wait(1000); 
-         };
+         }
       else if(n==3 && $.time('HH')==9){
       await Mealreward();
       await $.wait(1000); 
-         };
+         }
       else if(n==4 && $.time('HH')==13){
       await Mealreward();
       await $.wait(1000); 
-         };
+         }
                   }
     else if(j==5) for (let p = 0; p < 4; p++) {
       articleBD = MealBDArr[p]
       if(p==1 && $.time('HH')==22){
       await ADreward();
-         };
+         }
       else if(p==2 && $.time('HH')==3){
       await ADreward();
-         };
+         }
       else if(p==3 && $.time('HH')==9){
       await ADreward();
-         };
+         }
       else if(p==4 && $.time('HH')==13){
       await ADreward();
-         };
+         }
                   }
     else if(j==6) await info();
     }
