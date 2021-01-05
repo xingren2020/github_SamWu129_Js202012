@@ -62,12 +62,12 @@ let Account = ["【Sam】","【MiniSam】","【妞宝】","【QF】","【RL】",
      // $.task = j + 1;
     // console.log(`开始执行${$.task}个任务`)
     if(j==0) await task();
-    if(j==1 && $.time('HH')==2)  await sign();
+    if(j==1 && $.time('HH')==22)  await sign();
     else if(j==2) await video();
     else if(j==3) await box();
     else if(j==4) await info();
      }
-   if($.time('HH')==2 || $.time('HH')==12){
+   if($.time('HH')==22 || $.time('HH')==10){
     await notify.sendNotify($.name+'|'+account, detail)
     }
     // console.log(`【完成任务】共完成账号${$.account}的${$.task}个任务`)
