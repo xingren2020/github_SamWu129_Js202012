@@ -6,17 +6,18 @@
 const $ = new Env("【shzx】")
 const notify = $.isNode() ? require('./sendNotify') : '';
 let URLArr = [], URL = "";
-let CKArr = [], CK = "";
+let BDArr = [], BD = "";
+let HDArr = [], HD = "";
 let detail = ``;
 let Account = ["【Sam】","【MiniSam】","【妞宝】","【QF】","【RL】","【月夕】"];
 
-  if (process.env.QRP_URL && process.env.QRP_URL.indexOf('\n') > -1) {
-  URL = process.env.QRP_URL.split('\n');
+  if (process.env.SHZX_URL && process.env.SHZX_URL.indexOf('\n') > -1) {
+  URL = process.env.SHZX_URL.split('\n');
   console.log(`您选择的是用换行隔开\n`)
   } 
   else
   {
-  URL = process.env.QRP_URL.split()
+  URL = process.env.SHZX_URL.split()
   } 
   Object.keys(URL).forEach((item) => {
         if (URL[item]) {
@@ -24,118 +25,99 @@ let Account = ["【Sam】","【MiniSam】","【妞宝】","【QF】","【RL】",
         }
   })
 
-  if (process.env.QRP_CK && process.env.QRP_CK.indexOf('\n') > -1) {
-  CK = process.env.QRP_CK.split('\n');
+  if (process.env.SHZX_BD && process.env.SHZX_BD.indexOf('\n') > -1) {
+  BD = process.env.SHZX_BD.split('\n');
   console.log(`您选择的是用换行隔开\n`)
   } 
   else
   {
-  CK = process.env.QRP_CK.split()
+  BD = process.env.SHZX_BD.split()
   } 
-  Object.keys(CK).forEach((item) => {
-        if (CK[item]) {
-          CKArr.push(CK[item])
+  Object.keys(BD).forEach((item) => {
+        if (BD[item]) {
+          BDArr.push(BD[item])
         }
   })
 
- 
+  if (process.env.SHZX_HD && process.env.SHZX_HD.indexOf('\n') > -1) {
+  HD = process.env.SHZX_HD.split('\n');
+  console.log(`您选择的是用换行隔开\n`)
+  } 
+  else
+  {
+  HD = process.env.SHZX_HD.split()
+  } 
+  Object.keys(HD).forEach((item) => {
+        if (HD[item]) {
+          HDArr.push(HD[item])
+        }
+  }) 
 
 
 
-      console.log(`============ 共${CKArr.length}个账号  =============\n`)
+      console.log(`============ 共${HDArr.length}个账号  =============\n`)
       console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
       console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
+
 !(async () => {
-  if (!CKArr[0]) {
-    console.log($.name, '【提示】请把CK填入Github 的 Secrets 中，请以回车隔开')
+  if (!HDArr[0]) {
+    console.log($.name, '【提示】请把HD填入Github 的 Secrets 中，请以回车隔开')
     return;
   }
        
-   for (let i = 0; i <CKArr.length; i++) {
-    if (CKArr[i]) {
-      articleCK = CKArr[i];
+   for (let i = 0; i <HDArr.length; i++) {
+    if (HDArr[i]) {
+      articleHD = HDArr[i];
       account = Account[i];
      console.log(`【开启任务】开始执行账号${account}的任务`);
-     detail = `【账号】${account}\n`;
+     detail = ``;
+    // detail = `【账号】${account}\n`;
+  for (let h = 0; h < 18; h++) {
    for (let j = 0; j < URLArr.length; j++) {
       articleURL = URLArr[j];
-     // $.task = j + 1;
-    // console.log(`开始执行${$.task}个任务`)
-    if(j==0) await task();
-    if(j==1 && $.time('HH')==3)  await sign();
-    else if(j==2) await video();
-    else if(j==3) await box();
-    else if(j==4) await info();
-     }
-   if($.time('HH')==3 || $.time('HH')==10){
+      articleBD = BDArr[j];
+    if(j==0 && $.time('HH')==23)  await sign();
+    else if(j==1) for (let k = 0; k < 10; k++) {
+      await video();
+                  }
+    else if(j==2) await earn();
+    else if(j==3) await info();
+    }
+   }
+   if($.time('HH')==3 || $.time('HH')==12){
     await notify.sendNotify($.name+'|'+account, detail)
     }
     // console.log(`【完成任务】共完成账号${$.account}的${$.task}个任务`)
     }
    console.log(`⏱⏱⏱请等待3s后执行下一个账号任务⏱⏱⏱`);
-   await $.wait(3000);    
+   //await $.wait(3000);    
    }  
      console.log(`🎉🎉🎉运行结束🎉🎉🎉`)
 })()
   .catch((e) => $.logErr(e))
   .finally(() => $.done())
 
-function task() {
-    return new Promise((resolve, reject) => {
-       let myrequest = {
-            url: articleURL,
-            headers: {
-              "Cookie":articleCK
-            }
-        };
-        $.post(myrequest, async(error, response, data) => {
-          try{
-           let readres = JSON.parse(data);
-            //console.log(readres)
-           if (readres.code == '0') {
-            console.log(`【任务中心】登录状态：${readres.isLogin}；`);
-            detail += `【任务中心】登录状态：${readres.isLogin}；\n`;
-            await $.wait(1000);
-            }
-           else  {
-            console.log(`【任务中心】${readres.msg}；`);
-            detail += `【任务中心】${readres.msg}；\n`;
-            await $.wait(1000);
-            }
-          }
-           catch(error) {   
-               let readres = JSON.parse(data);
-               //console.log(readres)
-              console.log(`本次任务出现异常，请等待1s后执行下一个任务。`)
-              detail += `本次任务出现异常，请等待1s后执行下一个任务。\n`;
-            await $.wait(1000);
-            }
-          resolve()
-        })
-    })
-}
-
 function sign() {
     return new Promise((resolve, reject) => {
        let myrequest = {
             url: articleURL,
             headers: {
-              "Cookie":articleCK
-            }
+             "Content-Type": "application/json; charset=utf-8",
+             "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 iphone sohuinfonews5_1_1"
+            },
+            body: JSON.stringify(articleBD)
         };
         $.post(myrequest, async(error, response, data) => {
           try{
            let readres = JSON.parse(data);
             //console.log(readres)
            if (readres.code == '0') {
-            console.log(`【今日签到】获得${readres.data.coinNum}金币；`);
-            detail += `【今日签到】获得${readres.data.coinNum}金币；\n`;
-            await $.wait(1000);
+            console.log(`【今日签到】获得${readres.data.todayReward}狐币；`);
+            //detail += `【今日签到】获得${readres.data.todayReward}狐币；\n`;
             }
            else  {
-            console.log(`【今日签到】${readres.msg}；`);
-            detail += `【今日签到】${readres.msg}；\n`;
-            await $.wait(1000);
+            console.log(`【今日签到】${readres.message}；`);
+            //detail += `【今日签到】${readres.message}；\n`;
             }
           }
            catch(error) {   
@@ -143,7 +125,6 @@ function sign() {
                //console.log(readres)
               console.log(`本次任务出现异常，请等待1s后执行下一个任务。`)
               detail += `本次任务出现异常，请等待1s后执行下一个任务。\n`;
-            await $.wait(1000);
             }
           resolve()
         })
@@ -155,22 +136,24 @@ function video() {
        let myrequest = {
             url: articleURL,
             headers: {
-              "Cookie":articleCK
-            }
+             "Content-Type": "application/json; charset=utf-8",
+             "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 iphone sohuinfonews5_1_1"
+            },
+            body: JSON.stringify(articleBD)
         };
         $.post(myrequest, async(error, response, data) => {
           try{
            let readres = JSON.parse(data);
             //console.log(readres)
            if (readres.code == '0') {
-            console.log(`【观看视频】获得100金币；`);
-            detail += `【观看视频】获得100金币；\n`;
-            await $.wait(1000);
+            console.log(`【观看视频】获得${readres.data.addCoin}狐币；`);
+            //detail += `【观看视频】获得${readres.data.addCoin}狐币；\n`;
+            await $.wait(20000);
             }
            else  {
             console.log(`【观看视频】${readres.msg}；`);
-            detail += `【观看视频】${readres.msg}；\n`;
-            await $.wait(1000);
+            //detail += `【观看视频】${readres.msg}；\n`;
+            await $.wait(20000);
             }
           }
            catch(error) {   
@@ -178,34 +161,34 @@ function video() {
                //console.log(readres)
               console.log(`本次任务出现异常，请等待1s后执行下一个任务。`)
               detail += `本次任务出现异常，请等待1s后执行下一个任务。\n`;
-            await $.wait(1000);
+            await $.wait(20000);
             }
           resolve()
         })
     })
 }
 
-function box() {
+function earn() {
     return new Promise((resolve, reject) => {
        let myrequest = {
             url: articleURL,
             headers: {
-              "Cookie":articleCK
-            }
+             "Content-Type": "application/json; charset=utf-8",
+             "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 iphone sohuinfonews5_1_1"
+            },
+            body: JSON.stringify(articleBD)
         };
         $.post(myrequest, async(error, response, data) => {
           try{
            let readres = JSON.parse(data);
             //console.log(readres)
            if (readres.code == '0') {
-            console.log(`【开启宝箱】获得${readres.data.coin}金币；`);
-            detail += `【开启宝箱】获得${readres.data.coin}金币；\n`;
-            await $.wait(1000);
+            console.log(`【观看视频】获得${readres.data.earnCoin}狐币；`);
+            //detail += `【观看视频】获得${readres.data.earnCoin}狐币；\n`;
             }
            else  {
-            console.log(`【开启宝箱】${readres.msg}；`);
-            detail += `【开启宝箱】${readres.msg}；\n`;
-            await $.wait(1000);
+            console.log(`【观看视频】${readres.msg}；`);
+            //detail += `【观看视频】${readres.msg}；\n`;
             }
           }
            catch(error) {   
@@ -213,34 +196,35 @@ function box() {
                //console.log(readres)
               console.log(`本次任务出现异常，请等待1s后执行下一个任务。`)
               detail += `本次任务出现异常，请等待1s后执行下一个任务。\n`;
-            await $.wait(1000);
             }
           resolve()
         })
     })
 }
+
 
 function info() {
     return new Promise((resolve, reject) => {
        let myrequest = {
             url: articleURL,
-            headers: {
-              "Cookie":articleCK
-            }
+             headers: {
+             "Content-Type": "application/json; charset=utf-8",
+             "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 iphone sohuinfonews5_1_1"
+             "Cookie":articleHD
+            },
+            body: JSON.stringify(articleBD)
         };
         $.post(myrequest, async(error, response, data) => {
           try{
            let readres = JSON.parse(data);
             //console.log(readres)
            if (readres.code == '0') {
-            console.log(`【收益信息】现金收益：${readres.data.cashBalance}元；金币收益：${readres.data.coinBalance}金币；`);
-            detail += `【收益信息】现金收益：${readres.data.cashBalance}元；金币收益：${readres.data.coinBalance}金币；\n`;
-            await $.wait(1000);
+            console.log(`【收益信息】现金收益：${readres.data.money}分；金币收益：${readres.data.gold}狐币；`);
+            detail += `【收益信息】现金收益：${readres.data.money}分；金币收益：${readres.data.gold}狐币；\n`;
             }
            else  {
             console.log(`【收益信息】${readres.msg}；`);
             detail += `【收益信息】${readres.msg}；\n`;
-            await $.wait(1000);
             }
           }
            catch(error) {   
@@ -248,7 +232,6 @@ function info() {
                //console.log(readres)
               console.log(`本次任务出现异常，请等待1s后执行下一个任务。`)
               detail += `本次任务出现异常，请等待1s后执行下一个任务。\n`;
-            await $.wait(1000);
             }
           resolve()
         })
