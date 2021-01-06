@@ -125,7 +125,8 @@ if (process.env.DYJS_S_HD && process.env.DYJS_S_HD.indexOf('\n') > -1) {
     return;
   }
     
- for (let h = 0; h < 30; h++) {   
+ for (let h = 0; h < 30; h++) {
+   detail = ``;
    $.index = h + 1
    console.log(`🏃‍♀️🏃‍♀️🏃‍♀️开始执行第${$.index}轮🏃‍♀️🏃‍♀️🏃‍♀️`);
    for (let i = 0; i <SHDArr.length; i++) {
@@ -138,7 +139,7 @@ if (process.env.DYJS_S_HD && process.env.DYJS_S_HD.indexOf('\n') > -1) {
       InfoHD = INFOHDArr[i];
       account = Account[i];
      console.log(`【开启任务】开始执行账号${account}的任务`);
-     detail = ``;
+    // detail = ``;
    for (let j = 0; j < 3; j++) {
       AppBD = BDArr[j];
     if(j==0 && $.time('HH')==21)  await sign();
