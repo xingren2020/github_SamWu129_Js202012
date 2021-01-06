@@ -1,0 +1,48 @@
+name: shzx_reward
+
+on:
+  workflow_dispatch:
+  schedule:
+     - cron: '6 1,3,9,13,22 * * *'
+
+  watch:
+    types: started
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+
+    env:
+        SHZX_URL: ${{ secrets.SHZX_URL }}
+        SHZX_HD: ${{ secrets.SHZX_HD }}
+        SHZX_BD: ${{ secrets.SHZX_BD }} 
+        SHZX_BD_TIME: ${{ secrets.SHZX_BD_TIME }} 
+        SHZX_BD_MEAL: ${{ secrets.SHZX_BD_MEAL }}         
+        TZ: Asia/shanghai
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+
+      - name: npm install
+        run: |
+          npm install
+          
+      - name: '运行 【shzx_reward】'
+        if: env.SHZX_HD
+        run: |
+          node shzx/shzx_reward.js
+        env:
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
