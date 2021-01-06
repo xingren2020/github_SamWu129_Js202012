@@ -157,7 +157,7 @@ if (process.env.DYJS_S_HD && process.env.DYJS_S_HD.indexOf('\n') > -1) {
     // await $.wait(120000);    
    }  
   if($.time('HH')==23||11) {
-  await notify.sendNotify($.name+'|'+account, detail)
+  await notify.sendNotify($.name+'|'+account, detail);
      }
      console.log(`🎉🎉🎉运行结束🎉🎉🎉`)
 })()
