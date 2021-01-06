@@ -7,8 +7,10 @@ const $ = new Env("【dyjs】")
 const notify = $.isNode() ? require('./sendNotify') : '';
 let SURLArr = [], SURL = "";
 let VURLArr = [], VURL = "";
+let INFOURLArr = [], INFOURL = "";
 let SHDArr = [], SHD = "";
 let VHDArr = [], VHD = "";
+let INFOHDArr = [], INFOHD = "";
 let BDArr = [], BD = "";
 let detail = ``;
 let Account = ["【Sam】","【妞宝】"];
@@ -41,6 +43,20 @@ let Account = ["【Sam】","【妞宝】"];
         }
   })
 
+    if (process.env.DYJS_INFO_URL && process.env.DYJS_INFO_URL.indexOf('\n') > -1) {
+  INFOURL = process.env.DYJS_INFO_URL.split('\n');
+  console.log(`您选择的是用换行隔开\n`)
+  } 
+  else
+  {
+  INFOURL = process.env.DYJS_INFO_URL.split()
+  } 
+  Object.keys(INFOURL).forEach((item) => {
+        if (INFOURL[item]) {
+          INFOURLArr.push(INFOURL[item])
+        }
+  })
+
 if (process.env.DYJS_S_HD && process.env.DYJS_S_HD.indexOf('\n') > -1) {
   SHD = process.env.DYJS_S_HD.split('\n');
   console.log(`您选择的是用换行隔开\n`)
@@ -69,6 +85,19 @@ if (process.env.DYJS_S_HD && process.env.DYJS_S_HD.indexOf('\n') > -1) {
         }
   })
 
+    if (process.env.DYJS_INFO_HD && process.env.DYJS_INFO_HD.indexOf('\n') > -1) {
+  INFOHD = process.env.DYJS_INFO_HD.split('\n');
+  console.log(`您选择的是用换行隔开\n`)
+  } 
+  else
+  {
+  INFOHD = process.env.DYJS_INFO_HD.split()
+  } 
+  Object.keys(INFOHD).forEach((item) => {
+        if (INFOHD[item]) {
+          INFOHDArr.push(INFOHD[item])
+        }
+  })
 
   if (process.env.DYJS_BD && process.env.DYJS_BD.indexOf('\n') > -1) {
   BD = process.env.DYJS_BD.split('\n');
@@ -103,29 +132,33 @@ if (process.env.DYJS_S_HD && process.env.DYJS_S_HD.indexOf('\n') > -1) {
     if (SHDArr[i]) {
       SignURL = SURLArr[i];
       VideoURL = VURLArr[i];
+      InfoURL = INFOURLArr[i];
       SignHD = SHDArr[i];
       VideoHD = VHDArr[i];
+      InfoHD = INFOHDArr[i];
       account = Account[i];
      console.log(`【开启任务】开始执行账号${account}的任务`);
-     detail = `【账号】${account}\n`;
+     detail = ``;
    for (let j = 0; j < BDArr.length; j++) {
       AppBD = BDArr[j];
     if(j==0 && $.time('HH')==21)  await sign();
     else if(j==1)  for (let k = 0; k < 3; k++) {
     await video();
      }
+    else if(j==3)  await info();
      }
      }
      console.log(`⏱⏱⏱执行下一个账号任务⏱⏱⏱`);
-//     if($.time('HH')==21 || 9 {
-//    await notify.sendNotify($.name+'|'+account, detail)
-//    }
+
 //   console.log(`⏱⏱⏱请等待3s后执行下一个账号任务⏱⏱⏱`);
 //   await $.wait(3000);    
    }  
      console.log(`⏱⏱⏱执行下一轮⏱⏱⏱`);
     // await $.wait(120000);    
    }  
+     if($.time('HH')==23 || 11 {
+    await notify.sendNotify($.name+'|'+account, detail)
+     }
      console.log(`🎉🎉🎉运行结束🎉🎉🎉`)
 })()
   .catch((e) => $.logErr(e))
@@ -190,6 +223,36 @@ function video() {
               console.log(`本次任务出现异常，请等待1s后执行下一个任务。`)
               //detail += `本次任务出现异常，请等待1s后执行下一个任务。\n`;
             await $.wait(20000);
+            }
+          resolve()
+        })
+    })
+}
+
+function info() {
+    return new Promise((resolve, reject) => {
+       let myrequest = {
+            url: InfoURL,
+            headers: JSON.parse(InfoHD)
+        };
+        $.get(myrequest, async(error, response, data) => {
+          try{
+           let readres = JSON.parse(data);
+            //console.log(readres)
+           if (readres.err_no == '0') {
+            console.log(`【收益信息】音符:${readres.data.income_data.amount1}音符；现金:${readres.data.income_data.amount2}分；`);
+            detail = `【收益信息】音符:${readres.data.income_data.amount1}音符；现金:${readres.data.income_data.amount2}分；\n`;
+            }
+           else  {
+            console.log(`【收益信息】${readres.err_tips}；`);
+            detail = `【收益信息】${readres.err_tips}；\n`;
+            }
+          }
+           catch(error) {   
+               let readres = JSON.parse(data);
+               //console.log(readres)
+              console.log(`本次任务出现异常，请等待1s后执行下一个任务。`)
+              detail = `本次任务出现异常，请等待1s后执行下一个任务。\n`;
             }
           resolve()
         })
