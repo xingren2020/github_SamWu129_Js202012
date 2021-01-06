@@ -69,9 +69,9 @@ let Account = ["【Sam】"];
       articleHD = HDArr[i];
       account = Account[i];
      console.log(`【开启任务】开始执行账号${account}的任务`);
-     detail = ``;
     // detail = `【账号】${account}\n`;
   for (let h = 0; h < 18; h++) {
+       detail = ``;
    for (let j = 0; j < URLArr.length; j++) {
       articleURL = URLArr[j];
       articleBD = BDArr[j];
@@ -85,9 +85,7 @@ let Account = ["【Sam】"];
    }
     // console.log(`【完成任务】共完成账号${$.account}的${$.task}个任务`)
     }
-   if($.time('HH')==3 || $.time('HH')==12){
-    await notify.sendNotify($.name+'|'+account, detail)
-    }
+   if($.time('HH')==3 || $.time('HH')==12) await notify.sendNotify($.name+'|'+account, detail);
    console.log(`⏱⏱⏱执行下一个账号任务⏱⏱⏱`);
    //await $.wait(3000);    
    }  
