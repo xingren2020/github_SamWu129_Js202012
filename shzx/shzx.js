@@ -80,7 +80,7 @@ let Account = ["【Sam】"];
       await video();
                   }
     else if(j==2) await earn();
-    else if(j==3 && $.time('HH')==3||12) await info();
+    else if(j==3) await info();
     }
    }
     // console.log(`【完成任务】共完成账号${$.account}的${$.task}个任务`)
