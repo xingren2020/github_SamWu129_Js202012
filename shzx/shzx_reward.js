@@ -99,39 +99,45 @@ let Account = ["【Sam】"];
     if (HDArr[i]) {
       articleHD = HDArr[i];
       account = Account[i];
+      infoURL = URLArr[3];
+      infoBD = BDArr[3];
      console.log(`【开启任务】开始执行账号${account}的任务`);
      detail = ``;
     // detail = `【账号】${account}\n`;
-  for (let h = 0; h < 18; h++) {
-   for (let j = 0; j < URLArr.length; j++) {
-      articleURL = URLArr[j];
-      articleBD = BDArr[j];
-    if(j==0 && $.time('HH')==23)  await sign();
-    else if(j==1) for (let k = 0; k < 10; k++) {
-      await video();
-                  };
-    /*else if(j==2) await earn();
-    else if(j==3 && $.time('HH')==1) for (let m = 0; m < 5; m++) {
+   for (let m = 0; m < 5; m++) {
       articleBD = TimeBDArr[m]
+     if($.time('HH')==1) {
       await Timereward();
       await $.wait(1000); 
-                  }
-    else if(j==4 && $.time('HH')==22||3||9||13) for (let n = 0; n < 4; n++) {
+                     } 
+                  }  
+    for (let n = 0; n < 4; n++) {
       articleBD = MealBDArr[n]
+      if(n==1 && $.time('HH')==22)  {
       await Mealreward();
       await $.wait(1000); 
-                  }
-    else if(j==5 && $.time('HH')==22||3||9||13) for (let p = 0; p < 4; p++) {
-      articleBD = MealBDArr[p]
       await ADreward();
-                  }*/
-    else if(j==6) await info();
+                  }  
+      else if(n==2 && $.time('HH')==3)  {
+      await Mealreward();
+      await $.wait(1000); 
+      await ADreward();
+                  }  
+      else if(n==3 && $.time('HH')==9)  {
+      await Mealreward();
+      await $.wait(1000); 
+      await ADreward();
+                  }       
+      else if(n==4 && $.time('HH')==13)  {
+      await Mealreward();
+      await $.wait(1000); 
+      await ADreward();
+                  }     
+            }   
+      await info();
     }
-   }
-   if($.time('HH')==3 || $.time('HH')==12){
+    if($.time('HH')==4 || $.time('HH')==10){
     await notify.sendNotify($.name+'|'+account, detail)
-    }
-    }
    console.log(`⏱⏱⏱执行下一个账号任务⏱⏱⏱`);  
    }  
      console.log(`🎉🎉🎉运行结束🎉🎉🎉`)
@@ -139,115 +145,11 @@ let Account = ["【Sam】"];
   .catch((e) => $.logErr(e))
   .finally(() => $.done())
 
-function sign() {
-    return new Promise((resolve, reject) => {
-       let myrequest = {
-            url: articleURL,
-            headers: {
-             "Content-Type": "application/json; charset=utf-8",
-             "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 iphone sohuinfonews5_1_1"
-            },
-            body: articleBD
-        };
-        $.post(myrequest, async(error, response, data) => {
-          try{
-           let readres = JSON.parse(data);
-            //console.log(readres)
-           if (readres.code == '0') {
-            console.log(`【今日签到】获得${readres.data.todayReward}狐币；`);
-            //detail += `【今日签到】获得${readres.data.todayReward}狐币；\n`;
-            }
-           else  {
-            console.log(`【今日签到】${readres.message}；`);
-            //detail += `【今日签到】${readres.message}；\n`;
-            }
-          }
-           catch(error) {   
-               let readres = JSON.parse(data);
-               //console.log(readres)
-              console.log(`本次任务出现异常，请等待1s后执行下一个任务。`)
-              detail += `本次任务出现异常，请等待1s后执行下一个任务。\n`;
-            }
-          resolve()
-        })
-    })
-}
-
-function video() {
-    return new Promise((resolve, reject) => {
-       let myrequest = {
-            url: articleURL,
-            headers: {
-             "Content-Type": "application/json; charset=utf-8",
-             "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 iphone sohuinfonews5_1_1"
-            },
-            body: articleBD
-        };
-        $.post(myrequest, async(error, response, data) => {
-          try{
-           let readres = JSON.parse(data);
-            //console.log(readres)
-           if (readres.code == '0') {
-            console.log(`【阅读观看】获得${readres.data.addCoin}狐币；`);
-            //detail += `【阅读观看】获得${readres.data.addCoin}狐币；\n`;
-            await $.wait(20000);
-            }
-           else  {
-            console.log(`【阅读观看】${readres.msg}；`);
-            //detail += `【阅读观看】${readres.msg}；\n`;
-            await $.wait(20000);
-            }
-          }
-           catch(error) {   
-               let readres = JSON.parse(data);
-               //console.log(readres)
-              console.log(`本次任务出现异常，请等待1s后执行下一个任务。`)
-              detail += `本次任务出现异常，请等待1s后执行下一个任务。\n`;
-            await $.wait(20000);
-            }
-          resolve()
-        })
-    })
-}
-
-function earn() {
-    return new Promise((resolve, reject) => {
-       let myrequest = {
-            url: articleURL,
-            headers: {
-             "Content-Type": "application/json; charset=utf-8",
-             "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 iphone sohuinfonews5_1_1"
-            },
-            body: articleBD
-        };
-        $.post(myrequest, async(error, response, data) => {
-          try{
-           let readres = JSON.parse(data);
-            //console.log(readres)
-           if (readres.code == '0') {
-            console.log(`【领取狐币】获得${readres.data.earnCoin}狐币；`);
-            //detail += `【领取狐币】获得${readres.data.earnCoin}狐币；\n`;
-            }
-           else  {
-            console.log(`【领取狐币】${readres.msg}；`);
-            //detail += `【领取狐币】${readres.msg}；\n`;
-            }
-          }
-           catch(error) {   
-               let readres = JSON.parse(data);
-               //console.log(readres)
-              console.log(`本次任务出现异常，请等待1s后执行下一个任务。`)
-              detail += `本次任务出现异常，请等待1s后执行下一个任务。\n`;
-            }
-          resolve()
-        })
-    })
-}
 
 function Timereward() {
     return new Promise((resolve, reject) => {
        let myrequest = {
-            url: articleURL,
+            url: "http://ss.sohu.com/api/read/everyday/earn",
             headers: {
              "Content-Type": "application/json; charset=utf-8",
              "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 iphone sohuinfonews5_1_1"
@@ -271,7 +173,7 @@ function Timereward() {
                let readres = JSON.parse(data);
                //console.log(readres)
               console.log(`本次任务出现异常，请等待1s后执行下一个任务。`)
-              detail += `本次任务出现异常，请等待1s后执行下一个任务。\n`;
+              //detail += `本次任务出现异常，请等待1s后执行下一个任务。\n`;
             }
           resolve()
         })
@@ -281,7 +183,7 @@ function Timereward() {
 function Mealreward() {
     return new Promise((resolve, reject) => {
        let myrequest = {
-            url: articleURL,
+            url: "http://ss.sohu.com/api/task/withdrawTaskReward",
             headers: {
              "Content-Type": "application/json; charset=utf-8",
              "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 iphone sohuinfonews5_1_1"
@@ -305,7 +207,7 @@ function Mealreward() {
                let readres = JSON.parse(data);
                //console.log(readres)
               console.log(`本次任务出现异常，请等待1s后执行下一个任务。`)
-              detail += `本次任务出现异常，请等待1s后执行下一个任务。\n`;
+              //detail += `本次任务出现异常，请等待1s后执行下一个任务。\n`;
             }
           resolve()
         })
@@ -315,7 +217,7 @@ function Mealreward() {
 function ADreward() {
     return new Promise((resolve, reject) => {
        let myrequest = {
-            url: articleURL,
+            url: "http://ss.sohu.com/api/activity/task/incentiveVideoReward",
             headers: {
              "Content-Type": "application/json; charset=utf-8",
              "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 iphone sohuinfonews5_1_1"
@@ -339,7 +241,7 @@ function ADreward() {
                let readres = JSON.parse(data);
                //console.log(readres)
               console.log(`本次任务出现异常，请等待1s后执行下一个任务。`)
-              detail += `本次任务出现异常，请等待1s后执行下一个任务。\n`;
+              //detail += `本次任务出现异常，请等待1s后执行下一个任务。\n`;
             }
           resolve()
         })
@@ -349,13 +251,13 @@ function ADreward() {
 function info() {
     return new Promise((resolve, reject) => {
        let myrequest = {
-            url: articleURL,
+            url: infoURL,
              headers: {
              "Content-Type": "application/json; charset=utf-8",
              "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 iphone sohuinfonews5_1_1",
              "Cookie":articleHD
             },
-            body: articleBD
+            body: infoBD
         };
         $.post(myrequest, async(error, response, data) => {
           try{
