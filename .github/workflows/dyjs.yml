@@ -16,8 +16,10 @@ jobs:
     env:
         DYJS_S_URL: ${{ secrets.DYJS_S_URL }}
         DYJS_V_URL: ${{ secrets.DYJS_V_URL }}
+        DYJS_INFO_URL: ${{ secrets.DYJS_INFO_URL }}
         DYJS_S_HD: ${{ secrets.DYJS_S_HD }}
         DYJS_V_HD: ${{ secrets.DYJS_V_HD }}
+        DYJS_INFO_HD: ${{ secrets.DYJS_INFO_HD }}
         DYJS_BD: ${{ secrets.DYJS_BD }}    
         TZ: Asia/shanghai
 
