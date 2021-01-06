@@ -13,7 +13,7 @@ let VHDArr = [], VHD = "";
 let INFOHDArr = [], INFOHD = "";
 let BDArr = [], BD = "";
 let detail = ``;
-let Account = ["【Sam】","【妞宝】"];
+let Account = ["【Sam】","【妞宝】","【月夕】"];
 
   if (process.env.DYJS_S_URL && process.env.DYJS_S_URL.indexOf('\n') > -1) {
   SURL = process.env.DYJS_S_URL.split('\n');
@@ -125,7 +125,7 @@ if (process.env.DYJS_S_HD && process.env.DYJS_S_HD.indexOf('\n') > -1) {
     return;
   }
     
- for (let h = 0; h < 30; h++) {
+ for (let h = 0; h < 40; h++) {
    detail = ``;
    $.index = h + 1
    console.log(`🏃‍♀️🏃‍♀️🏃‍♀️开始执行第${$.index}轮🏃‍♀️🏃‍♀️🏃‍♀️`);
