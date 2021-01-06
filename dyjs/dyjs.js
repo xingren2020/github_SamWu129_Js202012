@@ -146,7 +146,7 @@ if (process.env.DYJS_S_HD && process.env.DYJS_S_HD.indexOf('\n') > -1) {
     else if(j==1)  for (let k = 0; k < 3; k++) {
     await video();
      }
-    else if(j==2)  await info();
+    else if(j==2  && $.time('HH')==23||11)  await info();
      }
      }
      console.log(`⏱⏱⏱执行下一个账号任务⏱⏱⏱`);
@@ -157,7 +157,7 @@ if (process.env.DYJS_S_HD && process.env.DYJS_S_HD.indexOf('\n') > -1) {
      console.log(`⏱⏱⏱执行下一轮⏱⏱⏱`);
     // await $.wait(120000);    
    }  
-  if($.time('HH')==23||11) await notify.sendNotify($.name+'|'+account, detail); 
+  if($.time('HH')==23 || $.time('HH')==11) await notify.sendNotify($.name+'|'+account, detail); 
   console.log(`🎉🎉🎉运行结束🎉🎉🎉`)
 })()
   .catch((e) => $.logErr(e))
