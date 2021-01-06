@@ -146,7 +146,7 @@ if (process.env.DYJS_S_HD && process.env.DYJS_S_HD.indexOf('\n') > -1) {
     else if(j==1)  for (let k = 0; k < 3; k++) {
     await video();
      }
-    else if(j==2 && $.time('HH')==23||11)  await info();
+    else if(j==2)  await info();
      }
      }
      console.log(`⏱⏱⏱执行下一个账号任务⏱⏱⏱`);
