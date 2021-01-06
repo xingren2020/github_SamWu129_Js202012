@@ -113,22 +113,22 @@ let Account = ["【Sam】"];
                   }  
     for (let n = 0; n < 4; n++) {
       articleBD = MealBDArr[n]
-      if(n==1 && $.time('HH')==22)  {
+      if(n==0 && $.time('HH')==22)  {
       await Mealreward();
       await $.wait(1000); 
       await ADreward();
                   }  
-      else if(n==2 && $.time('HH')==3)  {
+      else if(n==1 && $.time('HH')==3)  {
       await Mealreward();
       await $.wait(1000); 
       await ADreward();
                   }  
-      else if(n==3 && $.time('HH')==9)  {
+      else if(n==2 && $.time('HH')==9)  {
       await Mealreward();
       await $.wait(1000); 
       await ADreward();
                   }       
-      else if(n==4 && $.time('HH')==13)  {
+      else if(n==3 && $.time('HH')==13)  {
       await Mealreward();
       await $.wait(1000); 
       await ADreward();
