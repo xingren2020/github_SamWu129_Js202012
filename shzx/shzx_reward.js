@@ -140,6 +140,7 @@ let Account = ["【Sam】"];
     await notify.sendNotify($.name+'|'+account, detail)
    console.log(`⏱⏱⏱执行下一个账号任务⏱⏱⏱`);  
    }  
+   }  
      console.log(`🎉🎉🎉运行结束🎉🎉🎉`)
 })()
   .catch((e) => $.logErr(e))
