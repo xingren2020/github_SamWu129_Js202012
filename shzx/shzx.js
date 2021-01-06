@@ -83,12 +83,12 @@ let Account = ["【Sam】"];
     else if(j==3) await info();
     }
    }
+    // console.log(`【完成任务】共完成账号${$.account}的${$.task}个任务`)
+    }
    if($.time('HH')==3 || $.time('HH')==12){
     await notify.sendNotify($.name+'|'+account, detail)
     }
-    // console.log(`【完成任务】共完成账号${$.account}的${$.task}个任务`)
-    }
-   console.log(`⏱⏱⏱请等待3s后执行下一个账号任务⏱⏱⏱`);
+   console.log(`⏱⏱⏱执行下一个账号任务⏱⏱⏱`);
    //await $.wait(3000);    
    }  
      console.log(`🎉🎉🎉运行结束🎉🎉🎉`)
