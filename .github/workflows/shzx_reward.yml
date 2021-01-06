@@ -18,7 +18,8 @@ jobs:
         SHZX_HD: ${{ secrets.SHZX_HD }}
         SHZX_BD: ${{ secrets.SHZX_BD }} 
         SHZX_BD_TIME: ${{ secrets.SHZX_BD_TIME }} 
-        SHZX_BD_MEAL: ${{ secrets.SHZX_BD_MEAL }}         
+        SHZX_BD_MEAL: ${{ secrets.SHZX_BD_MEAL }}
+        SHZX_BD_AD: ${{ secrets.SHZX_BD_AD }}            
         TZ: Asia/shanghai
 
     steps:
