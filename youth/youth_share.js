@@ -6,7 +6,7 @@
 const $ = new Env("【youth_share】")
 const notify = $.isNode() ? require('./sendNotify') : '';
 let HDArr = [], HD = "";
-//let articleurl = process.env.YOUTH_URL_SHARE;
+let articleurl = process.env.YOUTH_URL_SHARE;
 let Account = ["【Yuexi】","【QF】","【RL】","【WYDSZ】","【妞宝】"];
 
 if (process.env.YOUTH_HD_SHARE && process.env.YOUTH_HD_SHARE.indexOf('\n') > -1) {
@@ -51,10 +51,10 @@ if (process.env.YOUTH_HD_SHARE && process.env.YOUTH_HD_SHARE.indexOf('\n') > -1)
 function share() {
     time = new Date().getTime();
     str = randomWord(false,32);
-    articleurl = "https://script.baertt.com/count2/callback?si="+str+"&_="+time+"&jsonpcallback=jsonp4";
+    //articleurl = "https://script.baertt.com/count2/callback?si="+str+"&_="+time+"&jsonpcallback=jsonp4";
     return new Promise((resolve, reject) => {
        let myrequest = {
-            url: articleurl,
+            url: articleurl+str+"&_="+time+"&jsonpcallback=jsonp4",
             headers: JSON.parse(articleHD)
         };
         $.get(myrequest, async(error, response, data) => {
