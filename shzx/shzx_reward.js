@@ -129,22 +129,22 @@ let Account = ["【Sam】"];
     for (let n = 0; n < 4; n++) {
       articleBD = MealBDArr[n]
       articleAD = ADBDArr[n]
-      if(n==0 && $.time('HH')==22||$.time('HH')==23)  {
+      if(n==0 && $.time('HH')==22||n==0 && $.time('HH')==23)  {
       await Mealreward();
       await $.wait(1000); 
       await ADreward();
                   }  
-      else if(n==1 && $.time('HH')==3||$.time('HH')==4)  {
+      else if(n==1 && $.time('HH')==3||n==1 && $.time('HH')==4)  {
       await Mealreward();
       await $.wait(1000); 
       await ADreward();
                   }  
-      else if(n==2 && $.time('HH')==9||$.time('HH')==10)  {
+      else if(n==2 && $.time('HH')==9||n==2 && $.time('HH')==10)  {
       await Mealreward();
       await $.wait(1000); 
       await ADreward();
                   }       
-      else if(n==3 && $.time('HH')==13||$.time('HH')==14)  {
+      else if(n==3 && $.time('HH')==13||n==3 && $.time('HH')==14)  {
       await Mealreward();
       await $.wait(1000); 
       await ADreward();
@@ -182,8 +182,8 @@ function Timereward() {
             //detail += `【时长奖励】获得${readres.data.earnCoin}狐币；\n`;
             }
            else  {
-            console.log(`【时长奖励】${readres.msg}；`);
-            //detail += `【时长奖励】${readres.msg}；\n`;
+            console.log(`【时长奖励】${readres.message}；`);
+            //detail += `【时长奖励】${readres.message}；\n`;
             }
           }
            catch(error) {   
@@ -216,8 +216,8 @@ function Mealreward() {
             //detail += `【用餐奖励】获得${readres.data.addCount}狐币；\n`;
             }
            else  {
-            console.log(`【用餐奖励】${readres.msg}；`);
-            //detail += `【用餐奖励】${readres.msg}；\n`;
+            console.log(`【用餐奖励】${readres.message}；`);
+            //detail += `【用餐奖励】${readres.message}；\n`;
             }
           }
            catch(error) {   
@@ -250,8 +250,8 @@ function ADreward() {
             //detail += `【用餐广告】获得${readres.data.rewardCoin}狐币；\n`;
             }
            else  {
-            console.log(`【用餐广告】${readres.msg}；`);
-            //detail += `【用餐广告】${readres.msg}；\n`;
+            console.log(`【用餐广告】${readres.message}；`);
+            //detail += `【用餐广告】${readres.message}；\n`;
             }
           }
            catch(error) {   
@@ -281,12 +281,12 @@ function info() {
            let readres = JSON.parse(data);
             //console.log(readres)
            if (readres.code == '0') {
-            console.log(`【收益信息】现金收益：${readres.data.money}分；金币收益：${readres.data.gold}狐币；`);
-            detail = `【收益信息】现金收益：${readres.data.money}分；金币收益：${readres.data.gold}狐币；\n`;
+            console.log(`【收益信息】现金收益：${readres.data.money/100}元；金币收益：${readres.data.gold}狐币；`);
+            detail = `【收益信息】现金收益：${readres.data.money/100}元；金币收益：${readres.data.gold}狐币；\n`;
             }
            else  {
-            console.log(`【收益信息】${readres.msg}；`);
-            detail = `【收益信息】${readres.msg}；\n`;
+            console.log(`【收益信息】${readres.message}；`);
+            detail = `【收益信息】${readres.message}；\n`;
             }
           }
            catch(error) {   
