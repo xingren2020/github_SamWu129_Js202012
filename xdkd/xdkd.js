@@ -6,7 +6,13 @@
 const $ = new Env("【xdkd】")
 const notify = $.isNode() ? require('./sendNotify') : '';
 let SURLArr = [], SURL = "";
-let CKArr = [], CK = "";
+let XURLArr = [], XURL = "";
+let RURL = process.env.XD_R_URL;
+let IURL = process.env.XD_I_URL;
+let SCKArr = [], SCK = "";
+let RCKArr = [], RCK = "";
+let RBDArr = [], RBD = "";
+let IBDArr = [], IBD = "";
 let detail = ``;
 let Account = ["【Sam】","【月锡】"];
 
@@ -24,22 +30,75 @@ let Account = ["【Sam】","【月锡】"];
         }
   })
 
-  if (process.env.QRP_CK && process.env.QRP_CK.indexOf('\n') > -1) {
-  CK = process.env.QRP_CK.split('\n');
+  if (process.env.XD_X_URL && process.env.XD_X_URL.indexOf('\n') > -1) {
+  XURL = process.env.XD_X_URL.split('\n');
   console.log(`您选择的是用换行隔开\n`)
   } 
   else
   {
-  CK = process.env.QRP_CK.split()
+  XURL = process.env.XD_X_URL.split()
   } 
-  Object.keys(CK).forEach((item) => {
-        if (CK[item]) {
-          CKArr.push(CK[item])
+  Object.keys(XURL).forEach((item) => {
+        if (XURL[item]) {
+          XURLArr.push(XURL[item])
         }
   })
 
- 
+  if (process.env.XD_S_CK && process.env.XD_S_CK.indexOf('\n') > -1) {
+  SCK = process.env.XD_S_CK.split('\n');
+  console.log(`您选择的是用换行隔开\n`)
+  } 
+  else
+  {
+  SCK = process.env.XD_S_CK.split()
+  } 
+  Object.keys(SCK).forEach((item) => {
+        if (SCK[item]) {
+          SCKArr.push(SCK[item])
+        }
+  })
 
+   if (process.env.XD_R_CK && process.env.XD_R_CK.indexOf('\n') > -1) {
+  RCK = process.env.XD_R_CK.split('\n');
+  console.log(`您选择的是用换行隔开\n`)
+  } 
+  else
+  {
+  RCK = process.env.XD_R_CK.split()
+  } 
+  Object.keys(RCK).forEach((item) => {
+        if (RCK[item]) {
+          RCKArr.push(RCK[item])
+        }
+  })
+ 
+   if (process.env.XD_R_BD && process.env.XD_R_BD.indexOf('\n') > -1) {
+  RBD = process.env.XD_R_BD.split('\n');
+  console.log(`您选择的是用换行隔开\n`)
+  } 
+  else
+  {
+  RBD = process.env.XD_R_BD.split()
+  } 
+  Object.keys(RBD).forEach((item) => {
+        if (RBD[item]) {
+          RBDArr.push(RBD[item])
+        }
+  })
+
+   if (process.env.XD_I_BD && process.env.XD_I_BD.indexOf('\n') > -1) {
+  IBD = process.env.XD_I_BD.split('\n');
+  console.log(`您选择的是用换行隔开\n`)
+  } 
+  else
+  {
+  IBD = process.env.XD_I_BD.split()
+  } 
+  Object.keys(IBD).forEach((item) => {
+        if (IBD[item]) {
+          IBDArr.push(IBD[item])
+        }
+  })
 
 
       console.log(`============ 共${CKArr.length}个账号  =============\n`)
