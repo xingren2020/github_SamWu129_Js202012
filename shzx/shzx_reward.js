@@ -152,10 +152,10 @@ let Account = ["【Sam】"];
             }   
       await info();
     }
-    if($.time('HH')==4 || $.time('HH')==10){
+    //if($.time('HH')==4 || $.time('HH')==10){
     await notify.sendNotify($.name+'|'+account, detail)
    console.log(`⏱⏱⏱执行下一个账号任务⏱⏱⏱`);  
-   }  
+  // }  
    }  
      console.log(`🎉🎉🎉运行结束🎉🎉🎉`)
 })()
