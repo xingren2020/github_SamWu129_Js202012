@@ -239,8 +239,8 @@ function info() {
            let readres = JSON.parse(data);
             //console.log(readres)
            if (readres.err_no == '0') {
-            console.log(`【收益信息】音符:${readres.data.income_data.amount1}音符；现金:${readres.data.income_data.amount2}/100元；`);
-            detail += `【收益信息】音符:${readres.data.income_data.amount1}音符；现金:${readres.data.income_data.amount2}/100元；\n`;
+            console.log(`【收益信息】音符:${readres.data.income_data.amount1}音符；现金:${readres.data.income_data.amount2/100}元；`);
+            detail += `【收益信息】音符:${readres.data.income_data.amount1}音符；现金:${readres.data.income_data.amount2/100}元；\n`;
             }
            else  {
             console.log(`【收益信息】${readres.err_tips}；`);
