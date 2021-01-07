@@ -3,7 +3,7 @@ name: shzx_reward
 on:
   workflow_dispatch:
   schedule:
-     - cron: '6 1-22 * * *'
+     - cron: '6 1,3,9,13,22 * * *'
 
   watch:
     types: started
