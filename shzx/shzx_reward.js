@@ -121,7 +121,7 @@ let Account = ["【Sam】"];
     // detail = `【账号】${account}\n`;
    for (let m = 0; m < 5; m++) {
       articleBD = TimeBDArr[m]
-     if($.time('HH')==1) {
+     if($.time('HH')==2) {
       await Timereward();
       await $.wait(1000); 
                      } 
