@@ -121,7 +121,7 @@ let Account = ["【Sam】"];
     // detail = `【账号】${account}\n`;
    for (let m = 0; m < 5; m++) {
       articleBD = TimeBDArr[m]
-     if($.time('HH')==2) {
+     if($.time('HH')==1||$.time('HH')==2) {
       await Timereward();
       await $.wait(1000); 
                      } 
@@ -129,22 +129,22 @@ let Account = ["【Sam】"];
     for (let n = 0; n < 4; n++) {
       articleBD = MealBDArr[n]
       articleAD = ADBDArr[n]
-      if(n==0 && $.time('HH')==22)  {
+      if(n==0 && $.time('HH')==22||$.time('HH')==23)  {
       await Mealreward();
       await $.wait(1000); 
       await ADreward();
                   }  
-      else if(n==1 && $.time('HH')==3)  {
+      else if(n==1 && $.time('HH')==3||$.time('HH')==4)  {
       await Mealreward();
       await $.wait(1000); 
       await ADreward();
                   }  
-      else if(n==2 && $.time('HH')==9)  {
+      else if(n==2 && $.time('HH')==9||$.time('HH')==10)  {
       await Mealreward();
       await $.wait(1000); 
       await ADreward();
                   }       
-      else if(n==3 && $.time('HH')==13)  {
+      else if(n==3 && $.time('HH')==13||$.time('HH')==14)  {
       await Mealreward();
       await $.wait(1000); 
       await ADreward();
