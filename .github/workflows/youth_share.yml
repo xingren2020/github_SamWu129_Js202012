@@ -12,6 +12,7 @@ jobs:
     if: github.event.repository.owner.id == github.event.sender.id
     env:
         YOUTH_HD_SHARE: ${{ secrets.YOUTH_HD_SHARE }}
+        YOUTH_URL_SHARE: ${{ secrets.YOUTH_URL_SHARE }}
         TZ: Asia/shanghai
     steps:
       - name: Checkout
