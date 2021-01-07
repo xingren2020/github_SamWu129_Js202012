@@ -7,7 +7,7 @@ const $ = new Env("【youth_share】")
 const notify = $.isNode() ? require('./sendNotify') : '';
 let HDArr = [], HD = "";
 let articleurl = process.env.YOUTH_URL_SHARE;
-let Account = ["【Yuexi】","【QF】","【RL】","【WYDSZ】"];
+let Account = ["【Yuexi】","【QF】","【RL】","【WYDSZ】","【妞宝】"];
 
 if (process.env.YOUTH_HD_SHARE && process.env.YOUTH_HD_SHARE.indexOf('\n') > -1) {
   HD = process.env.YOUTH_HD_SHARE.split('\n');
