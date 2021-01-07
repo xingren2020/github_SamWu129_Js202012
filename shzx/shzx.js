@@ -217,7 +217,7 @@ function info() {
             //console.log(readres)
            if (readres.code == '0') {
             console.log(`【收益信息】现金收益：${readres.data.money/100}元；金币收益：${readres.data.gold}狐币；`);
-            detail = `【收益信息】现金收益：${readres.data.money/100}/元；金币收益：${readres.data.gold}狐币；\n`;
+            detail = `【收益信息】现金收益：${readres.data.money/100}元；金币收益：${readres.data.gold}狐币；\n`;
             }
            else  {
             console.log(`【收益信息】${readres.msg}；`);
