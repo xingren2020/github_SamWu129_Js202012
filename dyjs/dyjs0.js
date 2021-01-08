@@ -144,7 +144,7 @@ if (process.env.DYJS_S_HD && process.env.DYJS_S_HD.indexOf('\n') > -1) {
       AppBD = BDArr[j];
     if(j==0 && h==0 && $.time('HH')==21)  await sign();
     else if(j==1)  await video();
-    else if(j==2 && h==10)  await info();
+    else if(j==2 && h==9)  await info();
      }
      }
      console.log(`⏱⏱⏱执行下一个账号任务⏱⏱⏱`); 
