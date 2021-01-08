@@ -121,7 +121,6 @@ let Account = ["【Sam】","【月锡】"];
       account = Account[i];
      console.log(`【开启任务】开始执行账号${account}的任务`);
      detail = `【账号】${account}\n`;
-    console.log(`开始执行${$.task}个任务`)
     if($.time('HH')==22 || $.time('HH')==23) await Sign();
     await Box();
     await Read();
@@ -201,7 +200,7 @@ function Box() {
             }
           }
            catch(error) {   
-               let readres = JSON.parse(data);
+               //let readres = JSON.parse(data);
                //console.log(readres)
               console.log(`本次任务出现异常，请等待1s后执行下一个任务。`)
               //detail += `本次任务出现异常，请等待1s后执行下一个任务。\n`;
