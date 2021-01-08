@@ -125,7 +125,7 @@ let Account = ["【Sam】","【月锡】"];
     await Box();
     await Read();
     await Info();
-    if($.time('HH')==1 || $.time('HH')==5){
+    if($.time('HH')==1 || $.time('HH')==22){
     await notify.sendNotify($.name+'|'+account, detail)
     }
     // console.log(`【完成任务】共完成账号${$.account}的${$.task}个任务`)
