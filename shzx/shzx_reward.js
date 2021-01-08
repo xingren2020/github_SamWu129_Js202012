@@ -10,6 +10,7 @@ let BDArr = [], BD = "";
 let TimeBDArr = [], TimeBD = "";
 let MealBDArr = [], MealBD = "";
 let ADBDArr = [], ADBD = "";
+let TaskBD = process.env.SHZX_BD_TASK;
 let HDArr = [], HD = "";
 let detail = ``;
 let Account = ["【Sam】"];
@@ -119,6 +120,9 @@ let Account = ["【Sam】"];
      console.log(`【开启任务】开始执行账号${account}的任务`);
      detail = ``;
     // detail = `【账号】${account}\n`;
+      await Task();
+      await $.wait(1000); 
+      
    for (let m = 0; m < 5; m++) {
       articleBD = TimeBDArr[m]
      if($.time('HH')==1||$.time('HH')==2) {
@@ -150,6 +154,7 @@ let Account = ["【Sam】"];
       await ADreward();
                   }     
             }   
+      await $.wait(1000); 
       await info();
     }
     //if($.time('HH')==4 || $.time('HH')==10){
@@ -161,6 +166,40 @@ let Account = ["【Sam】"];
 })()
   .catch((e) => $.logErr(e))
   .finally(() => $.done())
+
+function Task() {
+    return new Promise((resolve, reject) => {
+       let myrequest = {
+            url: "http://ss.sohu.com/api/task/getAllTask",
+            headers: {
+             "Content-Type": "application/json; charset=utf-8",
+             "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 iphone sohuinfonews5_1_1"
+            },
+            body: TaskBD
+        };
+        $.post(myrequest, async(error, response, data) => {
+          try{
+           let readres = JSON.parse(data);
+            //console.log(readres)
+           if (readres.code == '0') {
+            console.log(`【Task】${readres.message}；`);
+            //detail += `【Task】${readres.message}；\n`;
+            }
+           else  {
+            console.log(`【Task】${readres.message}；`);
+            //detail += `【Task】${readres.message}；\n`;
+            }
+          }
+           catch(error) {   
+               let readres = JSON.parse(data);
+               //console.log(readres)
+              console.log(`本次任务出现异常，请等待1s后执行下一个任务。`)
+              //detail += `本次任务出现异常，请等待1s后执行下一个任务。\n`;
+            }
+          resolve()
+        })
+    })
+}
 
 
 function Timereward() {
