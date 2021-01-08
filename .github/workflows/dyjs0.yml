@@ -3,7 +3,7 @@ name: dyjs0
 on:
   workflow_dispatch:
   schedule:
-     - cron: '48 0 * * *'
+     - cron: '28 * * * *'
 
   watch:
     types: started
