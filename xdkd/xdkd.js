@@ -7,8 +7,8 @@ const $ = new Env("【xdkd】")
 const notify = $.isNode() ? require('./sendNotify') : '';
 let SURLArr = [], SURL = "";
 let XURLArr = [], XURL = "";
-let RURL = process.env.XD_R_URL;
-let IURL = process.env.XD_I_URL;
+let ReadURL = process.env.XD_R_URL;
+let InfoURL = process.env.XD_I_URL;
 let SCKArr = [], SCK = "";
 let RCKArr = [], RCK = "";
 let RBDArr = [], RBD = "";
@@ -101,64 +101,66 @@ let Account = ["【Sam】","【月锡】"];
   })
 
 
-      console.log(`============ 共${CKArr.length}个账号  =============\n`)
+      console.log(`============ 共${SCKArr.length}个账号  =============\n`)
       console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
       console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
 !(async () => {
-  if (!CKArr[0]) {
+  if (!SCKArr[0]) {
     console.log($.name, '【提示】请把CK填入Github 的 Secrets 中，请以回车隔开')
     return;
   }
        
-   for (let i = 0; i <CKArr.length; i++) {
-    if (CKArr[i]) {
-      articleCK = CKArr[i];
+   for (let i = 0; i <SCKArr.length; i++) {
+    if (SCKArr[i]) {
+      SignURL = SURLArr[i];
+      SignCK = SCKArr[i];
+      BoxURL = XURLArr[i];
+      ReadCK = RCKArr[i];
+      ReadBD = RBDArr[i];
+      InfoBD = IBDArr[i];
       account = Account[i];
      console.log(`【开启任务】开始执行账号${account}的任务`);
      detail = `【账号】${account}\n`;
-   for (let j = 0; j < URLArr.length; j++) {
-      articleURL = URLArr[j];
-     // $.task = j + 1;
-    // console.log(`开始执行${$.task}个任务`)
-    if(j==0) await task();
-    if(j==1 && $.time('HH')==3)  await sign();
-    else if(j==2) await video();
-    else if(j==3) await box();
-    else if(j==4) await info();
-     }
-   if($.time('HH')==3 || $.time('HH')==10){
+    console.log(`开始执行${$.task}个任务`)
+    if($.time('HH')==22 || $.time('HH')==23) await Sign();
+    await Box();
+    await Read();
+    await Info();
+    if($.time('HH')==1 || $.time('HH')==5){
     await notify.sendNotify($.name+'|'+account, detail)
     }
     // console.log(`【完成任务】共完成账号${$.account}的${$.task}个任务`)
     }
    console.log(`⏱⏱⏱请等待3s后执行下一个账号任务⏱⏱⏱`);
-   await $.wait(3000);    
+   //await $.wait(3000);    
    }  
      console.log(`🎉🎉🎉运行结束🎉🎉🎉`)
 })()
   .catch((e) => $.logErr(e))
   .finally(() => $.done())
 
-function task() {
+
+function Sign() {
     return new Promise((resolve, reject) => {
        let myrequest = {
-            url: articleURL,
+            url: SignURL,
             headers: {
-              "Cookie":articleCK
+               "Cookie":SignCK,
+               "User-Agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 13_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148"
             }
         };
-        $.post(myrequest, async(error, response, data) => {
+        $.get(myrequest, async(error, response, data) => {
           try{
            let readres = JSON.parse(data);
             //console.log(readres)
-           if (readres.code == '0') {
-            console.log(`【任务中心】登录状态：${readres.isLogin}；`);
-            detail += `【任务中心】登录状态：${readres.isLogin}；\n`;
+           if (readres.ret == 'ok') {
+            console.log(`【今日签到】获得：${readres.datas.signAmt}元；`);
+            //detail += `【今日签到】获得：${readres.datas.signAmt}元；\n`;
             await $.wait(1000);
             }
            else  {
-            console.log(`【任务中心】${readres.msg}；`);
-            detail += `【任务中心】${readres.msg}；\n`;
+            console.log(`【今日签到】今日签到失败；`);
+            //detail += `【今日签到】今日签到失败；\n`;
             await $.wait(1000);
             }
           }
@@ -166,7 +168,7 @@ function task() {
                let readres = JSON.parse(data);
                //console.log(readres)
               console.log(`本次任务出现异常，请等待1s后执行下一个任务。`)
-              detail += `本次任务出现异常，请等待1s后执行下一个任务。\n`;
+              //detail += `本次任务出现异常，请等待1s后执行下一个任务。\n`;
             await $.wait(1000);
             }
           resolve()
@@ -174,26 +176,27 @@ function task() {
     })
 }
 
-function sign() {
+function Box() {
     return new Promise((resolve, reject) => {
        let myrequest = {
-            url: articleURL,
+            url: BoxURL,
             headers: {
-              "Cookie":articleCK
+               "Cookie":SignCK,
+               "User-Agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 13_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148"
             }
         };
-        $.post(myrequest, async(error, response, data) => {
+        $.get(myrequest, async(error, response, data) => {
           try{
            let readres = JSON.parse(data);
             //console.log(readres)
-           if (readres.code == '0') {
-            console.log(`【今日签到】获得${readres.data.coinNum}金币；`);
-            detail += `【今日签到】获得${readres.data.coinNum}金币；\n`;
+           if (readres.ret == 'ok') {
+            console.log(`【宝箱奖励】获得${readres.datas.randomBoxProfit}元；`);
+            //detail += `【宝箱奖励】获得${readres.datas.randomBoxProfit}元；\n`;
             await $.wait(1000);
             }
            else  {
-            console.log(`【今日签到】${readres.msg}；`);
-            detail += `【今日签到】${readres.msg}；\n`;
+            console.log(`【宝箱奖励】打开宝箱失败；`);
+            //detail += `【宝箱奖励】打开宝箱失败；\n`;
             await $.wait(1000);
             }
           }
@@ -201,7 +204,7 @@ function sign() {
                let readres = JSON.parse(data);
                //console.log(readres)
               console.log(`本次任务出现异常，请等待1s后执行下一个任务。`)
-              detail += `本次任务出现异常，请等待1s后执行下一个任务。\n`;
+              //detail += `本次任务出现异常，请等待1s后执行下一个任务。\n`;
             await $.wait(1000);
             }
           resolve()
@@ -209,34 +212,39 @@ function sign() {
     })
 }
 
-function video() {
+function Read() {
     return new Promise((resolve, reject) => {
+       min=6411111
+       max=7499999
+       num=Math.floor(Math.random()*(max-min+1)+min)
        let myrequest = {
-            url: articleURL,
+            url: ReadURL,
             headers: {
-              "Cookie":articleCK
-            }
+               "Cookie":ReadCK,
+               "User-Agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 13_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148"
+            },
+           body: "paytype=1&articleID="+num+ReadBD
         };
         $.post(myrequest, async(error, response, data) => {
           try{
-           let readres = JSON.parse(data);
+           let readres = data;
             //console.log(readres)
-           if (readres.code == '0') {
-            console.log(`【观看视频】获得100金币；`);
-            detail += `【观看视频】获得100金币；\n`;
+           if (readres == 'ok') {
+            console.log(`【阅读文章】获得0.005元!`);
+            //detail += `阅读文章】获得0.005元!\n`;
             await $.wait(1000);
             }
            else  {
-            console.log(`【观看视频】${readres.msg}；`);
-            detail += `【观看视频】${readres.msg}；\n`;
+            console.log(`【阅读文章】未获得奖励；`);
+            //detail += `【阅读文章】未获得奖励；\n`;
             await $.wait(1000);
             }
           }
            catch(error) {   
-               let readres = JSON.parse(data);
+              let readres = data;
                //console.log(readres)
               console.log(`本次任务出现异常，请等待1s后执行下一个任务。`)
-              detail += `本次任务出现异常，请等待1s后执行下一个任务。\n`;
+              //detail += `本次任务出现异常，请等待1s后执行下一个任务。\n`;
             await $.wait(1000);
             }
           resolve()
@@ -245,61 +253,28 @@ function video() {
 }
 
 
-function box() {
+function Info() {
     return new Promise((resolve, reject) => {
        let myrequest = {
-            url: articleURL,
+            url: InfoURL,
             headers: {
-              "Cookie":articleCK
-            }
+               "Cookie":SignCK,
+               "User-Agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 13_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148"
+            },
+           body: InfoBD
         };
         $.post(myrequest, async(error, response, data) => {
           try{
            let readres = JSON.parse(data);
             //console.log(readres)
-           if (readres.code == '0') {
-            console.log(`【开启宝箱】获得${readres.data.coin}金币；`);
-            detail += `【开启宝箱】获得${readres.data.coin}金币；\n`;
+           if (readres.ret == 'ok') {
+            console.log(`【收益信息】今日收益：${readres.datas.userInfo.account.todayAccount}元；现金收益：${readres.datas.userInfo.account.account}元；`);
+            detail += `【收益信息】今日收益：${readres.datas.userInfo.account.todayAccount}元；现金收益：${readres.datas.userInfo.account.account}元；\n`;
             await $.wait(1000);
             }
            else  {
-            console.log(`【开启宝箱】${readres.msg}；`);
-            detail += `【开启宝箱】${readres.msg}；\n`;
-            await $.wait(1000);
-            }
-          }
-           catch(error) {   
-               let readres = JSON.parse(data);
-               //console.log(readres)
-              console.log(`本次任务出现异常，请等待1s后执行下一个任务。`)
-              detail += `本次任务出现异常，请等待1s后执行下一个任务。\n`;
-            await $.wait(1000);
-            }
-          resolve()
-        })
-    })
-}
-
-function info() {
-    return new Promise((resolve, reject) => {
-       let myrequest = {
-            url: articleURL,
-            headers: {
-              "Cookie":articleCK
-            }
-        };
-        $.post(myrequest, async(error, response, data) => {
-          try{
-           let readres = JSON.parse(data);
-            //console.log(readres)
-           if (readres.code == '0') {
-            console.log(`【收益信息】现金收益：${readres.data.cashBalance}元；金币收益：${readres.data.coinBalance}金币；`);
-            detail += `【收益信息】现金收益：${readres.data.cashBalance}元；金币收益：${readres.data.coinBalance}金币；\n`;
-            await $.wait(1000);
-            }
-           else  {
-            console.log(`【收益信息】${readres.msg}；`);
-            detail += `【收益信息】${readres.msg}；\n`;
+            console.log(`【收益信息】未查询到收益信息；`);
+            detail += `【收益信息】未查询到收益信息；\n`;
             await $.wait(1000);
             }
           }
