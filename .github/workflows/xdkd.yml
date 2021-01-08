@@ -1,0 +1,51 @@
+name: xdkd
+
+on:
+  workflow_dispatch:
+  schedule:
+     - cron: '12 21-23,0-2 * * *'
+
+  watch:
+    types: started
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+
+    env:
+        XD_S_URL: ${{ secrets.XD_S_URL }}
+        XD_X_URL: ${{ secrets.XD_X_URL }}
+        XD_R_URL: ${{ secrets.XD_R_URL }}
+        XD_I_URL: ${{ secrets.XD_I_URL }}
+        XD_S_CK: ${{ secrets.XD_S_CK }} 
+        XD_R_CK: ${{ secrets.XD_R_CK }} 
+        XD_R_BD: ${{ secrets.XD_R_BD }}
+        XD_I_BD: ${{ secrets.XD_I_BD }} 
+        TZ: Asia/shanghai
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+
+      - name: npm install
+        run: |
+          npm install
+          
+      - name: '运行 【xdkd】'
+        if: env.XD_S_CK
+        run: |
+          node xdkd/xdkd.js
+        env:
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
