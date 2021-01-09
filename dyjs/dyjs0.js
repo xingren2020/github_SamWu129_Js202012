@@ -202,12 +202,12 @@ function video() {
            if (readres.err_no == '0') {
             console.log(`【观看视频】获得${readres.data.score_amount}音符；`);
             //detail += `【观看视频】获得${readres.data.score_amount}音符；\n`;
-            await $.wait(5000);
+            await $.wait(7000);
             }
            else  {
             console.log(`【观看视频】${readres.err_tips}；`);
             //detail += `【观看视频】${readres.err_tips}；\n`;
-            await $.wait(5000);
+            await $.wait(7000);
             }
           }
            catch(error) {   
@@ -215,7 +215,7 @@ function video() {
                //console.log(readres)
               console.log(`本次任务出现异常，请等待1s后执行下一个任务。`)
               //detail += `本次任务出现异常，请等待1s后执行下一个任务。\n`;
-            await $.wait(5000);
+            await $.wait(7000);
             }
           resolve()
         })
