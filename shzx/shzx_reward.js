@@ -11,6 +11,7 @@ let TimeBDArr = [], TimeBD = "";
 let MealBDArr = [], MealBD = "";
 let ADBDArr = [], ADBD = "";
 let TaskBD = process.env.SHZX_BD_TASK;
+let GetBD = process.env.SHZX_BD_GET;
 let HDArr = [], HD = "";
 let detail = ``;
 let Account = ["【Sam】"];
@@ -121,6 +122,7 @@ let Account = ["【Sam】"];
      detail = ``;
     // detail = `【账号】${account}\n`;
       await Task();
+      await Get();
       await $.wait(1000); 
       
    for (let m = 0; m < 5; m++) {
@@ -188,6 +190,40 @@ function Task() {
            else  {
             console.log(`【Task】${readres.message}；`);
             //detail += `【Task】${readres.message}；\n`;
+            }
+          }
+           catch(error) {   
+               let readres = JSON.parse(data);
+               //console.log(readres)
+              console.log(`本次任务出现异常，请等待1s后执行下一个任务。`)
+              //detail += `本次任务出现异常，请等待1s后执行下一个任务。\n`;
+            }
+          resolve()
+        })
+    })
+}
+
+function Get() {
+    return new Promise((resolve, reject) => {
+       let myrequest = {
+            url: "http://ss.sohu.com/api/read/everyday/get",
+            headers: {
+             "Content-Type": "application/json; charset=utf-8",
+             "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 iphone sohuinfonews5_1_1"
+            },
+            body: GetBD
+        };
+        $.post(myrequest, async(error, response, data) => {
+          try{
+           let readres = JSON.parse(data);
+            //console.log(readres)
+           if (readres.code == '0') {
+            console.log(`【Get】${readres.message}；`);
+            //detail += `【Get】${readres.message}；\n`;
+            }
+           else  {
+            console.log(`【Get】${readres.message}；`);
+            //detail += `【Get】${readres.message}；\n`;
             }
           }
            catch(error) {   
