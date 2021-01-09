@@ -3,7 +3,7 @@ name: xdkd
 on:
   workflow_dispatch:
   schedule:
-     - cron: '12 21-23,0-2 * * *'
+     - cron: '12 * * * *'
 
   watch:
     types: started
