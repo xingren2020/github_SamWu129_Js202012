@@ -94,15 +94,15 @@ let Account = ["【Sam】"];
       await $.wait(1000); 
    if(i==2) for (let m = 0; m < 3; m++) {
       articleBD = TimeBDArr[m]
-     if(m==0 && $.time('HH')==22||$.time('HH')==23) {
+     if(m==0 && $.time('HH')==22||m==0 && $.time('HH')==23) {
       await exec();
       await $.wait(1000); 
                      } 
-     else if(m==1 && $.time('HH')==4||$.time('HH')==5) {
+     else if(m==1 && $.time('HH')==4||m==1 && $.time('HH')==5) {
       await exec();
       await $.wait(1000); 
                      } 
-     else if(m==2 && $.time('HH')==10||$.time('HH')==11) {
+     else if(m==2 && $.time('HH')==10||m==2 && $.time('HH')==11) {
       await exec();
       await $.wait(1000); 
                      }                      
