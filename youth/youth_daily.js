@@ -123,7 +123,7 @@ function share() {
     return new Promise((resolve, reject) => {
        let myrequest = {
             url: articleURL,
-            headers: articleHD,
+            headers: JSON.parse(articleHD),
             body: articleBD
         };
         $.post(myrequest, async(error, response, data) => {
@@ -154,7 +154,7 @@ function beread() {
     return new Promise((resolve, reject) => {
        let myrequest = {
             url: articleURL,
-            headers: articleHD,
+            headers: JSON.parse(articleHD),
             body: articleBD
         };
         $.post(myrequest, async(error, response, data) => {
@@ -186,7 +186,7 @@ function exec() {
     return new Promise((resolve, reject) => {
        let myrequest = {
             url: articleURL,
-            headers: articleHD,
+            headers: JSON.parse(articleHD),
             body: articleBD
         };
         $.post(myrequest, async(error, response, data) => {
