@@ -185,8 +185,6 @@ function beread() {
 function exec() {
     return new Promise((resolve, reject) => {
        let myrequest = {
-            url: "http://ss.sohu.com/api/read/everyday/earn",
-            headers: {
             url: articleURL,
             headers: articleHD,
             body: articleBD
