@@ -123,11 +123,11 @@ let Account = ["【Sam】","【小爱豆】","【QF】","【RL】","【WYDSZ】"
    for (let j = 0; j < URLArr.length; j++) {
       articleURL = URLArr[j];
    if(j==0) await task();
-   if(j==1) for (let m = 0; m < EggBDArr.length; m++) {
+   else if(j==1) for (let m = 0; m < EggBDArr.length; m++) {
       articleBD = EggBDArr[m]; 
       await egg();
       };
-   if(j==2) for (let n = 0; n < PrizeBDArr.length; n++) {
+   else if(j==2) for (let n = 0; n < PrizeBDArr.length; n++) {
       articleBD = PrizeBDArr[n]; 
       await prize();
       };
