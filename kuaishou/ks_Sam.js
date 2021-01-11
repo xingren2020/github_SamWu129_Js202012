@@ -44,7 +44,7 @@ let ksUrl = [], ksArr = [];
     }
   //   for (let j = 0; j < 5; j++) {
       await AutoRead();
-      await $.wait(20000);
+      await $.wait(30000);
  //     console.log(`\n  请等待10s后继续视频${$.index}第${j+1}次任务`)
  //   }
  };
