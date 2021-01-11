@@ -48,7 +48,7 @@ let BDArr = [], BD = "";
     console.log($.name, '【提示】请把HD填入Github 的 Secrets 中，请以回车隔开')
     return;
   }
-  for (let j = 0; j < 50; j++) {
+  for (let j = 0; j < 120; j++) {
         for (let i = 0; i < HDArr.length; i++) {
     if (HDArr[i]) {
       articleHD = HDArr[i];
