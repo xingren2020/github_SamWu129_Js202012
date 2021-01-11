@@ -3,7 +3,7 @@ name: xp
 on:
   workflow_dispatch:
   schedule:
-     - cron: '51 * * * *'
+     - cron: '51 3-6 * * *'
   watch:
     types: started
 jobs:
