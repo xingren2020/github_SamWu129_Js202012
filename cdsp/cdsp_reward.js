@@ -122,15 +122,15 @@ let Account = ["【Sam】","【小爱豆】","【QF】","【RL】","【WYDSZ】"
      detail = `【账号】${account}\n`;
    for (let j = 0; j < URLArr.length; j++) {
       articleURL = URLArr[j];
-   if(j==0) await task();
+   if(j==0) await task()
    else if(j==1) for (let m = 0; m < EggBDArr.length; m++) {
       articleBD = EggBDArr[m]; 
       await egg();
-      };
+      }
    else if(j==2) for (let n = 0; n < PrizeBDArr.length; n++) {
       articleBD = PrizeBDArr[n]; 
       await prize();
-      };
+      }
      }
    detail += `【Egg】获得${eggcoin}金币；\n`;
    detail += `【Prize】获得${prizecoin}金币；\n`;
