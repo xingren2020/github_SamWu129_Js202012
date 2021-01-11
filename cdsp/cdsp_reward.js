@@ -153,7 +153,7 @@ function task() {
         $.get(myrequest, async(error, response, data) => {
           try{
            let readres = JSON.parse(data);
-            //console.log(readres)
+            console.log(readres)
            if (readres.code == '0') {
             console.log(`【task】${readres.message}；\n【DailyCoin】${readres.data.user.coin_daily}金币；`);
             detail += `【task】${readres.message}；\n【DailyCoin】${readres.data.user.coin_daily}金币；\n`;
@@ -187,7 +187,7 @@ function egg() {
         $.post(myrequest, async(error, response, data) => {
           try{
            let readres = JSON.parse(data);
-            //console.log(readres)
+            console.log(readres)
            if (readres.code == '0' || readres.code == '422') {
             console.log(`【Egg】获得${readres.prize}金币；`);
             eggcoin += readres.prize
