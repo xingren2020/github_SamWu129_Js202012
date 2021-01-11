@@ -60,7 +60,7 @@ let BDArr = [], BD = "";
     }
      await $.wait(30000);
  }
-   console.log(`-------------------------\n\n彩蛋共完成${$.index}个账号阅读`)
+   console.log(`-------------------------\n\n共完成${$.index}个账号阅读`)
 })()
   .catch((e) => $.logErr(e))
   .finally(() => $.done())
@@ -77,13 +77,13 @@ function AutoRead() {
            let readres = JSON.parse(data);
           //  console.log(readres)
            if (readres.resultCode == '1') {
-            console.log(`\n本次阅读获得${readres.data.goldCoinNumber}个金币，请等待1s后执行下一个账号阅读\n`);
+            console.log(`\n本次阅读获得${readres.data.goldCoinNumber}个金币，执行下一个账号阅读\n`);
             }
           }
            catch(error) {   
                let readres = JSON.parse(data);
            //    console.log(readres)
-              console.log(`\n本次阅读出现异常，请等待1s后执行下一个账号阅读\n`)
+              console.log(`\n本次阅读出现异常，执行下一个账号阅读\n`)
             }
           resolve()
         })
