@@ -7,6 +7,7 @@ const $ = new Env("【cdsp_reward】")
 const notify = $.isNode() ? require('./sendNotify') : '';
 let URLArr = [], URL = "";
 let EggBDArr = [], EggBD = "";
+let EggHDArr = [], EggHD = "";
 let PrizeBDArr = [], PrizeBD = "";
 let HDArr = [], HD = "";
 let TKArr = [], TK = "";
@@ -39,6 +40,20 @@ let Account = ["【Sam】","【小爱豆】","【QF】","【RL】","【WYDSZ】"
   Object.keys(EggBD).forEach((item) => {
         if (EggBD[item]) {
           EggBDArr.push(EggBD[item])
+        }
+  })
+
+ if (process.env.CD_HD_EGG && process.env.CD_HD_EGG.indexOf('\n') > -1) {
+  EggHD = process.env.CD_HD_EGG.split('\n');
+  console.log(`您选择的是用换行隔开\n`)
+  } 
+  else
+  {
+  EggHD = process.env.CD_HD_EGG.split()
+  } 
+  Object.keys(EggHD).forEach((item) => {
+        if (EggHD[item]) {
+          EggHDArr.push(EggHD[item])
         }
   })
   
@@ -115,6 +130,7 @@ let Account = ["【Sam】","【小爱豆】","【QF】","【RL】","【WYDSZ】"
       articleTK = TKArr[i];
       articleToken = TokenArr[i]; 
       articleHD = HDArr[i];
+      rewardHD = EggHDArr[i];
       account = Account[i];
       eggcoin = 0;
       prizecoin = 0;
@@ -177,11 +193,7 @@ function egg() {
      return new Promise((resolve, reject) => {
        let myrequest = {
             url: articleURL,
-            headers: {
-              "Content-Type": "application/json",
-              "TK": articleTK,
-              "Token": articleToken
-            },
+            headers: JSON.parse(rewardHD),
             body: articleBD
         };
         $.post(myrequest, async(error, response, data) => {
@@ -210,11 +222,12 @@ function prize() {
     return new Promise((resolve, reject) => {
        let myrequest = {
             url: articleURL,
-            headers: {
-              "Content-Type": "application/json",
-              "TK": articleTK,
-              "Token": articleToken
-            },
+            headers: JSON.parse(rewardHD),
+  //          headers: {
+  //            "Content-Type": "application/json",
+  //            "TK": articleTK,
+  //            "Token": articleToken
+  //           },
             body: articleBD
         };
         $.post(myrequest, async(error, response, data) => {
