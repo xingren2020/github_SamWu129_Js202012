@@ -85,14 +85,20 @@ let Account = ["【Sam】"];
       articleHD = HDArr[i];
       articleBD = BDArr[i];
       account = Account[0];
-     console.log(`【开启任务】开始执行账号${account}的任务`);
-     detail = ``;
+      nowdate=Date.parse(new Date());
+      //console.log(nowdate)
+      lastdate=Date.parse("2021-1-11");
+      //console.log(lastdate)
+      days=parseInt((nowdate-lastdate)/(1000*60*60*24));
+      console.log(`【开启任务】开始执行账号${account}的任务`);
+      console.log(`【分享天数】第${days}天`);
+      detail = ``;
     // detail = `【账号】${account}\n`;
    if(i==0) await share();
       await $.wait(1000); 
    if(i==1) await beread();
       await $.wait(1000); 
-   if(i==2) for (let m = 0; m < 3; m++) {
+   if(i==2) for (let m = 0; m < 4; m++) {
       articleBD = TimeBDArr[m]
      if(m==0 && $.time('HH')==22||m==0 && $.time('HH')==23) {
       await exec();
@@ -105,7 +111,11 @@ let Account = ["【Sam】"];
      else if(m==2 && $.time('HH')==10||m==2 && $.time('HH')==11) {
       await exec();
       await $.wait(1000); 
-                     }                      
+                     }   
+     else if(m==3 && days%5==0 && $.time('HH')==11||m==3 && days%5==0 && $.time('HH')==12) {
+      await exec500();
+      await $.wait(1000); 
+                     }  
                   }  
 
     }
@@ -200,6 +210,37 @@ function exec() {
            else  {
             console.log(`【exec】${readres.msg}；`);
             //detail += `【exec】${readres.msg}；\n`;
+            }
+          }
+           catch(error) {   
+               let readres = JSON.parse(data);
+               //console.log(readres)
+              console.log(`本次任务出现异常，请等待1s后执行下一个任务。`)
+              //detail += `本次任务出现异常，请等待1s后执行下一个任务。\n`;
+            }
+          resolve()
+        })
+    })
+}
+
+function exec500() {
+    return new Promise((resolve, reject) => {
+       let myrequest = {
+            url: articleURL,
+            headers: JSON.parse(articleHD),
+            body: articleBD
+        };
+        $.post(myrequest, async(error, response, data) => {
+          try{
+           let readres = JSON.parse(data);
+            //console.log(readres)
+           if (readres.code == '200') {
+            console.log(`【exec500】奖励领取成功；`);
+            //detail += `【exec500】奖励领取成功；\n`;
+            }
+           else  {
+            console.log(`【exec500】${readres.msg}；`);
+            //detail += `【exec500】${readres.msg}；\n`;
             }
           }
            catch(error) {   
