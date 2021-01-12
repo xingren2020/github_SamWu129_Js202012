@@ -13,6 +13,7 @@ jobs:
     env:
         CD_URL_REWARD: ${{ secrets.CD_URL_REWARD }}
         CD_BD_EGG: ${{ secrets.CD_BD_EGG }}     
+        CD_HD_EGG: ${{ secrets.CD_HD_EGG }}   
         CD_BD_PRIZE: ${{ secrets.CD_BD_PRIZE }}   
         CD_HD_TASK: ${{ secrets.CD_HD_TASK }}  
         CD_TK: ${{ secrets.CD_TK }}
