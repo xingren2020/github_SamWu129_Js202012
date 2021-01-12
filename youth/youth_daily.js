@@ -91,7 +91,7 @@ let Account = ["【Sam】"];
       //console.log(lastdate)
       days=parseInt((nowdate-lastdate)/(1000*60*60*24));
       console.log(`【开启任务】开始执行账号${account}的任务`);
-      console.log(`【分享天数】第${days}天`);
+      console.log(`【分享天数】第${days%5+1}天`);
       detail = ``;
     // detail = `【账号】${account}\n`;
    if(i==0) await share();
