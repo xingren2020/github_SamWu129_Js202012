@@ -3,7 +3,7 @@
 */
 
 //let s = 30000 //等待延迟30s
-const $ = new Env("【dyjs】")
+const $ = new Env("【dyjs0】")
 const notify = $.isNode() ? require('./sendNotify') : '';
 let SURLArr = [], SURL = "";
 let VURLArr = [], VURL = "";
@@ -125,7 +125,7 @@ if (process.env.DYJS_S_HD && process.env.DYJS_S_HD.indexOf('\n') > -1) {
     return;
   }
     
- for (let h = 0; h < 40; h++) {
+ for (let h = 0; h < 240; h++) {
    detail = ``;
    $.index = h + 1
    console.log(`🏃‍♀️🏃‍♀️🏃‍♀️开始执行第${$.index}轮🏃‍♀️🏃‍♀️🏃‍♀️`);
@@ -142,20 +142,14 @@ if (process.env.DYJS_S_HD && process.env.DYJS_S_HD.indexOf('\n') > -1) {
      detail += `${account}`;
    for (let j = 0; j < 3; j++) {
       AppBD = BDArr[j];
-    if(j==0 && $.time('HH')==21)  await sign();
-    else if(j==1)  for (let k = 0; k < 3; k++) {
-    await video();
-     }
-    else if(j==2)  await info();
+    if(j==0 && h==0 && $.time('HH')==21)  await sign();
+    else if(j==1)  await video();
+    else if(j==2 && h==239)  await info();
      }
      }
-     console.log(`⏱⏱⏱执行下一个账号任务⏱⏱⏱`);
-
-//   console.log(`⏱⏱⏱请等待3s后执行下一个账号任务⏱⏱⏱`);
-//   await $.wait(3000);    
+     console.log(`⏱⏱⏱执行下一个账号任务⏱⏱⏱`); 
    }  
-     console.log(`⏱⏱⏱执行下一轮⏱⏱⏱`);
-    // await $.wait(120000);    
+     console.log(`⏱⏱⏱执行下一轮⏱⏱⏱`);   
    }  
   if($.time('HH')==23 || $.time('HH')==11) await notify.sendNotify($.name, detail); 
   console.log(`🎉🎉🎉运行结束🎉🎉🎉`)
@@ -208,12 +202,12 @@ function video() {
            if (readres.err_no == '0') {
             console.log(`【观看视频】获得${readres.data.score_amount}音符；`);
             //detail += `【观看视频】获得${readres.data.score_amount}音符；\n`;
-            await $.wait(20000);
+            await $.wait(7000);
             }
            else  {
             console.log(`【观看视频】${readres.err_tips}；`);
             //detail += `【观看视频】${readres.err_tips}；\n`;
-            await $.wait(20000);
+            await $.wait(7000);
             }
           }
            catch(error) {   
@@ -221,7 +215,7 @@ function video() {
                //console.log(readres)
               console.log(`本次任务出现异常，请等待1s后执行下一个任务。`)
               //detail += `本次任务出现异常，请等待1s后执行下一个任务。\n`;
-            await $.wait(20000);
+            await $.wait(7000);
             }
           resolve()
         })
