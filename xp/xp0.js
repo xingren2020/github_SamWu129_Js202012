@@ -9,6 +9,7 @@ const $ = new Env("xp")
 let URLArr = [], URL = "";
 let HDArr = [], HD = "";
 let BDArr = [], BD = "";
+let cashBD = process.env.XP_BD_CASH;
 let Account = ["【Sam】","【月锡】"];
 let detail = ``;
 
@@ -85,7 +86,6 @@ let detail = ``;
  else if (h==1 && $.time('HH')==3||h==1 && $.time('HH')==13)  for (let i = 0; i < HDArr.length; i++) {
     if (HDArr[i]) {
       articleHD = HDArr[i];
-      articleBD = BDArr[i]; 
       account = Account[i];
     //  $.index = i + 1;
     // console.log(`\n  开始账号${$.index}第${j+1}次任务`)
@@ -96,7 +96,6 @@ let detail = ``;
  else if (h==2 && $.time('HH')==10||h==2 && $.time('HH')==11) for (let i = 0; i < HDArr.length; i++) {
     if (HDArr[i]) {
       articleHD = HDArr[i];
-      articleBD = BDArr[i]; 
       account = Account[i];
     //  $.index = i + 1;
     // console.log(`\n  开始账号${$.index}第${j+1}次任务`)
@@ -145,10 +144,9 @@ function info() {
     return new Promise((resolve, reject) => {
        let myrequest = {
             url: articleurl,
-            headers: JSON.parse(articleHD),
-            body: articleBD
+            headers: JSON.parse(articleHD)
         };
-        $.post(myrequest, async(error, response, data) => {
+        $.get(myrequest, async(error, response, data) => {
           try{
            let readres = JSON.parse(data);
           //  console.log(readres)
@@ -176,7 +174,7 @@ function cash() {
        let myrequest = {
             url: articleurl,
             headers: JSON.parse(articleHD),
-            body: articleBD
+            body: cashBD
         };
         $.post(myrequest, async(error, response, data) => {
           try{
