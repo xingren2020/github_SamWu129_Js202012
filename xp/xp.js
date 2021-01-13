@@ -4,7 +4,7 @@
 
 //let s = 30000 //等待延迟30s
 const $ = new Env("xp")
-//const notify = $.isNode() ? require('./sendNotify') : '';
+const notify = $.isNode() ? require('./sendNotify') : '';
 //let articleurl = process.env.XP_URL;
 let URLArr = [], URL = "";
 let HDArr = [], HD = "";
