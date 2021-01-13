@@ -106,6 +106,8 @@ let detail = ``;
   }
   await notify.sendNotify($.name+'\n', detail)
    console.log(`🎉🎉🎉运行结束🎉🎉🎉`)
+   console.log(`============ 脚本结束-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
+   console.log(`============ 脚本结束-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
 })()
   .catch((e) => $.logErr(e))
   .finally(() => $.done())
