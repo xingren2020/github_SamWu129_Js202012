@@ -83,7 +83,7 @@ let detail = ``;
     }
      await $.wait(30000);
  }
- else if (h==1 && $.time('HH')==8||h== && $.time('HH')==9)  for (let i = 0; i < HDArr.length; i++) {
+ else if (h==1 && $.time('HH')==9||h== && $.time('HH')==10)  for (let i = 0; i < HDArr.length; i++) {
     if (HDArr[i]) {
       articleHD = HDArr[i];
       account = Account[i];
@@ -93,7 +93,7 @@ let detail = ``;
      }
      await $.wait(1000);
     }
- else if (h==2 && $.time('HH')==8||h==2 && $.time('HH')==9) for (let i = 0; i < HDArr.length; i++) {
+ else if (h==2 && $.time('HH')==9||h==2 && $.time('HH')==10) for (let i = 0; i < HDArr.length; i++) {
     if (HDArr[i]) {
       articleHD = HDArr[i];
       account = Account[i];
