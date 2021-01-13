@@ -3,7 +3,7 @@
 */
 
 //let s = 30000 //等待延迟30s
-const $ = new Env("【dyjs0】")
+const $ = new Env("【dyjs】")
 const notify = $.isNode() ? require('./sendNotify') : '';
 let SURLArr = [], SURL = "";
 let VURLArr = [], VURL = "";
