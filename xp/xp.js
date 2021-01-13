@@ -67,7 +67,7 @@ let detail = ``;
     return;
   }
   for (let h = 0; h < 3; h++) {
-      articleURL = URLArr[i];
+      articleURL = URLArr[h];
   if (h==0) for (let j = 0; j < 120; j++) {
         detail = ``;
         for (let i = 0; i < HDArr.length; i++) {
