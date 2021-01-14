@@ -187,8 +187,8 @@ function cash() {
             detail += `【账号】${account}【提现信息】提现${readres.data.withdrawRes}元；${readres.data.remark}；\n`;
             }
            else if (readres.resultCode == '0') {
-            console.log(`【账号】${account}【收益信息】失败：${readres.errorCode}；`);
-            detail += `【账号】${account}【收益信息】失败：${readres.errorCode}；\n`;
+            console.log(`【账号】${account}【提现信息】失败：${readres.errorCode}；`);
+            detail += `【账号】${account}【提现信息】失败：${readres.errorCode}；\n`;
             }
           }
            catch(error) {   
