@@ -9,7 +9,7 @@ const notify = $.isNode() ? require('./sendNotify') : '';
 let URLArr = [], URL = "";
 let HDArr = [], HD = "";
 let BDArr = [], BD = "";
-let CASHBD = process.env.XP_BD_CASH;
+//let CASHBD = process.env.XP_BD_CASH;
 let Account = ["【Sam】","【月锡】"];
 let detail = ``;
 
@@ -176,7 +176,7 @@ function cash() {
        let myrequest = {
             url: articleurl,
             headers: JSON.parse(articleHD),
-            body: CASHBD
+            body: process.env.XP_BD_CASH
         };
         $.post(myrequest, async(error, response, data) => {
           try{
