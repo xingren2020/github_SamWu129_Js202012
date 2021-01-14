@@ -9,7 +9,7 @@ const notify = $.isNode() ? require('./sendNotify') : '';
 let URLArr = [], URL = "";
 let HDArr = [], HD = "";
 let BDArr = [], BD = "";
-let cashBD = process.env.XP_BD_CASH;
+let CASHBD = process.env.XP_BD_CASH;
 let Account = ["【Sam】","【月锡】"];
 let detail = ``;
 
@@ -83,7 +83,7 @@ let detail = ``;
     }
      await $.wait(30000);
  }
- else if (h==1 && $.time('HH')==9||h==1 && $.time('HH')==10)  for (let i = 0; i < HDArr.length; i++) {
+ else if (h==1 && $.time('HH')==10)  for (let i = 0; i < HDArr.length; i++) {
     if (HDArr[i]) {
       articleHD = HDArr[i];
       account = Account[i];
@@ -93,7 +93,7 @@ let detail = ``;
      }
      await $.wait(1000);
     }
- else if (h==2 && $.time('HH')==9||h==2 && $.time('HH')==10) for (let i = 0; i < HDArr.length; i++) {
+ else if (h==2 && $.time('HH')==10) for (let i = 0; i < HDArr.length; i++) {
     if (HDArr[i]) {
       articleHD = HDArr[i];
       account = Account[i];
@@ -176,7 +176,7 @@ function cash() {
        let myrequest = {
             url: articleurl,
             headers: JSON.parse(articleHD),
-            body: cashBD
+            body: CASHBD
         };
         $.post(myrequest, async(error, response, data) => {
           try{
