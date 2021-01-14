@@ -93,7 +93,7 @@ let detail = ``;
      }
      await $.wait(1000);
     }
- else if (h==2 && $.time('HH')==10) for (let i = 0; i < HDArr.length; i++) {
+ else if (h==2) for (let i = 0; i < HDArr.length; i++) {
     if (HDArr[i]) {
       articleHD = HDArr[i];
       account = Account[i];
