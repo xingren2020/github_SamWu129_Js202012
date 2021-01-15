@@ -169,7 +169,7 @@ if($request.body.indexOf('isFinishWatch')&&$request.body.indexOf('"type":2')>=0)
  }
  }
 async function control(){
-   if(coins >= 1 && hour == 1){
+   if(coins >= 1 && hour == 1 && minute <= 4){
       await withdraw();
 }
    if(goldbody && gold == 1){
@@ -288,6 +288,7 @@ return new Promise((resolve, reject) => {
     })
    })
   } 
+
 //livevideo
 function watch_livevideo() {
 let liveids = liveid.replace(/\d{3}$/,Math.floor(Math.random()*1000));
@@ -313,6 +314,7 @@ return new Promise((resolve, reject) => {
     })
    })
   } 
+
 //withdraw
 function withdraw() {
 return new Promise((resolve, reject) => {
@@ -334,6 +336,7 @@ return new Promise((resolve, reject) => {
     })
    })
   } 
+
 //date
 function getNowFormatDate() {
 if ($.isNode()) {
