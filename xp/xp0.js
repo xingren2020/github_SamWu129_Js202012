@@ -209,8 +209,8 @@ return new Promise((resolve, reject) => {
         if(logs)$.log(data)
      let num = data.match(/"type":1/i)? data.match(/"type":1/ig).length : 0
      $.log('xpvideo'+num)
-     if(num > 5){gold = 1}
-     else if(num <= 5){gold = 0}
+     if(num >= 5){gold = 1}
+     else if(num < 5){gold = 0}
      //message += '🎉当前金币余额'+result.data[0].totalCoinAmt+'\n'
           resolve()
     })
