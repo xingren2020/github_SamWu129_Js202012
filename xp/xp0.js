@@ -169,15 +169,15 @@ if($request.body.indexOf('isFinishWatch')&&$request.body.indexOf('"type":2')>=0)
  }
  }
 async function control(){
-   if(coins >= 1 && hour == 1 && minute <= 4){
+   /*if(coins >= 1 && hour == 21){
       await withdraw();
-}
+}*/
    if(goldbody && gold == 1){
       await watch_goldvideo();
    }else{
       await watch_video();
 }
-   if(no < 50 && hour >= 8 && hour <= 23){
+   if(no < 50 && hour >= 8 && hour <= 23 && $.getval("live") == 1){
        await watch_livevideo();
 }
 }
@@ -209,6 +209,18 @@ return new Promise((resolve, reject) => {
         if(logs)$.log(data)
      let num = data.match(/"type":1/i)? data.match(/"type":1/ig).length : 0
      $.log('xpvideo'+num)
+     if(result.errorCode == 'GATEWAY-TOKEN-003'){
+       $.msg('⏰提示：多账号请保持所有账号登录状态，不要退出登录；单账号，请更新header\n')
+       $.done()
+      }
+var random = ''
+for(let i = 1;i<=7;i++){
+  const No = Math.round(Math.random()*9)
+     random += No;
+}
+video = '134869212528'+random
+$.log(video)
+     //if(num == 0) $.msg('token过期，请重新获取header')
      if(num >= 5){gold = 1}
      else if(num < 5){gold = 0}
      //message += '🎉当前金币余额'+result.data[0].totalCoinAmt+'\n'
@@ -218,21 +230,15 @@ return new Promise((resolve, reject) => {
   } 
 //video
 function watch_video() {
-nowtime = Date.now();
-video = '13'+Math.floor(Math.random()*123456789101112131)
-$.log(video)
 return new Promise((resolve, reject) => {
   let watch_videourl ={
     url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/give_gold_coin_by_video.json`,
-    //headers: JSON.parse(headers.replace(/\d{21,33}/,`31348857648073203712${nowtime}`)),
-    //headers: JSON.parse(headers.replace(/\d{19}/g,`${video}`)),
-    headers: JSON.parse(headers),
+    headers: JSON.parse(headers.replace(/\d{19}/g,`${video}`)),
     body: videobody,
     timeout: 30000
 }
    $.post(watch_videourl,(error, response, data) =>{
-       if(logs) $.log(data)
-      const result = JSON.parse(data)
+     const result = JSON.parse(data)
        if(logs) $.log(data)
           message += `📣看视频\n`
       if(result.resultCode == 1) {
@@ -250,13 +256,10 @@ return new Promise((resolve, reject) => {
   } 
 //goldvideo
 function watch_goldvideo() {
-nowtime = Date.now();
-video = '13'+Math.floor(Math.random()*123456789101112131)
-$.log(video)
 return new Promise((resolve, reject) => {
   let watch_goldvideourl ={
     url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/give_gold_coin_by_video.json`,
-    headers: JSON.parse(headers),
+    headers: JSON.parse(headers.replace(/\d{19}/g,`${video}`)),
     body: goldbody,
     timeout: 60000
 }
@@ -277,7 +280,6 @@ return new Promise((resolve, reject) => {
     })
    })
   } 
-
 //status
 function status() {
 return new Promise((resolve, reject) => {
@@ -295,11 +297,10 @@ return new Promise((resolve, reject) => {
     })
    })
   } 
-
 //livevideo
 function watch_livevideo() {
-let liveids = liveid.replace(/\d{3}$/,Math.floor(Math.random()*1000));
-$.log(liveids)
+let liveids = liveid.replace(/\d{3}$/,Math.round((Math.random() > 0.1 ? Math.random() : (Math.random()+0.1)) *1000));
+$.log('livesid:'+liveids)
 return new Promise((resolve, reject) => {
   let watch_livevideourl ={
     url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/give_redbag_by_live.json`,
@@ -321,7 +322,6 @@ return new Promise((resolve, reject) => {
     })
    })
   } 
-
 //withdraw
 function withdraw() {
 return new Promise((resolve, reject) => {
@@ -343,7 +343,6 @@ return new Promise((resolve, reject) => {
     })
    })
   } 
-
 //date
 function getNowFormatDate() {
 if ($.isNode()) {
@@ -371,7 +370,7 @@ async function showmsg(){
 if(tz==1){
     $.log(message)
     if ($.isNode()){
-    if (hour == 4 || hour == 23) {
+    if ((hour == 3) || (hour == 23)) {
        await notify.sendNotify($.name,message)
      }
    }else{
