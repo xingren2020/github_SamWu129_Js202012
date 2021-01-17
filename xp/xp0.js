@@ -122,7 +122,7 @@ if (!videoheaderArr[0]) {
     return;
   }
    console.log(`------------- 共${videoheaderArr.length}个账号----------------\n`)
-  for (let h = 0; h < 25; h++) {
+  for (let h = 0; h < 120; h++) {
      console.log(`🚴‍♀️🚴‍♀️🚴‍♀️开始执行第${h+1}轮任务----------------🚴‍♀️🚴‍♀️🚴‍♀️\n`)
   for (let i = 0; i < videoheaderArr.length; i++) {
     if (videoheaderArr[i]) {
@@ -143,7 +143,7 @@ if (!videoheaderArr[0]) {
       await showmsg()
   }
  }
-      await $.wait(128000);
+      await $.wait(30000);
       }
 })()
     .catch((e) => $.logErr(e))
