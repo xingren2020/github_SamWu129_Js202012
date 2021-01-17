@@ -225,7 +225,8 @@ return new Promise((resolve, reject) => {
   let watch_videourl ={
     url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/give_gold_coin_by_video.json`,
     //headers: JSON.parse(headers.replace(/\d{21,33}/,`31348857648073203712${nowtime}`)),
-    headers: JSON.parse(headers.replace(/\d{19}/g,`${video}`)),
+    //headers: JSON.parse(headers.replace(/\d{19}/g,`${video}`)),
+    headers: JSON.parse(headers),
     body: videobody,
     timeout: 30000
 }
@@ -255,7 +256,7 @@ $.log(video)
 return new Promise((resolve, reject) => {
   let watch_goldvideourl ={
     url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/give_gold_coin_by_video.json`,
-    headers: JSON.parse(headers.replace(/\d{19}/g,`${video}`)),
+    headers: JSON.parse(headers),
     body: goldbody,
     timeout: 60000
 }
