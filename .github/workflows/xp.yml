@@ -1,19 +1,21 @@
 name: xp
 
+
 on:
   workflow_dispatch:
   schedule:
-     - cron: '51 * * * *'
+     - cron: '41 19-23,0-3 * * *'
   watch:
     types: started
+
 jobs:
   build:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     env:
-        XP_URL: ${{ secrets.XP_URL }}
-        XP_HD: ${{ secrets.XP_HD }}        
-        XP_BD: ${{ secrets.XP_BD }}
+        VIDEOHEADER: ${{ secrets.VIDEOHEADER }}
+        VIDEOBODY: ${{ secrets.VIDEOBODY }}        
+        GOLDBODY: ${{ secrets.GOLDBODY }}
         TZ: Asia/shanghai
     steps:
       - name: Checkout
@@ -28,7 +30,7 @@ jobs:
           cd ~/Js202012
           npm install
       - name: '运行 【xp】'
-        if: env.XP_HD
+        if: env.VIDEOHEADER
         run: |
           cd ~/Js202012
           node xp/xp.js
