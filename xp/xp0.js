@@ -40,7 +40,7 @@ var currentdate = ''
 var newtime = ''
 let headers;
 var gold = "0"
-var live = "0"
+var live = "1"
 let no;
 var video= '0'
 var coins= '0'
