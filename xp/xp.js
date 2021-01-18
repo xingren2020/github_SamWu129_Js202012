@@ -159,7 +159,7 @@ async function control(){
    }else{
       await watch_video();
 }
-   if(no < 50 && hour >= 9 && hour <= 21 && live == 1){
+   if(no < 50 && hour >= 8 && hour <= 21 && live == 1){
        await watch_livevideo();
 }
 }
@@ -353,7 +353,7 @@ async function showmsg(){
 if(tz==1){
     $.log(message)
     if ($.isNode()){
-    if ((hour == 5) || (hour == 11)) {
+    if ((hour == 5 && minute <= 2) || (hour == 11 && minute <= 2)) {
        await notify.sendNotify($.name,message)
      }
    }else{
