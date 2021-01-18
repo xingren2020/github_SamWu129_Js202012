@@ -159,7 +159,7 @@ async function control(){
    }else{
       await watch_video();
 }
-   if(no < 50 && hour >= 8 && hour <= 21 && live == 1){
+   if(no < 50 && hour >= 8 && hour <= 21){
        await watch_livevideo();
 }
 }
