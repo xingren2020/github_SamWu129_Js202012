@@ -175,12 +175,12 @@ else if ($.time('HH')>4&&$.time('HH')<8){
   await readArticle();
   await Articlered();
   await readTime();
-for ( j=0;j<4;j++){
+for ( j=0;j<6;j++){
   console.log("等待20s进行时长任务")
   await $.wait(20000);
   await readTime();
   };
-for ( k=0;k<6;k++){
+for ( k=0;k<8;k++){
  console.log("等待5s进行抽奖任务")
   await $.wait(5000);
   await rotary();
