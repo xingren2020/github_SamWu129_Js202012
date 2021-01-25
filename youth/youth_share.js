@@ -5,36 +5,37 @@
 //let s = 30000 //等待延迟30s
 const $ = new Env("【youth_share】")
 const notify = $.isNode() ? require('./sendNotify') : '';
-let HDArr = [], HD = "";
+let REFERERArr = [], REFERER = "";
 let articleurl = process.env.YOUTH_URL_SHARE;
+let articlehd = process.env.YOUTH_HD_SHARE;
 let Account = ["【Yuexi】","【QF】","【RL】","【WYDSZ】","【妞宝】"];
 
-if (process.env.YOUTH_HD_SHARE && process.env.YOUTH_HD_SHARE.indexOf('\n') > -1) {
-  HD = process.env.YOUTH_HD_SHARE.split('\n');
+if (process.env.YOUTH_REFERER_SHARE && process.env.YOUTH_REFERER_SHARE.indexOf('\n') > -1) {
+  REFERER = process.env.YOUTH_REFERER_SHARE.split('\n');
   console.log(`您选择的是用换行隔开\n`)
   } 
   else
   {
-  HD = process.env.YOUTH_HD_SHARE.split()
+  REFERER = process.env.YOUTH_REFERER_SHARE.split()
   } 
-  Object.keys(HD).forEach((item) => {
-        if (HD[item]) {
-          HDArr.push(HD[item])
+  Object.keys(REFERER).forEach((item) => {
+        if (REFERER[item]) {
+          REFERERArr.push(REFERER[item])
         }
   })
 
-      console.log(`============ 共${HDArr.length}个账号  =============\n`)
+      console.log(`============ 共${REFERERArr.length}个账号  =============\n`)
       console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
       console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
 !(async () => {
-  if (!HDArr[0]) {
-    console.log($.name, '【提示】请把HD填入Github 的 Secrets 中，请以回车隔开')
+  if (!REFERERArr[0]) {
+    console.log($.name, '【提示】请把REFERER填入Github 的 Secrets 中，请以回车隔开')
     return;
   }
 
-   for (let i = 0; i < HDArr.length; i++) {
-    if (HDArr[i]) {
-      articleHD = HDArr[i];
+   for (let i = 0; i < REFERERArr.length; i++) {
+    if (REFERERArr[i]) {
+      articleREFERER = REFERERArr[i];
       account = Account[i];
      console.log(`【开启任务】开始执行账号${account}的任务`);
      detail = `【账号】${account}\n`;
@@ -53,8 +54,8 @@ function share() {
     str = randomWord(false,32);
     return new Promise((resolve, reject) => {
        let myrequest = {
-            url: articleurl+str+"&_="+time+"&jsonpcallback=jsonp4",
-            headers: JSON.parse(articleHD)
+            url: articleurl+str+"&"+articleREFERER+"&_="+time+"&jsonpcallback=jsonp5",
+            headers: JSON.parse(articlehd)
         };
         $.get(myrequest, async(error, response, data) => {
           try{
