@@ -13,6 +13,7 @@ jobs:
     env:
         YOUTH_HD_SHARE: ${{ secrets.YOUTH_HD_SHARE }}
         YOUTH_URL_SHARE: ${{ secrets.YOUTH_URL_SHARE }}
+        YOUTH_REFERER_SHARE: ${{ secrets.YOUTH_REFERER_SHARE }}
         TZ: Asia/shanghai
     steps:
       - name: Checkout
