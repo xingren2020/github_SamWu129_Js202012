@@ -1,6 +1,7 @@
 /*
 作者：执意ZhiYi-N
 更新日 20210117
+
 */
 const jsname='XP'
 const $ = Env(jsname)
@@ -156,7 +157,7 @@ if($request.body.indexOf('isFinishWatch')&&$request.body.indexOf('"type":2')>=0)
  }
  }
 async function control(){
-   if(money == 0 && hour == 11){
+   if(money == 1 && hour == 11){
       await withdraw();
 }
    if(goldbody && gold == 0){
