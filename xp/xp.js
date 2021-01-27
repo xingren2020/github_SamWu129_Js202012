@@ -189,7 +189,7 @@ return new Promise((resolve, reject) => {
    $.get(profiturl,(error, response, data) =>{
      const result = JSON.parse(data)
         if(logs)$.log(data)
-     let num = data.match(/"type":1/i)? data.match(/"type":1/ig).length : 0
+     let num = data.match(/"type":1&&"actTypeId":9/i)? data.match(/"type":1&&"actTypeId":9/ig).length : 0
      $.log('xpvideo'+num)
      if(result.errorCode == 'GATEWAY-TOKEN-003'){
        $.msg('⏰提示：多账号请保持所有账号登录状态，不要退出登录；单账号，请更新header\n')
