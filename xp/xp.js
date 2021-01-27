@@ -21,7 +21,7 @@ var currentdate = ''
 var newtime = ''
 let headers;
 var gold = "0"
-var money = "1"
+var money = "0"
 var live = "1"
 let no;
 var video= '0'
@@ -114,7 +114,7 @@ if (!videoheaderArr[0]) {
       goldbody = goldbodyArr[i];
       account = Account[i];
       gold = (h+1)%7;
-      money = h;
+      money = h + 1;
       $.index = i + 1;
       console.log(`\n开始【笑谱${$.index}】${account}`)
       console.log(`\n非金蛋:${gold}`)
