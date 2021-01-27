@@ -10,7 +10,7 @@ const videoheaderArr = [],videobodyArr=[],goldbodyArr=[]
 let videoheader = $.getdata('videoheader')
 let videobody = $.getdata('videobody')
 let goldbody = $.getdata('goldbody')
-let Account =["【天方】","【Sam】","【月锡】"]
+let Account =["【Sam】","【天方】","【月锡】"]
 
 let tz = ($.getval('tz') || '1');//0关闭通知，1默认开启
 const invite=0;//新用户自动邀请，0关闭，1默认开启
