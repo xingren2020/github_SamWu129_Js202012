@@ -125,7 +125,7 @@ if (!videoheaderArr[0]) {
       await showmsg()
   }
  }
-      await $.wait(20000);
+      await $.wait(30000);
       }
 })()
     .catch((e) => $.logErr(e))
