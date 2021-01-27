@@ -21,6 +21,7 @@ var currentdate = ''
 var newtime = ''
 let headers;
 var gold = "0"
+var money = "1"
 var live = "1"
 let no;
 var video= '0'
@@ -112,10 +113,12 @@ if (!videoheaderArr[0]) {
       videobody = videobodyArr[i];
       goldbody = goldbodyArr[i];
       account = Account[i];
-      gold =(h+1)%7;
+      gold = (h+1)%7;
+      money = h;
       $.index = i + 1;
       console.log(`\n开始【笑谱${$.index}】${account}`)
-      console.log(`\n非金蛋${gold}`)
+      console.log(`\n非金蛋:${gold}`)
+      console.log(`\Money:${gold}`)
       //await invite()
       await getNowFormatDate()
       await profit()
@@ -153,7 +156,7 @@ if($request.body.indexOf('isFinishWatch')&&$request.body.indexOf('"type":2')>=0)
  }
  }
 async function control(){
-   if(h == 0 && hour == 11){
+   if(money == 0 && hour == 11){
       await withdraw();
 }
    if(goldbody && gold == 0){
