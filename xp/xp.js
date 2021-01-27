@@ -112,8 +112,10 @@ if (!videoheaderArr[0]) {
       videobody = videobodyArr[i];
       goldbody = goldbodyArr[i];
       account = Account[i];
+      gold =(h+1)%7;
       $.index = i + 1;
       console.log(`\n开始【笑谱${$.index}】${account}`)
+      console.log(`\n非金蛋${gold}`)
       //await invite()
       await getNowFormatDate()
       await profit()
@@ -154,7 +156,7 @@ async function control(){
    /*if(coins >= 1 && hour == 21){
       await withdraw();
 }*/
-   if(goldbody && gold == 1){
+   if(goldbody && gold == 0){
       await watch_goldvideo();
    }else{
       await watch_video();
@@ -189,8 +191,7 @@ return new Promise((resolve, reject) => {
    $.get(profiturl,(error, response, data) =>{
      const result = JSON.parse(data)
         if(logs)$.log(data)
-     //let num = data.match(/"type":1/i)? data.match(/"type":1/ig).length : 0
-      let num = data.match(/"actTypeId":9/i)? data.match(/"actTypeId":9/ig).length : 0
+     let num = data.match(/"type":1/i)? data.match(/"type":1/ig).length : 0
      $.log('xpvideo'+num)
      if(result.errorCode == 'GATEWAY-TOKEN-003'){
        $.msg('⏰提示：多账号请保持所有账号登录状态，不要退出登录；单账号，请更新header\n')
@@ -204,8 +205,8 @@ for(let i = 1;i<=7;i++){
 video = '134869212528'+random
 $.log(video)
      //if(num == 0) $.msg('token过期，请重新获取header')
-     if(num >= 5){gold = 1}
-     else if(num < 5){gold = 0}
+     //if(num >= 5){gold = 1}
+     //else if(num < 5){gold = 0}
      //message += '🎉当前金币余额'+result.data[0].totalCoinAmt+'\n'
           resolve()
     })
