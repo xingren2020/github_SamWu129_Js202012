@@ -118,7 +118,7 @@ if (!videoheaderArr[0]) {
       $.index = i + 1;
       console.log(`\n开始【笑谱${$.index}】${account}`)
       console.log(`\n非金蛋:${gold}`)
-      console.log(`\Money:${gold}`)
+      console.log(`\Money:${money}`)
       //await invite()
       await getNowFormatDate()
       await profit()
