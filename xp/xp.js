@@ -160,11 +160,11 @@ async function control(){
    if(money == 1 && hour == 11){
       await withdraw();
 }
-   if(goldbody && gold == 0){
+/*   if(goldbody && gold == 0){
       await watch_goldvideo();
    }else{
       await watch_video();
-}
+}  */
    if(no < 60 && hour >= 8 && hour <= 21){
        await watch_livevideo();
 }
