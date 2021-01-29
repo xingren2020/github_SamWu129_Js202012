@@ -123,11 +123,11 @@ if (!videoheaderArr[0]) {
       //console.log(`\n非金蛋:${gold}`)
       //console.log(`\Money:${money}`)
       //await invite()
-      //await getNowFormatDate()
+      await getNowFormatDate()
       //await profit()
-      //await balance()
-      //await status()
-      //await getliveid()
+      await balance()
+      await status()
+      await getliveid()
       //await control()
       //await withdraw()
       await watch_livevideo()
@@ -178,7 +178,7 @@ function balance() {
 return new Promise((resolve, reject) => {
   let balanceurl ={
     url: 'https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/balance.json',
-    headers :JSON.parse(headers),
+    headers :JSON.parse(videoheader),
 }
    $.get(balanceurl,(error, response, data) =>{
      const result = JSON.parse(data)
@@ -279,7 +279,7 @@ function status() {
 return new Promise((resolve, reject) => {
   let statusurl ={
     url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/list_gold_coin.json?date=${currentdate}&actTypeId=10&size=60`,
-    headers :JSON.parse(headers),
+    headers :JSON.parse(videoheader),
 }
    $.get(statusurl,(error, response, data) =>{
      const result = JSON.parse(data)
