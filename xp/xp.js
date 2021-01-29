@@ -286,9 +286,29 @@ return new Promise((resolve, reject) => {
     })
    })
   } 
+
+//产生随机数
+function randomWord(randomFlag, min, max){
+  var str = "",
+    range = min,
+    arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+  // 随机产生
+  if(randomFlag){
+    range = Math.round(Math.random() * (max-min)) + min;
+  }
+  for(var i=0; i<range; i++){
+   var pos = Math.round(Math.random() * (arr.length-1));
+    str += arr[pos];
+  }
+  //console.log(str)
+  return str;
+}
+
 //livevideo
 function watch_livevideo() {
-let liveids = liveid.replace(/\d{3}$/,Math.round((Math.random() > 0.1 ? Math.random() : (Math.random()+0.1)) *1000));
+//let liveids = liveid.replace(/\d{3}$/,Math.round((Math.random() > 0.1 ? Math.random() : (Math.random()+0.1)) *1000));
+    let str = randomWord(false,15);
+    let liveids = '1355'+str;
 $.log('livesid:'+liveids)
 return new Promise((resolve, reject) => {
   let watch_livevideourl ={
