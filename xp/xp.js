@@ -125,7 +125,7 @@ if (!videoheaderArr[0]) {
       //await invite()
       await getNowFormatDate()
       //await profit()
-      await balance()
+      //await balance()
       await status()
       //await getliveid()
       await control()
