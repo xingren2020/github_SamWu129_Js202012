@@ -123,16 +123,17 @@ if (!videoheaderArr[0]) {
       //console.log(`\n非金蛋:${gold}`)
       //console.log(`\Money:${money}`)
       //await invite()
-      await getNowFormatDate()
+      //await getNowFormatDate()
       //await profit()
       //await balance()
       //await status()
-      await getliveid()
+      //await getliveid()
       //await control()
       //await withdraw()
       await watch_livevideo()
       await showmsg()
   }
+      await $.wait(3000);
  }
       await $.wait(40000);
       }
@@ -329,8 +330,8 @@ return new Promise((resolve, reject) => {
 //livevideo
 function watch_livevideo() {
 //let liveids = liveid.replace(/\d{3}$/,Math.round((Math.random() > 0.1 ? Math.random() : (Math.random()+0.1)) *1000));
-    //let str = randomWord(false,15);
-    //let liveids = '1355'+str;
+    let str = randomWord(false,15);
+    let liveids = '1355'+str;
 $.log('livesid:'+liveids)
 return new Promise((resolve, reject) => {
   let watch_livevideourl ={
