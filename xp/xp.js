@@ -318,8 +318,8 @@ return new Promise((resolve, reject) => {
    $.get(getliveidurl,(error, response, data) =>{
      const result = JSON.parse(data)
        if(logs) $.log(data)
-          message += '📣获取id\n'
           liveids = result.data.liveIdList[id]
+          message += '📣获取id：${liveids}\n'
           resolve()
     })
    })
