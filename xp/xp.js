@@ -105,7 +105,7 @@ if (!videoheaderArr[0]) {
     return;
   }
    console.log(`------------- 共${videoheaderArr.length}个账号----------------\n`)
-  for (let h = 0; h < 119; h++) {
+  for (let h = 0; h < 60; h++) {
      console.log(`🚴‍♀️🚴‍♀️🚴‍♀️开始执行第${h+1}轮任务----------------🚴‍♀️🚴‍♀️🚴‍♀️\n`)
   for (let i = 0; i < videoheaderArr.length; i++) {
     if (videoheaderArr[i]) {
