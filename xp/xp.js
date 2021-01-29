@@ -15,7 +15,7 @@ let Account =["【Sam】","【天方】","【月锡】"]
 
 let tz = ($.getval('tz') || '1');//0关闭通知，1默认开启
 const invite=0;//新用户自动邀请，0关闭，1默认开启
-const logs =0;//0为关闭日志，1为开启
+const logs =1;//0为关闭日志，1为开启
 var hour=''
 var minute=''
 var currentdate = ''
@@ -125,9 +125,9 @@ if (!videoheaderArr[0]) {
       //await invite()
       await getNowFormatDate()
       //await profit()
-      //await balance()
+      await balance()
       await status()
-      await getliveid()
+      //await getliveid()
       await control()
       //await withdraw()
       //await watch_livevideo()
@@ -316,8 +316,7 @@ return new Promise((resolve, reject) => {
 }
    $.get(getliveidurl,(error, response, data) =>{
      const result = JSON.parse(data)
-       //if(logs) 
-       $.log(data)
+       if(logs) $.log(data)
           message += '📣获取id\n'
           liveids = result.data.liveIdList[id]
           resolve()
@@ -329,13 +328,13 @@ return new Promise((resolve, reject) => {
 //livevideo
 function watch_livevideo() {
 //let liveids = liveid.replace(/\d{3}$/,Math.round((Math.random() > 0.1 ? Math.random() : (Math.random()+0.1)) *1000));
-    //let str = randomWord(false,15);
-    //let liveids = '1355'+str;
+    let str = randomWord(false,15);
+    let liveids = '1355'+str;
 $.log('livesid:'+liveids)
 return new Promise((resolve, reject) => {
   let watch_livevideourl ={
     url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/give_redbag_by_live.json`,
-    headers: JSON.parse(headers),
+    headers: JSON.parse(videoheader),
     //timeout: 60000,
     body: `{"actId":"283","liveId":"${liveids}"}`
 }
@@ -396,6 +395,7 @@ if ($.isNode()) {
     currentdate = year + seperator1 + month + seperator1 + strDate;
 //$.log(currentdate)
 }
+
 
 async function showmsg(){
 if(tz==1){
