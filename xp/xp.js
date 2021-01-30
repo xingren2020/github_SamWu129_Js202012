@@ -15,7 +15,7 @@ let Account =["【Sam】","【天方】","【月锡】"]
 
 let tz = ($.getval('tz') || '1');//0关闭通知，1默认开启
 const invite=0;//新用户自动邀请，0关闭，1默认开启
-const logs =1;//0为关闭日志，1为开启
+const logs =0;//0为关闭日志，1为开启
 var hour=''
 var minute=''
 var currentdate = ''
@@ -125,9 +125,9 @@ if (!videoheaderArr[0]) {
       //await invite()
       await getNowFormatDate()
       //await profit()
-      //await balance()
+      await balance()
       await status()
-      //await getliveid()
+      await getliveid()
       //await control()
       //await withdraw()
       await watch_livevideo()
@@ -178,7 +178,7 @@ function balance() {
 return new Promise((resolve, reject) => {
   let balanceurl ={
     url: 'https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/balance.json',
-    headers :JSON.parse(videoheader),
+    headers :JSON.parse(headers),
 }
    $.get(balanceurl,(error, response, data) =>{
      const result = JSON.parse(data)
@@ -279,7 +279,7 @@ function status() {
 return new Promise((resolve, reject) => {
   let statusurl ={
     url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/list_gold_coin.json?date=${currentdate}&actTypeId=10&size=60`,
-    headers :JSON.parse(videoheader),
+    headers :JSON.parse(headers),
 }
    $.get(statusurl,(error, response, data) =>{
      const result = JSON.parse(data)
@@ -314,7 +314,7 @@ function getliveid() {
 return new Promise((resolve, reject) => {
   let getliveidurl ={
     url: `https://veishop.iboxpay.com/nf_gateway/nf_content_service/live/ignore_tk/v1/query_living_list_id.json`,
-    headers: JSON.parse(videoheader)
+    headers: JSON.parse(headers)
 }
    $.get(getliveidurl,(error, response, data) =>{
      const result = JSON.parse(data)
@@ -336,7 +336,7 @@ $.log('livesid:'+liveids)
 return new Promise((resolve, reject) => {
   let watch_livevideourl ={
     url: `https://veishop.iboxpay.com/nf_gateway/nf_customer_activity/day_cash/v1/give_redbag_by_live.json`,
-    headers: JSON.parse(videoheader),
+    headers: JSON.parse(headers),
     //timeout: 60000,
     body: `{"actId":"283","liveId":"${liveids}"}`
 }
@@ -393,7 +393,8 @@ if ($.isNode()) {
         strDate = "0" + strDate;
     }
     newtime = new Date().getTime()
-    headers = videoheader.replace(/\d{21,33}/,`31348493177781673984${newtime}`)
+    //headers = videoheader.replace(/\d{21,33}/,`31348493177781673984${newtime}`)
+    headers = videoheader.replace(/\d{21,33}/,`31348520936419680256${newtime}`)
     currentdate = year + seperator1 + month + seperator1 + strDate;
 //$.log(currentdate)
 }
