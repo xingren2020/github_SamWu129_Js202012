@@ -297,7 +297,9 @@ let cookie_is_live = await user(i + 1);//用户名
 	  await cashlist();//今日提现查询
 	  if (!cashcs.amount && CASH>=1 && $.coin.data.balance/100>=CASH) {
 	  await withdraw();//提现
- }	  
+ }
+  for (let h = 0; h < 6; h++) {
+     console.log(`🚴‍♀️🚴‍♀️🚴‍♀️开始执行第${h+1}轮视频&直播任务----------------🚴‍♀️🚴‍♀️🚴‍♀️\n`)	  
       if (LIVE >=1 && nowTimes.getHours() >= 8 && nowTimes.getHours() <= 23) {
 	  await sylist();//收益列表
 if ($.sylist.resultCode && livecs<LIVE) {
@@ -313,7 +315,7 @@ if ($.sylist.resultCode && livecs<LIVE) {
 	  await newvideo();//新人福利
  }	  
       await goldvideo();//金蛋视频
-	  
+     }	  
 	  	  
      }
       
