@@ -71,7 +71,6 @@ let Account = ["【Sam】"];
       //articleBD = BDArr[i];
       account = Account[0];
       console.log(`【开启任务】开始执行账号${account}的任务`);
-      console.log(`【分享天数】已连续分享${days%5}天`);
       detail = ``;
     // detail = `【账号】${account}\n`;
    if(i==0) await reward();
