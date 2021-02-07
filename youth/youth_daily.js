@@ -94,21 +94,23 @@ let Account = ["【Sam】"];
       console.log(`【分享天数】已连续分享${days%5}天`);
       detail = ``;
     // detail = `【账号】${account}\n`;
-   if(i==0) await share();
+   if(i==0) await time();
       await $.wait(1000); 
-   if(i==1) await beread();
+   if(i==1 && $.time('HH')==4||i==1 && $.time('HH')==10||i==1 && $.time('HH')==22) await share();
       await $.wait(1000); 
-   if(i==2) for (let m = 0; m < 4; m++) {
+   if(i==2 && $.time('HH')==4||i==2 && $.time('HH')==10||i==2 && $.time('HH')==22) await beread();
+      await $.wait(1000); 
+   if(i==3) for (let m = 0; m < 4; m++) {
       articleBD = TimeBDArr[m]
-     if(m==0 && $.time('HH')==22||m==0 && $.time('HH')==23) {
+     if(m==0 && $.time('HH')==22) {
       await exec();
       await $.wait(1000); 
                      } 
-     else if(m==1 && $.time('HH')==4||m==1 && $.time('HH')==5) {
+     else if(m==1 && $.time('HH')==4) {
       await exec();
       await $.wait(1000); 
                      } 
-     else if(m==2 && $.time('HH')==10||m==2 && $.time('HH')==11) {
+     else if(m==2 && $.time('HH')==10) {
       await exec();
       await $.wait(1000); 
                      }   
@@ -128,6 +130,37 @@ let Account = ["【Sam】"];
 })()
   .catch((e) => $.logErr(e))
   .finally(() => $.done())
+
+function time() {
+    return new Promise((resolve, reject) => {
+       let myrequest = {
+            url: articleURL,
+            headers: JSON.parse(articleHD),
+            body: articleBD
+        };
+        $.post(myrequest, async(error, response, data) => {
+          try{
+           let readres = JSON.parse(data);
+            //console.log(readres)
+           if (readres.code == '1') {
+            console.log(`【time】${readres.msg}；获得${readres.data.score}青豆；`);
+            //detail += `【time】${readres.msg}；获得${readres.data.score}青豆；\n`;
+            }
+           else  {
+            console.log(`【time】${readres.msg}；`);
+            //detail += `【time】${readres.msg；\n`;
+            }
+          }
+           catch(error) {   
+               let readres = JSON.parse(data);
+               //console.log(readres)
+              console.log(`本次任务出现异常，请等待1s后执行下一个任务。`)
+              //detail += `本次任务出现异常，请等待1s后执行下一个任务。\n`;
+            }
+          resolve()
+        })
+    })
+}
 
 function share() {
     return new Promise((resolve, reject) => {
