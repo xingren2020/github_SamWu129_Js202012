@@ -205,8 +205,8 @@ function beread() {
            let readres = JSON.parse(data);
             //console.log(readres)
            if (readres.code == '200') {
-            console.log(`【beread】${readres.data.taskList[0].name}:${readres.data.taskList[0].status_msg}；`);
-            //detail += `【beread】${readres.data.taskList[0].name}:${readres.data.taskList[0].status_msg}；\n`;
+            console.log(`【beread】${readres.data.taskList[1].name}:${readres.data.taskList[1].status_msg}；`);
+            //detail += `【beread】${readres.data.taskList[1].name}:${readres.data.taskList[1].status_msg}；\n`;
             }
            else  {
             console.log(`【beread】${readres.code}；`);
