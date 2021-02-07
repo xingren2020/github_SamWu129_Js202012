@@ -87,7 +87,7 @@ let Account = ["【Sam】"];
       account = Account[0];
       nowdate=Date.parse(new Date());
       //console.log(nowdate)
-      lastdate=Date.parse("2021-1-11");
+      lastdate=Date.parse("2021-2-3");
       //console.log(lastdate)
       days=parseInt((nowdate-lastdate)/(1000*60*60*24));
       console.log(`【开启任务】开始执行账号${account}的任务`);
