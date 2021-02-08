@@ -27,7 +27,7 @@ jobs:
         run: |
           npm install
           
-      - name: '运行 【youth_share】'
+      - name: '运行 【youth_daily】'
         if: env.YOUTH_DAILY_HD
         run: |
           node youth/youth_daily.js
