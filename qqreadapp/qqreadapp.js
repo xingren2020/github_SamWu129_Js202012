@@ -57,7 +57,7 @@ let Account = ["【Sam】","【MiniSam】","【妞宝】","【QF】","【RL】",
       account = Account[i];
      console.log(`【开启任务】开始执行账号${account}的任务`);
      detail = `【账号】${account}\n`;
-   for (let j = 0; j < URLArr.length; j++) {
+   for (let j = 1; j < URLArr.length; j++) {
       articleURL = URLArr[j];
      // $.task = j + 1;
     // console.log(`开始执行${$.task}个任务`)
