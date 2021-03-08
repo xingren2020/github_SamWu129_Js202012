@@ -14,7 +14,7 @@ let RCKArr = [], RCK = "";
 let RBDArr = [], RBD = "";
 let IBDArr = [], IBD = "";
 let detail = ``;
-let Account = ["【Sam】","【月锡】"];
+let Account = ["【Sam】","【月锡】","【RL】"];
 
   if (process.env.XD_S_URL && process.env.XD_S_URL.indexOf('\n') > -1) {
   SURL = process.env.XD_S_URL.split('\n');
