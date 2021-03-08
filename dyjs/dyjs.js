@@ -13,7 +13,7 @@ let VHDArr = [], VHD = "";
 let INFOHDArr = [], INFOHD = "";
 let BDArr = [], BD = "";
 let detail = ``;
-let Account = ["【Sam】","【妞宝】","【月夕】"];
+let Account = ["【Sam】","【妞宝】","【月夕】","【RL】"];
 
   if (process.env.DYJS_S_URL && process.env.DYJS_S_URL.indexOf('\n') > -1) {
   SURL = process.env.DYJS_S_URL.split('\n');
