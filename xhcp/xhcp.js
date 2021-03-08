@@ -11,7 +11,7 @@ let DoubleBDArr = [], DoubleBD = "";
 let CKArr = [], CK = "";
 let XHArr = [], XH = "";
 let detail = ``;
-let Account = ["【Sam】","【小爱豆】","【月夕】"];
+let Account = ["【Sam】","【小爱豆】","【月夕】","【RL】"];
 
  if (process.env.XH_BD_TASK && process.env.XH_BD_TASK.indexOf('\n') > -1) {
   TaskBD = process.env.XH_BD_TASK.split('\n');
