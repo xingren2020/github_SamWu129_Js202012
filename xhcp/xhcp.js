@@ -91,7 +91,7 @@ let Account = ["【Sam】","【小爱豆】","【月夕】","【RL】"];
       //$.account = i + 1;
      console.log(`【开启任务】开始执行账号${account}的任务`);
      detail = `【账号】${account}\n`;
-   if($.time('HH')==0||$.time('HH')==1){
+   if($.time('HH')==0){
      await sign();
      await notify.sendNotify($.name+'\n', detail)
       };
