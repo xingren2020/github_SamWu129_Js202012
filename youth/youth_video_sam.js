@@ -4,7 +4,7 @@
 */
 
 //let s = 30000 //等待延迟30s
-const $ = new Env("【youth_video_sam】")
+const $ = new Env("【youth_video_Yuexi】")
 const notify = $.isNode() ? require('./sendNotify') : '';
 let ReadArr = [], YouthBody = "",readscore = 0;
   if (process.env.YOUTH_READ && process.env.YOUTH_READ.indexOf('&') > -1) {
