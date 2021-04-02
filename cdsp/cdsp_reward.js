@@ -14,7 +14,7 @@ let TKArr = [], TK = "";
 let TokenArr = [], Token = "";
 let detail = ``;
 let eggcoin = ``, prizecoin = ``;
-let Account = ["【Sam】","【小爱豆】","【QF】","【RL】","【WYDSZ】","【月锡】"];
+let Account = ["【Sam】","【小爱豆】","【QF】","【RL】","【WYDSZ】","【月锡】","【逍遥云】"];
  if (process.env.CD_URL_REWARD && process.env.CD_URL_REWARD.indexOf('\n') > -1) {
   URL = process.env.CD_URL_REWARD.split('\n');
   console.log(`您选择的是用换行隔开\n`)
