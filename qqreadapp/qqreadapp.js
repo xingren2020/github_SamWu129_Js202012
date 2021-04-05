@@ -62,7 +62,7 @@ let Account = ["【Sam】","【MiniSam】","【月夕】"];
      // $.task = j + 1;
     // console.log(`开始执行${$.task}个任务`)
     if(j==0) await task();
-    if(j==1 && $.time('HH')==3)  await sign();
+    if(j==1 && $.time('HH')==6)  await sign();
     else if(j==2) await video();
     else if(j==3) await box();
     else if(j==4) await info();
